@@ -1,0 +1,32 @@
+#Dubbo
+dubbo:
+  application:
+    #dubbo 注册到注册中心的名称
+    name: user-provier
+  #采用协议方式和端口号
+  protocol:
+    name: dubbo
+    port: 20886
+  registry:
+    # dubbo注册中心地址 zookeeper地址
+    address: zookeeper://47.96.7.143:2181
+  scan:
+    # 实现类扫包范围(可以省略，dubbo会自动扫)
+    base-packages: top.greatbiscuit.hyxk.serviceImpl
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.96.7.143:3306/hyxk?characterEncoding=utf-8&useSSL=false&serverTimezone=Hongkong
+    username: hyxk
+    password: Lyx010128.
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: classpath:mapper/*xml
+  type-aliases-package: top.greatbiscuit.hyxk.entity
+  configuration:
+    # 自动生成主键
+    use-generated-keys: true
+    # 字段大小写区分（驼峰式）
+    map-underscore-to-camel-case: true
