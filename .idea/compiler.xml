@@ -8,10 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="hyxk_user_api" />
         <module name="hyxk_user_provider" />
-        <module name="hyxk_user_consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="hyxk_user_consumer" target="8" />
       <module name="hyxk_user_service" target="8" />
     </bytecodeTargetLevel>
   </component>

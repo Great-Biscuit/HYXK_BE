@@ -18,4 +18,6 @@ public interface UserService {
      */
     User queryById(Integer id);
 
+    String hello();
+
 }

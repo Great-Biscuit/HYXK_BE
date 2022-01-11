@@ -30,3 +30,16 @@ mybatis:
     use-generated-keys: true
     # 字段大小写区分（驼峰式）
     map-underscore-to-camel-case: true
+
+#shenyu
+shenyu:
+  client:
+    register-type: zookeeper
+    server-lists: 47.96.7.143:2181
+    props:
+      contextPath: /user
+      appName: user-provier
+      port: 20886
+  dubbo:
+    #多参数类型支持
+    parameter: multi
