@@ -21,6 +21,14 @@ public interface UserDao {
     User queryById(Integer id);
 
     /**
+     * 通过username查询单条数据
+     *
+     * @param username 用户名
+     * @return 实例对象
+     */
+    User queryByUsername(String username);
+
+    /**
      * 统计总行数
      *
      * @param user 查询条件
@@ -52,4 +60,11 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
+    /**
+     * 通过邮箱查询数据
+     *
+     * @param email
+     * @return
+     */
+    User queryByEmail(String email);
 }

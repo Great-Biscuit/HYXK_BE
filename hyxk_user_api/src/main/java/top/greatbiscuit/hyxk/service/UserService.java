@@ -18,6 +18,12 @@ public interface UserService {
      */
     User queryById(Integer id);
 
-    String hello();
+    /**
+     * 通过username查询单条数据
+     *
+     * @param username 用户名
+     * @return 实例对象
+     */
+    User queryByUsername(String username);
 
 }

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @Author: GreatBiscuit
- * @Date: 2022/1/10 17:36
+ * @Date: 2022/1/21 16:25
  */
 @EnableDubbo
 @SpringBootApplication

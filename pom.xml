@@ -11,6 +11,7 @@
     <modules>
         <module>hyxk_user_api</module>
         <module>hyxk_user_provider</module>
+        <module>hyxk_common</module>
         <module>hyxk_user_consumer</module>
     </modules>
 
@@ -39,6 +40,11 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>3.0.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>

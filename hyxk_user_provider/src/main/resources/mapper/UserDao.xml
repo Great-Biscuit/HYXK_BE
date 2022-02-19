@@ -37,6 +37,24 @@
         where id = #{id}
     </select>
 
+    <select id="queryByUsername" resultMap="UserMap">
+        select id,
+               username,
+               password,
+               salt,
+               email,
+               header_url,
+               nickname,
+               gender,
+               signature,
+               type,
+               status,
+               activation_code,
+               create_time
+        from user
+        where username = #{username}
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into user(username, password, salt, email, header_url, nickname, gender, signature, type, status,
@@ -95,6 +113,24 @@
         from user
         where id = #{id}
     </delete>
+
+    <select id="queryByEmail" resultMap="UserMap">
+        select id,
+               username,
+               password,
+               salt,
+               email,
+               header_url,
+               nickname,
+               gender,
+               signature,
+               type,
+               status,
+               activation_code,
+               create_time
+        from user
+        where email = #{email}
+    </select>
 
 </mapper>
 
