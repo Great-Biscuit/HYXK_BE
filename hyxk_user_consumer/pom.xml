@@ -57,6 +57,12 @@
             <version>1.28.0</version>
         </dependency>
 
+        <!-- Sa-Token整合SpringAOP实现注解鉴权 -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-aop</artifactId>
+            <version>1.29.0</version>
+        </dependency>
 
     </dependencies>
 

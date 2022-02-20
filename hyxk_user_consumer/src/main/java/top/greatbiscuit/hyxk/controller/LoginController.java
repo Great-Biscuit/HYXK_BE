@@ -1,5 +1,6 @@
 package top.greatbiscuit.hyxk.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -55,12 +56,11 @@ public class LoginController {
      *
      * @return 成功处理
      */
+    @SaCheckLogin
     @RequestMapping("/loginOut")
     @ShenyuSpringMvcClient(path = "/loginOut")
     public R loginOut() {
-        if (StpUtil.isLogin()) {
-            StpUtil.logout();
-        }
+        StpUtil.logout();
         return R.ok();
     }
 
