@@ -72,4 +72,14 @@ public class Constants {
      */
     public static final long CAPTCHA_EXPIRATION = 2;
 
+    /**
+     * 登录时采取记住我模式
+     */
+    public static final Integer REMEMBER_ME = 60 * 60 * 24 * 7;
+
+    /**
+     * 登录时 不 采取记住我模式
+     */
+    public static final Integer NOT_REMEMBER_ME = 60 * 10;
+
 }

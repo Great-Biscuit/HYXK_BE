@@ -1,6 +1,6 @@
 package top.greatbiscuit.hyxk.service;
 
-import top.greatbiscuit.hyxk.entity.User;
+import java.util.Map;
 
 /**
  * 用户表(User)表服务接口
@@ -10,20 +10,30 @@ import top.greatbiscuit.hyxk.entity.User;
  */
 public interface UserService {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    User queryById(Integer id);
 
     /**
-     * 通过username查询单条数据
+     * 修改密码
      *
-     * @param username 用户名
-     * @return 实例对象
+     * @param userId
+     * @param oldPassword
+     * @param newPassword
+     * @return
      */
-    User queryByUsername(String username);
+    Map updatePassword(Integer userId, String oldPassword, String newPassword);
 
+    /**
+     * 修改昵称
+     *
+     * @param userId
+     * @param nickname
+     */
+    void updateNickname(Integer userId, String nickname);
+
+    /**
+     * 修改性别
+     *
+     * @param userId
+     * @param gender
+     */
+    void updateGender(Integer userId, Integer gender);
 }

@@ -1,11 +1,11 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.annotation.Autowired;
+import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.LoginService;
-import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import java.util.HashMap;
@@ -20,8 +20,8 @@ import java.util.Map;
 @DubboService(version = "v1.0.0")
 public class LoginServiceImpl implements LoginService {
 
-    @DubboReference(version = "v1.0.0")
-    private UserService userService;
+    @Autowired
+    private UserDao userDao;
 
     /**
      * 判断账号密码是否正确
@@ -46,7 +46,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         //验证账号
-        User user = userService.queryByUsername(username);
+        User user = userDao.queryByUsername(username);
 
         if (user == null) {
             map.put("usernameMsg", "账号不存在!");
@@ -55,7 +55,6 @@ public class LoginServiceImpl implements LoginService {
 
         //将提供的密码进行相同方式的加密
         password = PasswordUtil.md5(password + user.getSalt());
-        System.out.println(password);
 
         //验证密码
         if (!password.equals(user.getPassword())) {

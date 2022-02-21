@@ -8,6 +8,7 @@ import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.service.LoginService;
 
@@ -36,14 +37,15 @@ public class LoginController {
      */
     @PostMapping("/verify")
     @ShenyuSpringMvcClient(path = "/verify")
-    public R verify(String username, String password) {
+    public R verify(String username, String password, boolean rememberMe) {
         Map<String, Object> map = loginService.login(username, password);
 
         //如果map中只存在用户ID一个数据，说明是成功登录
         if (map.containsKey("UserID")) {
             //将用户登录状态进行改变
-            //登录状态保持10分钟
-            StpUtil.login(map.get("UserID"), new SaLoginModel().setTimeout(60 * 10));
+            //选择记住我则登录状态保持一周, 否则保持十分钟
+            StpUtil.login(map.get("UserID"), new SaLoginModel()
+                    .setTimeout(rememberMe ? Constants.REMEMBER_ME : Constants.NOT_REMEMBER_ME));
             return R.ok();
         } else {
             //否则就是登录失败

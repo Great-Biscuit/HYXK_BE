@@ -1,7 +1,6 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +8,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.RegisterService;
-import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import javax.mail.MessagingException;
@@ -27,9 +25,6 @@ import java.util.Random;
  */
 @DubboService(version = "v1.0.0")
 public class RegisterServiceImpl implements RegisterService {
-
-    @DubboReference(version = "v1.0.0")
-    private UserService userService;
 
     @Autowired
     private UserDao userDao;
