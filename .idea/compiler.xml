@@ -6,22 +6,37 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hyxk_user_api" />
         <module name="hyxk_user_provider" />
+        <module name="hyxk_post_provider" />
+        <module name="hyxk_user_consumer" />
+        <module name="hyxk_common_core" />
+        <module name="hyxk_common_redis" />
+        <module name="hyxk_post_api" />
+        <module name="hyxk_user_api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="hyxk_be" target="8" />
+      <module name="hyxk_common" target="8" />
+      <module name="hyxk_common_core" target="8" />
+      <module name="hyxk_common_redis" target="8" />
+      <module name="hyxk_post_api" target="8" />
+      <module name="hyxk_post_provider" target="8" />
+      <module name="hyxk_user_api" target="8" />
       <module name="hyxk_user_consumer" target="8" />
-      <module name="hyxk_user_service" target="8" />
+      <module name="hyxk_user_provider" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="hyxk_be" options="-parameters" />
+      <module name="hyxk_common" options="-parameters" />
+      <module name="hyxk_common_core" options="-parameters" />
+      <module name="hyxk_common_redis" options="-parameters" />
+      <module name="hyxk_post_api" options="-parameters" />
+      <module name="hyxk_post_provider" options="-parameters" />
       <module name="hyxk_user_api" options="-parameters" />
       <module name="hyxk_user_consumer" options="-parameters" />
       <module name="hyxk_user_provider" options="-parameters" />
-      <module name="hyxk_user_service" options="-parameters" />
     </option>
   </component>
 </project>

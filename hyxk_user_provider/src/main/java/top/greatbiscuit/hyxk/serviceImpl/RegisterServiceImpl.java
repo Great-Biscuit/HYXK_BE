@@ -41,36 +41,31 @@ public class RegisterServiceImpl implements RegisterService {
      * @return
      */
     @Override
-    public Map toRegister(String username, String password, String email) {
+    public String toRegister(String username, String password, String email) {
 
         Map<String, Object> map = new HashMap<>();
 
         //空值处理
         if (StringUtils.isBlank(username)) {
-            map.put("usernameMsg", "用户名为空!");
-            return map;
+            return "用户名为空!";
         }
         if (StringUtils.isBlank(password)) {
-            map.put("passwordMsg", "密码为空!");
-            return map;
+            return "密码为空!";
         }
         if (StringUtils.isBlank(email)) {
-            map.put("emailMsg", "邮箱为空!");
-            return map;
+            return "邮箱为空!";
         }
 
         // 验证账号
         User u = userDao.queryByUsername(username);
         if (u != null) {
-            map.put("usernameMsg", "该账号已存在!");
-            return map;
+            return "该账号已存在!";
         }
 
         //验证邮箱
         u = userDao.queryByEmail(email);
         if (u != null) {
-            map.put("emailMsg", "邮箱已被注册!");
-            return map;
+            return "邮箱已被注册!";
         }
 
         //补充其他信息, 进行注册操作
@@ -110,13 +105,12 @@ public class RegisterServiceImpl implements RegisterService {
             helper.setText(text, true);
             mailSender.send(helper.getMimeMessage());
         } catch (MessagingException e) {
-            map.put("sendMailMsg", "发送邮件出错!");
-            return map;
+            return "发送邮件出错!";
         }
         //------------------------------------------------------------------------------
 
         //成功注册
-        return map;
+        return null;
     }
 
     /**

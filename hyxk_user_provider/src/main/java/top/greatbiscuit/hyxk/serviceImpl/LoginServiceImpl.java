@@ -8,9 +8,6 @@ import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.LoginService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 登录相关服务
  *
@@ -31,26 +28,21 @@ public class LoginServiceImpl implements LoginService {
      * @return 验证结果
      */
     @Override
-    public Map login(String username, String password) {
-
-        Map<String, Object> map = new HashMap<>();
+    public String login(String username, String password) {
 
         //空值处理
         if (StringUtils.isBlank(username)) {
-            map.put("usernameMsg", "用户名为空!");
-            return map;
+            return "用户名为空!";
         }
         if (StringUtils.isBlank(password)) {
-            map.put("passwordMsg", "密码为空!");
-            return map;
+            return "密码为空!";
         }
 
         //验证账号
         User user = userDao.queryByUsername(username);
 
         if (user == null) {
-            map.put("usernameMsg", "账号不存在!");
-            return map;
+            return "账号不存在!";
         }
 
         //将提供的密码进行相同方式的加密
@@ -58,20 +50,16 @@ public class LoginServiceImpl implements LoginService {
 
         //验证密码
         if (!password.equals(user.getPassword())) {
-            map.put("passwordMsg", "密码错误!");
-            return map;
+            return "密码错误!";
         }
 
         //激活状态判断
         if (user.getStatus() == 0) {
-            map.put("usernameMsg", "账号未激活!");
-            return map;
+            return "账号未激活!";
         }
 
         //成功登录, 返回用户ID用于登录状态标记
-        map.put("UserID", user.getId());
-
-        return map;
+        return "ID:" + user.getId();
     }
 
 

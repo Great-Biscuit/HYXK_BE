@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.service.RegisterService;
 
-import java.util.Map;
-
 /**
  * 注册控制类
  *
@@ -35,8 +33,8 @@ public class RegisterController {
     @RequestMapping("/toRegister")
     @ShenyuSpringMvcClient(path = "/toRegister")
     public R toRegister(String username, String password, String email) {
-        Map map = registerService.toRegister(username, password, email);
-        return map.isEmpty() ? R.ok() : R.fail(map);
+        String message = registerService.toRegister(username, password, email);
+        return message.isEmpty() ? R.ok() : R.fail(message);
     }
 
     /**
