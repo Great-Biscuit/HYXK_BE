@@ -71,4 +71,17 @@ public class LoginController {
         return R.ok();
     }
 
+    /**
+     * 通过邮箱找回账号
+     *
+     * @param email
+     * @return
+     */
+    @RequestMapping("/findUsername")
+    @ShenyuSpringMvcClient(path = "/findUsername")
+    public R findUsername(String email) {
+        String msg = loginService.findUsername(email);
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
 }

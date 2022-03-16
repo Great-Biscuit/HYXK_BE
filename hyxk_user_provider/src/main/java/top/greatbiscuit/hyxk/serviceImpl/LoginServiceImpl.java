@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.LoginService;
+import top.greatbiscuit.hyxk.util.EmailUtil;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 /**
@@ -19,6 +20,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private EmailUtil emailUtil;
 
     /**
      * 判断账号密码是否正确
@@ -60,6 +64,24 @@ public class LoginServiceImpl implements LoginService {
 
         //成功登录, 返回用户ID用于登录状态标记
         return "ID:" + user.getId();
+    }
+
+    /**
+     * 通过邮箱找回账号
+     *
+     * @param email
+     * @return
+     */
+    @Override
+    public String findUsername(String email) {
+        User user = userDao.queryByEmail(email);
+        if (user == null)
+            return "用户不存在!";
+        // 存在该用户则给用户发送邮件
+        String text = "亲爱的用户, 您正在通过邮箱找回账号。<br/>经系统查询，您的账号为: " + user.getUsername() + "<br/><br/><br/>该邮件由系统自动发出。<br/>" +
+                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!";
+        //返回邮件发送结果
+        return emailUtil.sendMail(email, "找回账号", text);
     }
 
 
