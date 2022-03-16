@@ -47,7 +47,6 @@ public class LoginController {
         if (message.startsWith("ID:")) {
             //转换为用户ID
             int userId = Integer.parseInt(message.substring(3));
-            System.out.println(userId);
             //将用户登录状态进行改变
             //选择记住我则登录状态保持一周, 否则保持十分钟
             StpUtil.login(userId, new SaLoginModel()

@@ -34,7 +34,7 @@ public class RegisterController {
     @ShenyuSpringMvcClient(path = "/toRegister")
     public R toRegister(String username, String password, String email) {
         String message = registerService.toRegister(username, password, email);
-        return message.isEmpty() ? R.ok() : R.fail(message);
+        return message == null ? R.ok() : R.fail(message);
     }
 
     /**
