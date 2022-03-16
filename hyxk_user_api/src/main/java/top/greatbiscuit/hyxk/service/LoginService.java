@@ -12,4 +12,7 @@ public interface LoginService {
 
     String findUsername(String email);
 
+    String getVerificationCode(String email);
+
+    String findPassword(String email, String code, String password);
 }

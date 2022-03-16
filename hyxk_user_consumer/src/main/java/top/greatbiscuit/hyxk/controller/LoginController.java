@@ -84,4 +84,32 @@ public class LoginController {
         return msg == null ? R.ok() : R.fail(msg);
     }
 
+    /**
+     * 找回密码时通过邮箱获取验证码
+     *
+     * @param email
+     * @return
+     */
+    @RequestMapping("/getVerificationCode")
+    @ShenyuSpringMvcClient(path = "/getVerificationCode")
+    public R getVerificationCode(String email) {
+        String msg = loginService.getVerificationCode(email);
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
+    /**
+     * 找回密码
+     *
+     * @param email
+     * @param code
+     * @param password
+     * @return
+     */
+    @PostMapping("/findPassword")
+    @ShenyuSpringMvcClient(path = "/findPassword")
+    public R findPassword(String email, String code, String password) {
+        String msg = loginService.findPassword(email, code, password);
+        return msg == null ? R.ok("密码修改成功!") : R.fail(msg);
+    }
+
 }
