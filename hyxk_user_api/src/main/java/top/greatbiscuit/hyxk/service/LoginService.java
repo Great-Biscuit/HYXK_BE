@@ -10,4 +10,9 @@ public interface LoginService {
 
     String login(String username, String password);
 
+    String findUsername(String email);
+
+    String getVerificationCode(String email);
+
+    String findPassword(String email, String code, String password);
 }

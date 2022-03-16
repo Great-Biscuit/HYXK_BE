@@ -38,39 +38,19 @@ public class Constants {
     public static final Integer FAIL = 500;
 
     /**
-     * 登录成功
-     */
-    public static final String LOGIN_SUCCESS = "Success";
-
-    /**
-     * 注销
-     */
-    public static final String LOGOUT = "Logout";
-
-    /**
-     * 注册
-     */
-    public static final String REGISTER = "Register";
-
-    /**
-     * 登录失败
-     */
-    public static final String LOGIN_FAIL = "Error";
-
-    /**
      * 排序的方向 "desc" 或者 "asc".
      */
     public static final String IS_ASC = "isAsc";
 
     /**
-     * 验证码 redis key
+     * 找回密码验证码
      */
-    public static final String CAPTCHA_CODE_KEY = "captcha_codes:";
+    public static final String FIND_PASSWORD_CODE = "find_password_code:";
 
     /**
-     * 验证码有效期（分钟）
+     * 找回密码验证码有效期(5分钟)
      */
-    public static final long CAPTCHA_EXPIRATION = 2;
+    public static final long FIND_PASSWORD_CODE_EXPIRATION = 5;
 
     /**
      * 登录时采取记住我模式
