@@ -13,6 +13,8 @@
         <module>hyxk_user_provider</module>
         <module>hyxk_common</module>
         <module>hyxk_user_consumer</module>
+        <module>hyxk_post_api</module>
+        <module>hyxk_post_provider</module>
     </modules>
 
     <properties>

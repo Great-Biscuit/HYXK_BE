@@ -1,7 +1,5 @@
 package top.greatbiscuit.hyxk.service;
 
-import java.util.Map;
-
 /**
  * 登录
  *
@@ -10,6 +8,6 @@ import java.util.Map;
  */
 public interface LoginService {
 
-    Map login(String username, String password);
+    String login(String username, String password);
 
 }

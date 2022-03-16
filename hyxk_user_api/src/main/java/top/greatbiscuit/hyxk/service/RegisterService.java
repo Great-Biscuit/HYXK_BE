@@ -1,7 +1,5 @@
 package top.greatbiscuit.hyxk.service;
 
-import java.util.Map;
-
 /**
  * 注册
  *
@@ -10,7 +8,7 @@ import java.util.Map;
  */
 public interface RegisterService {
 
-    Map toRegister(String username, String password, String email);
+    String toRegister(String username, String password, String email);
 
     String activation(Integer userId, String code);
 

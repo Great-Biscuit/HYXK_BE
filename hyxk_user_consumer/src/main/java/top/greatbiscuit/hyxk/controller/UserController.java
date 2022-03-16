@@ -1,4 +1,4 @@
-package top.greatbiscuit.hyxk.controller.exceptionHandler;
+package top.greatbiscuit.hyxk.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
@@ -8,23 +8,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.domain.R;
+import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.UserService;
 
 import java.util.Map;
 
 /**
- * 用户信息设置类
+ * 用户信息操作类
  *
  * @Author: GreatBiscuit
  * @Date: 2022/2/20 20:20
  */
 @RestController
-@RequestMapping("/set")
-@ShenyuSpringMvcClient(path = "/set")
+@RequestMapping("/action")
+@ShenyuSpringMvcClient(path = "/action")
 public class UserController {
 
     @DubboReference(version = "v1.0.0")
     private UserService userService;
+
+    /**
+     * 查询当前用户信息
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @RequestMapping("/getMyself")
+    @ShenyuSpringMvcClient(path = "/getMyself")
+    public R getMyself() {
+        User user = userService.queryUserById(StpUtil.getLoginIdAsInt());
+        return user == null ? R.fail("错误!") : R.ok(user);
+    }
 
     /**
      * 修改密码
@@ -72,6 +86,5 @@ public class UserController {
         userService.updateGender(StpUtil.getLoginIdAsInt(), gender);
         return R.ok("性别修改成功!");
     }
-
 
 }

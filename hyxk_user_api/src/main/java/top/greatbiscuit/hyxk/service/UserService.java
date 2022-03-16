@@ -1,5 +1,7 @@
 package top.greatbiscuit.hyxk.service;
 
+import top.greatbiscuit.hyxk.entity.User;
+
 import java.util.Map;
 
 /**
@@ -36,4 +38,12 @@ public interface UserService {
      * @param gender
      */
     void updateGender(Integer userId, Integer gender);
+
+    /**
+     * 根据ID查询用户
+     *
+     * @param userId
+     * @return
+     */
+    User queryUserById(Integer userId);
 }

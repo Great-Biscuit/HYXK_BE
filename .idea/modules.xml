@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hyxk_be.iml" filepath="$PROJECT_DIR$/hyxk_be.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_common/hyxk_common.iml" filepath="$PROJECT_DIR$/hyxk_common/hyxk_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" filepath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_common/hyxk_common_redis/hyxk_common_redis.iml" filepath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/hyxk_common_redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_post_api/hyxk_post_api.iml" filepath="$PROJECT_DIR$/hyxk_post_api/hyxk_post_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_post_provider/hyxk_post_provider.iml" filepath="$PROJECT_DIR$/hyxk_post_provider/hyxk_post_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_user_api/hyxk_user_api.iml" filepath="$PROJECT_DIR$/hyxk_user_api/hyxk_user_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_user_consumer/hyxk_user_consumer.iml" filepath="$PROJECT_DIR$/hyxk_user_consumer/hyxk_user_consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" filepath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" />
+    </modules>
+  </component>
+</project>

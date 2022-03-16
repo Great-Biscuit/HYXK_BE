@@ -3,15 +3,12 @@ package top.greatbiscuit.hyxk.serviceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.RegisterService;
+import top.greatbiscuit.hyxk.util.EmailUtil;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +27,7 @@ public class RegisterServiceImpl implements RegisterService {
     private UserDao userDao;
 
     @Autowired
-    private JavaMailSender mailSender;
+    private EmailUtil emailUtil;
 
     /**
      * 注册方法
@@ -41,36 +38,31 @@ public class RegisterServiceImpl implements RegisterService {
      * @return
      */
     @Override
-    public Map toRegister(String username, String password, String email) {
+    public String toRegister(String username, String password, String email) {
 
         Map<String, Object> map = new HashMap<>();
 
         //空值处理
         if (StringUtils.isBlank(username)) {
-            map.put("usernameMsg", "用户名为空!");
-            return map;
+            return "用户名为空!";
         }
         if (StringUtils.isBlank(password)) {
-            map.put("passwordMsg", "密码为空!");
-            return map;
+            return "密码为空!";
         }
         if (StringUtils.isBlank(email)) {
-            map.put("emailMsg", "邮箱为空!");
-            return map;
+            return "邮箱为空!";
         }
 
         // 验证账号
         User u = userDao.queryByUsername(username);
         if (u != null) {
-            map.put("usernameMsg", "该账号已存在!");
-            return map;
+            return "该账号已存在!";
         }
 
         //验证邮箱
         u = userDao.queryByEmail(email);
         if (u != null) {
-            map.put("emailMsg", "邮箱已被注册!");
-            return map;
+            return "邮箱已被注册!";
         }
 
         //补充其他信息, 进行注册操作
@@ -97,26 +89,15 @@ public class RegisterServiceImpl implements RegisterService {
         //插入数据库
         userDao.insert(user);
 
-        // 给用户发送激活邮件[需求相对简单, 直接嵌入相关代码]
-        //------------------------------------------------------------------------------
-        try {
-            String url = "http://localhost:9195" + "/user/register/activation?id=" + user.getId() + "&code=" + user.getActivationCode();
-            String text = "    亲爱的" + username + "用户, 您好! 欢迎注册皓月星空站, 请点击<a href=\"" + url + "\">链接</a>以激活账号。";
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message);
-            helper.setFrom("hyxk_station@foxmail.com");
-            helper.setTo(email);
-            helper.setSubject("激活账号");
-            helper.setText(text, true);
-            mailSender.send(helper.getMimeMessage());
-        } catch (MessagingException e) {
-            map.put("sendMailMsg", "发送邮件出错!");
-            return map;
-        }
-        //------------------------------------------------------------------------------
+        // 给用户发送激活邮件
+        String url = "http://localhost:9195" + "/user/register/activation?id=" + user.getId() + "&code=" + user.getActivationCode();
+        String text = "    亲爱的" + username + "用户, 您好! 欢迎注册皓月星空站, 请点击<a href=\"" + url + "\">链接</a>以激活账号。" +
+                "<br/><br/>" +
+                "若点击上述链接无法进行跳转, 请将下面的地址复制至浏览器打开: <br/>" +
+                url;
 
-        //成功注册
-        return map;
+        //返回邮件发送结果
+        return emailUtil.sendMail(email, "激活账号", text);
     }
 
     /**

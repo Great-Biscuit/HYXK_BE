@@ -76,4 +76,15 @@ public class UserServiceImpl implements UserService {
         user.setGender(gender);
         userDao.update(user);
     }
+
+    /**
+     * 根据ID查询用户
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public User queryUserById(Integer userId) {
+        return userDao.queryById(userId);
+    }
 }
