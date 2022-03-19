@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.greatbiscuit.hyxk.dao.PostDao">
+
+    <resultMap type="top.greatbiscuit.hyxk.entity.Post" id="PostMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="markdownContent" column="markdown_content" jdbcType="VARCHAR"/>
+        <result property="htmlContent" column="html_content" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="top" column="top" jdbcType="INTEGER"/>
+        <result property="official" column="official" jdbcType="INTEGER"/>
+        <result property="bestCommentId" column="best_comment_id" jdbcType="INTEGER"/>
+        <result property="comments" column="comments" jdbcType="INTEGER"/>
+        <result property="headImg" column="head_img" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="score" column="score" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="PostMap">
+        select id,
+               user_id,
+               title,
+               type,
+               markdown_content,
+               html_content,
+               state,
+               top,
+               official,
+               best_comment_id,
+               comments,
+               head_img,
+               create_time,
+               score
+        from post
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="PostMap">
+        select
+        id, user_id, title, type, markdown_content, html_content, state, top, official, best_comment_id, comments,
+        head_img, create_time, score
+        from post
+        where state != 2 and type = #{type}
+        <if test="userId!=0">
+            and user_id = #{userId}
+        </if>
+        <if test="orderMode==0">
+            order by top desc, create_time desc
+        </if>
+        <if test="orderMode==1">
+            order by top desc, score desc, create_time desc
+        </if>
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from post
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="markdownContent != null and markdownContent != ''">
+                and markdown_content = #{markdownContent}
+            </if>
+            <if test="htmlContent != null and htmlContent != ''">
+                and html_content = #{htmlContent}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="top != null">
+                and top = #{top}
+            </if>
+            <if test="official != null">
+                and official = #{official}
+            </if>
+            <if test="bestCommentId != null">
+                and best_comment_id = #{bestCommentId}
+            </if>
+            <if test="comments != null">
+                and comments = #{comments}
+            </if>
+            <if test="headImg != null and headImg != ''">
+                and head_img = #{headImg}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="score != null">
+                and score = #{score}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into post(user_id, title, type, markdown_content, html_content, state, top, official, best_comment_id,
+                         comments, head_img, create_time, score)
+        values (#{userId}, #{title}, #{type}, #{markdownContent}, #{htmlContent}, #{state}, #{top}, #{official},
+                #{bestCommentId}, #{comments}, #{headImg}, #{createTime}, #{score})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update post
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="markdownContent != null and markdownContent != ''">
+                markdown_content = #{markdownContent},
+            </if>
+            <if test="htmlContent != null and htmlContent != ''">
+                html_content = #{htmlContent},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="top != null">
+                top = #{top},
+            </if>
+            <if test="official != null">
+                official = #{official},
+            </if>
+            <if test="bestCommentId != null">
+                best_comment_id = #{bestCommentId},
+            </if>
+            <if test="comments != null">
+                comments = #{comments},
+            </if>
+            <if test="headImg != null and headImg != ''">
+                head_img = #{headImg},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="score != null">
+                score = #{score},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from post
+        where id = #{id}
+    </delete>
+
+</mapper>
+

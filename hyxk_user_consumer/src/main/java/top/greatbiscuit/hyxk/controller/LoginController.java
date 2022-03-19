@@ -21,7 +21,7 @@ import top.greatbiscuit.hyxk.service.UserService;
  */
 @RestController
 @RequestMapping("/login")
-@ShenyuSpringMvcClient(path = "/login")
+@ShenyuSpringMvcClient(path = "/login/**")
 public class LoginController {
 
     @DubboReference(version = "v1.0.0")
@@ -38,7 +38,6 @@ public class LoginController {
      * @return 成功处理
      */
     @PostMapping("/verify")
-    @ShenyuSpringMvcClient(path = "/verify")
     public R verify(String username, String password, boolean rememberMe) {
 
         String message = loginService.login(username, password);
@@ -48,9 +47,12 @@ public class LoginController {
             //转换为用户ID
             int userId = Integer.parseInt(message.substring(3));
             //将用户登录状态进行改变
-            //选择记住我则登录状态保持一周, 否则保持十分钟
-            StpUtil.login(userId, new SaLoginModel()
-                    .setTimeout(rememberMe ? Constants.REMEMBER_ME : Constants.NOT_REMEMBER_ME));
+            //选择记住我则登录状态保持一周, 否则仅本次有效
+            if (rememberMe) {
+                StpUtil.login(userId, new SaLoginModel().setTimeout(Constants.REMEMBER_ME));
+            } else {
+                StpUtil.login(userId, false);
+            }
             return R.ok(userService.queryUserById(userId));
         } else {
             //否则就是登录失败
@@ -65,7 +67,6 @@ public class LoginController {
      */
     @SaCheckLogin
     @RequestMapping("/loginOut")
-    @ShenyuSpringMvcClient(path = "/loginOut")
     public R loginOut() {
         StpUtil.logout();
         return R.ok();
@@ -78,7 +79,6 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/findUsername")
-    @ShenyuSpringMvcClient(path = "/findUsername")
     public R findUsername(String email) {
         String msg = loginService.findUsername(email);
         return msg == null ? R.ok() : R.fail(msg);
@@ -91,7 +91,6 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/getVerificationCode")
-    @ShenyuSpringMvcClient(path = "/getVerificationCode")
     public R getVerificationCode(String email) {
         String msg = loginService.getVerificationCode(email);
         return msg == null ? R.ok() : R.fail(msg);
@@ -106,7 +105,6 @@ public class LoginController {
      * @return
      */
     @PostMapping("/findPassword")
-    @ShenyuSpringMvcClient(path = "/findPassword")
     public R findPassword(String email, String code, String password) {
         String msg = loginService.findPassword(email, code, password);
         return msg == null ? R.ok("密码修改成功!") : R.fail(msg);

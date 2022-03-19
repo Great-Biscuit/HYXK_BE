@@ -24,20 +24,12 @@ public interface UserService {
     Map updatePassword(Integer userId, String oldPassword, String newPassword);
 
     /**
-     * 修改昵称
+     * 修改用户信息
      *
-     * @param userId
-     * @param nickname
+     * @param user
+     * @return
      */
-    void updateNickname(Integer userId, String nickname);
-
-    /**
-     * 修改性别
-     *
-     * @param userId
-     * @param gender
-     */
-    void updateGender(Integer userId, Integer gender);
+    String updateUser(User user);
 
     /**
      * 根据ID查询用户

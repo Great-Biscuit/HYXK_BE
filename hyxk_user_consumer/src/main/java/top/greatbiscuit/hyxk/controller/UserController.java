@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/action")
-@ShenyuSpringMvcClient(path = "/action")
+@ShenyuSpringMvcClient(path = "/action/**")
 public class UserController {
 
     @DubboReference(version = "v1.0.0")
@@ -34,7 +34,6 @@ public class UserController {
      */
     @SaCheckLogin
     @RequestMapping("/getMyself")
-    @ShenyuSpringMvcClient(path = "/getMyself")
     public R getMyself() {
         User user = userService.queryUserById(StpUtil.getLoginIdAsInt());
         return user == null ? R.fail("错误!") : R.ok(user);
@@ -49,7 +48,6 @@ public class UserController {
      */
     @SaCheckLogin
     @RequestMapping("/updatePassword")
-    @ShenyuSpringMvcClient(path = "/updatePassword")
     public R updatePassword(String oldPassword, String newPassword) {
         Map map = userService.updatePassword(StpUtil.getLoginIdAsInt(), oldPassword, newPassword);
         if (!map.isEmpty()) return R.fail(map);
@@ -57,34 +55,24 @@ public class UserController {
     }
 
     /**
-     * 修改昵称
+     * 修改用户信息
      *
-     * @param nickname 昵称
-     * @return 修改结果
+     * @param user
+     * @return
      */
     @SaCheckLogin
-    @RequestMapping("/updateNickname")
-    @ShenyuSpringMvcClient(path = "/updateNickname")
-    public R updateNickname(String nickname) {
-        if (nickname.length() > 16) return R.fail("昵称过长!");
-        //将nickname进行html转义
-        userService.updateNickname(StpUtil.getLoginIdAsInt(), HtmlUtils.htmlEscape(nickname));
-        return R.ok("昵称修改成功!");
+    @RequestMapping("/updateInfo")
+    public R updateInfo(User user) {
+        if (user == null) return R.fail("为获取到用户信息!");
+        // 基础处理
+        if (user.getNickname().length() > 20) return R.fail("昵称过长!");
+        if (user.getGender() < 0 || user.getGender() > 2) return R.fail("请选择正确的性别类型!");
+        // 将nickname signature进行html转义
+        user.setNickname(HtmlUtils.htmlEscape(user.getNickname()));
+        user.setSignature(HtmlUtils.htmlEscape(user.getSignature()));
+        String msg = userService.updateUser(user);
+        return msg == null ? R.ok("昵称修改成功!") : R.fail(msg);
     }
 
-    /**
-     * 修改性别
-     *
-     * @param gender 性别标记值
-     * @return 修改结果
-     */
-    @SaCheckLogin
-    @RequestMapping("/updateGender")
-    @ShenyuSpringMvcClient(path = "/updateGender")
-    public R updateGender(Integer gender) {
-        if (gender > 2) return R.fail("请输入正确的性别标记值!");
-        userService.updateGender(StpUtil.getLoginIdAsInt(), gender);
-        return R.ok("性别修改成功!");
-    }
 
 }

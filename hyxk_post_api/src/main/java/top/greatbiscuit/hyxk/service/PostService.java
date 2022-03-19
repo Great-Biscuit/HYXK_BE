@@ -8,6 +8,5 @@ package top.greatbiscuit.hyxk.service;
  */
 public interface PostService {
 
-    int testRedis(int temp);
 
 }

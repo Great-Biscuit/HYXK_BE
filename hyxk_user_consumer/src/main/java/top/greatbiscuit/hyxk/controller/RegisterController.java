@@ -15,7 +15,7 @@ import top.greatbiscuit.hyxk.service.RegisterService;
  */
 @RestController
 @RequestMapping("/register")
-@ShenyuSpringMvcClient(path = "/register")
+@ShenyuSpringMvcClient(path = "/register/**")
 public class RegisterController {
 
     //记得同时设置网关的超时时间!!!!!!!!!!!!!!!!!!
@@ -31,7 +31,6 @@ public class RegisterController {
      * @return
      */
     @RequestMapping("/toRegister")
-    @ShenyuSpringMvcClient(path = "/toRegister")
     public R toRegister(String username, String password, String email) {
         String message = registerService.toRegister(username, password, email);
         return message == null ? R.ok() : R.fail(message);
@@ -45,7 +44,6 @@ public class RegisterController {
      * @return
      */
     @RequestMapping("/activation")
-    @ShenyuSpringMvcClient(path = "/activation")
     public String activation(Integer id, String code) {
         return registerService.activation(id, code);
     }

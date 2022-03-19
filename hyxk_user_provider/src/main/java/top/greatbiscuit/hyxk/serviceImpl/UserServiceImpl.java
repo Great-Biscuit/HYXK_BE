@@ -52,30 +52,26 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 修改昵称
+     * 修改用户信息
      *
-     * @param userId
-     * @param nickname
+     * @param user
      */
     @Override
-    public void updateNickname(Integer userId, String nickname) {
-        User user = userDao.queryById(userId);
-        user.setNickname(nickname);
-        userDao.update(user);
+    public String updateUser(User user) {
+        User u = userDao.queryById(user.getId());
+        if (u == null) {
+            return "用户不存在!";
+        }
+        // 只有部分信息可以修改
+        u.setHeaderUrl(user.getHeaderUrl());
+        u.setNickname(user.getNickname());
+        u.setGender(user.getGender());
+        u.setSignature(user.getSignature());
+
+        userDao.update(u);
+        return null;
     }
 
-    /**
-     * 修改性别
-     *
-     * @param userId
-     * @param gender
-     */
-    @Override
-    public void updateGender(Integer userId, Integer gender) {
-        User user = userDao.queryById(userId);
-        user.setGender(gender);
-        userDao.update(user);
-    }
 
     /**
      * 根据ID查询用户

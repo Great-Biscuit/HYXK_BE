@@ -4,24 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="refactor: 完成用户服务中的发送邮件功能抽离">
-      <change afterPath="$PROJECT_DIR$/hyxk_be.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/hyxk_common_redis.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_user_api/hyxk_user_api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_user_consumer/hyxk_user_consumer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cc229044-78cf-4958-bb1a-645a2f214cbe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cc229044-78cf-4958-bb1a-645a2f214cbe.xml" afterDir="false" />
+    <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/entity/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostPublicService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cc229044-78cf-4958-bb1a-645a2f214cbe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cc229044-78cf-4958-bb1a-645a2f214cbe/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_be.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_be.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/hyxk_user_consumer.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,20 +47,7 @@
         <option value="Great-Biscuit" />
       </list>
     </option>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,24 +74,19 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="项目" />
+    <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15234375" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\project\graduation_project\hyxk_be\hyxk_post_provider\src\main\resources" />
-      <recent name="C:\project\graduation_project\hyxk_be\hyxk_common\hyxk_common_redis\src\main\java\top\greatbiscuit\common\redis\configure" />
       <recent name="C:\project\graduation_project\hyxk_be\hyxk_user_consumer\src\main\resources" />
       <recent name="C:\project\graduation_project\hyxk_be\hyxk_user_service\src\main\resources" />
       <recent name="C:\project\graduation_project\hyxk_be\hyxk_user_service\src\main\java" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="top.greatbiscuit.common.redis.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -110,7 +96,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserProvider">
+  <component name="RunManager" selected="Spring Boot.PostProvider">
     <configuration name="PostProvider" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_provider" />
       <extension name="coverage">
@@ -134,7 +120,6 @@
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.UserConsumer" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,7 +134,6 @@
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.UserProvider" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,9 +145,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserProvider" />
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
+        <item itemvalue="Spring Boot.UserProvider" />
       </list>
     </recent_temporary>
   </component>
@@ -187,23 +171,14 @@
       <workItem from="1642752072213" duration="8682000" />
       <workItem from="1644562414759" duration="1525000" />
       <workItem from="1645095813648" duration="593000" />
-      <workItem from="1645255628215" duration="20678000" />
-      <workItem from="1645343972154" duration="5194000" />
-      <workItem from="1645426771264" duration="3472000" />
-      <workItem from="1645456393496" duration="616000" />
-      <workItem from="1645766738602" duration="10000" />
-      <workItem from="1646128575834" duration="517000" />
-      <workItem from="1646376938676" duration="5122000" />
-      <workItem from="1646475456072" duration="11042000" />
-      <workItem from="1646811374706" duration="1148000" />
-      <workItem from="1646812534877" duration="8017000" />
-      <workItem from="1646821557107" duration="3035000" />
-      <workItem from="1647007385946" duration="76000" />
-      <workItem from="1647272538760" duration="1873000" />
-      <workItem from="1647275199642" duration="404000" />
-      <workItem from="1647360976146" duration="4119000" />
-      <workItem from="1647407252080" duration="2066000" />
-      <workItem from="1647417974568" duration="4284000" />
+      <workItem from="1645255628215" duration="17072000" />
+      <workItem from="1647599662333" duration="2533000" />
+      <workItem from="1647678645619" duration="3505000" />
+      <workItem from="1647683017804" duration="6032000" />
+      <workItem from="1647692358081" duration="4437000" />
+      <workItem from="1647701837352" duration="103000" />
+      <workItem from="1647702231829" duration="247000" />
+      <workItem from="1647702501413" duration="834000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -219,90 +194,30 @@
       <option name="project" value="LOCAL" />
       <updated>1641922120737</updated>
     </task>
-    <task id="LOCAL-00003" summary="feat: 实现登录与注册功能">
-      <created>1645282389409</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1645282389409</updated>
-    </task>
-    <task id="LOCAL-00004" summary="feat: 使用AOP进行注解鉴权, 并增加全局异常处理类[使报错信息能让用户看懂]">
-      <created>1645356858767</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1645356858767</updated>
-    </task>
-    <task id="LOCAL-00005" summary="feat: 新增用户信息修改功能">
-      <created>1645456482319</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1645456482319</updated>
-    </task>
-    <task id="LOCAL-00006" summary="chore: 集成redis并完成测试">
-      <created>1646821747049</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1646821747049</updated>
-    </task>
-    <task id="LOCAL-00007" summary="refactor: 完成用户服务中的发送邮件功能抽离">
-      <created>1647409005765</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1647409005765</updated>
-    </task>
-    <task id="LOCAL-00008" summary="feat: 新增通过邮箱找回账号功能">
-      <created>1647419545141</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1647419545142</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.yml" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="chore: Dubbo3+SpringBoot调试通过" />
     <MESSAGE value="chore: 集成apache shenyu网关" />
-    <MESSAGE value="feat: 实现登录与注册功能" />
-    <MESSAGE value="feat: 使用AOP进行注解鉴权, 并增加全局异常处理类[使报错信息能让用户看懂]" />
-    <MESSAGE value="feat: 新增用户信息修改功能" />
-    <MESSAGE value="chore: 集成redis并完成测试" />
-    <MESSAGE value="refactor: 完成用户服务中的发送邮件功能抽离" />
-    <MESSAGE value="feat: 新增通过邮箱找回账号功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增通过邮箱找回账号功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: 集成apache shenyu网关" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
