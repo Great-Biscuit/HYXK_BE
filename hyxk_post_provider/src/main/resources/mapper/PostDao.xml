@@ -42,8 +42,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="PostMap">
         select
-        id, user_id, title, type, markdown_content, html_content, state, top, official, best_comment_id, comments,
-        head_img, create_time, score
+        id, user_id, title, state, top, official, best_comment_id, comments, head_img
         from post
         where state != 2 and type = #{type}
         <if test="userId!=0">

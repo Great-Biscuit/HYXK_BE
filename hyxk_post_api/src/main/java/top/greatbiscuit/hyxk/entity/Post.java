@@ -24,7 +24,7 @@ public class Post implements Serializable {
      */
     private String title;
     /**
-     * 类型[0-文章 1-问答]
+     * 类型[0-文章 1-问答
      */
     private Integer type;
     /**

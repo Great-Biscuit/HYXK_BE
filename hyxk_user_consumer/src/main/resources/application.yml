@@ -7,12 +7,12 @@ dubbo:
     name: user-consumer
   registry:
     ## dubbo注册中心地址 zookeeper地址
-    address: zookeeper://47.96.7.143:2181
+    address: zookeeper://127.0.0.1:2181
 
 shenyu:
   client:
     register-type: zookeeper
-    server-lists: 47.96.7.143:2181
+    server-lists: 127.0.0.1:2181
     props:
       contextPath: /user
       appName: user-consumer
@@ -25,7 +25,7 @@ spring:
     # Redis数据库索引（默认为0）
     database: 11
     # Redis服务器地址
-    host: 47.96.7.143
+    host: 127.0.0.1
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）

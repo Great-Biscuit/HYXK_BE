@@ -47,7 +47,7 @@ public class PostPublicServiceImpl implements PostPublicService {
         for (Post post : postList) {
             Map<String, Object> map = new HashMap<>();
             map.put("post", post);
-            // TODO: 页面还需要别的信息, 如点赞数量、用户头像及名称. 并且此处的帖子信息可以优化, 没必要全部传输
+            // TODO: 页面还需要别的信息, 如点赞数量、用户头像及名称. 并且此处的帖子信息已被优化, 没必要全部传输
             map.put("likeCount", 6);
             posts.add(map);
         }
