@@ -169,5 +169,18 @@
         where id = #{id}
     </delete>
 
+    <!--查询Markdown内容-->
+    <select id="queryMarkdownById" resultType="string">
+        select markdown_content
+        from post
+        where id = #{id}
+    </select>
+
+    <update id="updateHtmlById">
+        update post
+        set html_content = #{htmlContent}
+        where id = #{id}
+    </update>
+
 </mapper>
 
