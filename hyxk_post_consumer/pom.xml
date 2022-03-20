@@ -64,13 +64,6 @@
             <version>1.29.0</version>
         </dependency>
 
-        <!--FastJson-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.79</version>
-        </dependency>
-
     </dependencies>
 
 </project>

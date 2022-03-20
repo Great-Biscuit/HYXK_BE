@@ -34,7 +34,6 @@ public class PostController {
     //@SaCheckLogin
     @RequestMapping("/addPost")
     public R addPost(String title, String markdownContent, String headerUrl, Integer type) {
-        System.out.println(type);
         Post post = new Post();
         //转义HTML标记
         post.setTitle(HtmlUtils.htmlEscape(title));
