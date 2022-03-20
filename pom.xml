@@ -15,6 +15,7 @@
         <module>hyxk_user_consumer</module>
         <module>hyxk_post_api</module>
         <module>hyxk_post_provider</module>
+        <module>hyxk_post_consumer</module>
     </modules>
 
     <properties>

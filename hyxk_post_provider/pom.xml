@@ -55,6 +55,25 @@
             <artifactId>shenyu-spring-boot-starter-client-apache-dubbo</artifactId>
             <version>2.4.1</version>
         </dependency>
+
+        <!--markdown to html-->
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark</artifactId>
+            <version>0.26.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark-util</artifactId>
+            <version>0.26.4</version>
+        </dependency>
+        <!--表格渲染插件-->
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark-ext-tables</artifactId>
+            <version>0.26.4</version>
+        </dependency>
+
     </dependencies>
 
 </project>

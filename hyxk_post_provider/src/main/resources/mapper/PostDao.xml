@@ -107,12 +107,12 @@
         </where>
     </select>
 
-    <!--新增所有列-->
+    <!--新增-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into post(user_id, title, type, markdown_content, html_content, state, top, official, best_comment_id,
-                         comments, head_img, create_time, score)
-        values (#{userId}, #{title}, #{type}, #{markdownContent}, #{htmlContent}, #{state}, #{top}, #{official},
-                #{bestCommentId}, #{comments}, #{headImg}, #{createTime}, #{score})
+        insert into post(user_id, title, type, markdown_content, html_content, official,
+                         head_img, create_time)
+        values (#{userId}, #{title}, #{type}, #{markdownContent}, #{htmlContent}, #{official},
+                #{headImg}, #{createTime})
     </insert>
 
     <!--通过主键修改数据-->

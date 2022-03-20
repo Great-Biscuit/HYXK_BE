@@ -24,7 +24,7 @@ public class Post implements Serializable {
      */
     private String title;
     /**
-     * 类型[0-文章 1-问答
+     * 类型[0-文章 1-问答]
      */
     private Integer type;
     /**
@@ -181,5 +181,24 @@ public class Post implements Serializable {
         this.score = score;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", title='" + title + '\'' +
+                ", type=" + type +
+                ", markdownContent='" + markdownContent + '\'' +
+                ", htmlContent='" + htmlContent + '\'' +
+                ", state=" + state +
+                ", top=" + top +
+                ", official=" + official +
+                ", bestCommentId=" + bestCommentId +
+                ", comments=" + comments +
+                ", headImg='" + headImg + '\'' +
+                ", createTime=" + createTime +
+                ", score=" + score +
+                '}';
+    }
 }
 

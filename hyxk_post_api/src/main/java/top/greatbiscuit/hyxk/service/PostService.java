@@ -1,5 +1,7 @@
 package top.greatbiscuit.hyxk.service;
 
+import top.greatbiscuit.hyxk.entity.Post;
+
 /**
  * 帖子(Post)表服务接口
  *
@@ -8,5 +10,12 @@ package top.greatbiscuit.hyxk.service;
  */
 public interface PostService {
 
+    /**
+     * 新增帖子
+     *
+     * @param post 帖子对象
+     * @return
+     */
+    String insertPost(Post post);
 
 }

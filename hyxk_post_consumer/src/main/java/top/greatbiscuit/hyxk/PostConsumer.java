@@ -5,15 +5,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 用户服务消费者
+ * 帖子服务消费者
  *
  * @Author: GreatBiscuit
- * @Date: 2022/1/21 16:25
+ * @Date: 2022/3/20 13:31
  */
 @EnableDubbo
 @SpringBootApplication
-public class UserConsumer {
+public class PostConsumer {
     public static void main(String[] args) {
-        SpringApplication.run(UserConsumer.class, args);
+        SpringApplication.run(PostConsumer.class, args);
     }
 }
