@@ -2,6 +2,8 @@ package top.greatbiscuit.hyxk.service;
 
 import top.greatbiscuit.hyxk.entity.Post;
 
+import java.util.Map;
+
 /**
  * 帖子(Post)表服务接口
  *
@@ -17,5 +19,14 @@ public interface PostService {
      * @return
      */
     String insertPost(Post post);
+
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id
+     * @param holderUserId
+     * @return
+     */
+    Map<String, Object> queryPostDetailById(Integer id, Integer holderUserId);
 
 }

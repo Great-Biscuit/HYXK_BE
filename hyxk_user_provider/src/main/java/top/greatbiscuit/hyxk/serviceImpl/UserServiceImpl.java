@@ -83,4 +83,26 @@ public class UserServiceImpl implements UserService {
     public User queryUserById(Integer userId) {
         return userDao.queryById(userId);
     }
+
+    /**
+     * 根据ID查询出用户类型
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public Integer queryUserType(Integer userId) {
+        return userDao.queryUserType(userId);
+    }
+
+    /**
+     * 查询出简略的用户信息[id nickname headerUrl type]
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public User querySimpleUserById(Integer userId) {
+        return userDao.querySimpleUserById(userId);
+    }
 }

@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="refactor: 去除首页查询帖子列表时的不必要数据">
-      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event/EventConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event/EventProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/CommentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/CommentDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyxk_post_provider/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -97,7 +100,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PostProvider">
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -160,10 +163,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.PostConsumer" />
+        <item itemvalue="Spring Boot.UserConsumer" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +199,9 @@
       <workItem from="1647702231829" duration="247000" />
       <workItem from="1647702501413" duration="1737000" />
       <workItem from="1647751651215" duration="11768000" />
-      <workItem from="1647776498698" duration="7277000" />
+      <workItem from="1647776498698" duration="8222000" />
+      <workItem from="1647840085666" duration="3010000" />
+      <workItem from="1647845651111" duration="11116000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -233,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647771282490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: 集成kafka并将markdown转html置于消息队列中处理">
+      <created>1647784303755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647784303755</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,9 +269,10 @@
     <MESSAGE value="chore: Dubbo3+SpringBoot调试通过" />
     <MESSAGE value="chore: 集成apache shenyu网关" />
     <MESSAGE value="feat: 新增查询帖子列表功能" />
-    <MESSAGE value="refactor: 去除首页查询帖子列表时的不必要数据" />
     <MESSAGE value="feat: 新增Markdown转Html功能, 并新增发帖接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增Markdown转Html功能, 并新增发帖接口" />
+    <MESSAGE value="refactor: 去除首页查询帖子列表时的不必要数据" />
+    <MESSAGE value="feat: 集成kafka并将markdown转html置于消息队列中处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 集成kafka并将markdown转html置于消息队列中处理" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

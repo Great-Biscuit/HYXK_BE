@@ -67,4 +67,20 @@ public interface UserDao {
      * @return
      */
     User queryByEmail(String email);
+
+    /**
+     * 根据ID查询出用户类型
+     *
+     * @param userId
+     * @return
+     */
+    int queryUserType(Integer userId);
+
+    /**
+     * 查询出简略的用户信息[id nickname headerUrl type]
+     *
+     * @param id
+     * @return
+     */
+    User querySimpleUserById(Integer id);
 }

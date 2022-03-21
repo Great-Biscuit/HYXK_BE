@@ -1,11 +1,13 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.shenyu.client.dubbo.common.annotation.ShenyuDubboClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.service.PostPublicService;
+import top.greatbiscuit.hyxk.service.UserService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +25,9 @@ public class PostPublicServiceImpl implements PostPublicService {
 
     @Autowired
     private PostDao postDao;
+
+    @DubboReference(version = "v1.0.0")
+    private UserService userService;
 
     /**
      * 查询指定行数据[用户id不为0就查询指定用户, 否则查询所有--先按top排序保证顶置在最前]
@@ -47,7 +52,8 @@ public class PostPublicServiceImpl implements PostPublicService {
         for (Post post : postList) {
             Map<String, Object> map = new HashMap<>();
             map.put("post", post);
-            // TODO: 页面还需要别的信息, 如点赞数量、用户头像及名称. 并且此处的帖子信息已被优化, 没必要全部传输
+            map.put("author", userService.querySimpleUserById(post.getUserId()));
+            // TODO: 页面还需要别的信息, 如点赞数量. 并且此处的帖子信息已被优化, 没必要全部传输
             map.put("likeCount", 6);
             posts.add(map);
         }

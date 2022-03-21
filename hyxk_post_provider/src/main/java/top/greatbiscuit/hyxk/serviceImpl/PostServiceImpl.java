@@ -1,15 +1,20 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.hyxk.dao.PostDao;
+import top.greatbiscuit.hyxk.entity.Comment;
 import top.greatbiscuit.hyxk.entity.Post;
+import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
+import top.greatbiscuit.hyxk.service.CommentService;
 import top.greatbiscuit.hyxk.service.PostService;
+import top.greatbiscuit.hyxk.service.UserService;
 
-import java.util.Date;
+import java.util.*;
 
 /**
  * 帖子相关服务
@@ -25,6 +30,12 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private EventProducer eventProducer;
+
+    @DubboReference(version = "v1.0.0")
+    private CommentService commentService;
+
+    @DubboReference(version = "v1.0.0")
+    private UserService userService;
 
     /**
      * 新增帖子
@@ -52,6 +63,77 @@ public class PostServiceImpl implements PostService {
         // 发布事件
         eventProducer.fireEvent(event);
         return null;
+    }
+
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    @Override
+    public Map<String, Object> queryPostDetailById(Integer id, Integer holderUserId) {
+        Map<String, Object> postDetail = new HashMap<>();
+        // 先查询帖子自身的数据
+        Post post = postDao.queryById(id);
+        postDetail.put("post", post);
+
+        // 查询帖子作者的数据
+        User postAuthor = userService.querySimpleUserById(post.getUserId());
+        postDetail.put("author", postAuthor);
+
+        // TODO: 查询帖子获得的赞
+
+        /**
+         * 评论: 对帖子的评论
+         * 回复: 对评论的评论
+         */
+        // 查询帖子的所有评论
+        List<Comment> commentList = commentService.findCommentsByEntity(Constants.ENTITY_TYPE_POST, post.getId());
+        // 对每个评论进行处理[放入用户数据, 评论的回复等数据]
+        List<Map<String, Object>> commentVoList = new ArrayList<>();
+        if (commentList != null) {
+            for (Comment comment : commentList) {
+                // 一个评论的VO
+                Map<String, Object> commentVo = new HashMap<>();
+                // 往VO里添加评论
+                commentVo.put("comment", comment);
+                // 评论的作者
+                commentVo.put("user", userService.querySimpleUserById(comment.getUserId()));
+
+                // TODO: 评论的赞
+                // TODO: 当前用户是否点赞
+
+                // 回复列表
+                List<Comment> replyList = commentService.findCommentsByEntity(Constants.ENTITY_TYPE_COMMENT, comment.getId());
+                // 回复的VO列表
+                List<Map<String, Object>> replyVoList = new ArrayList<>();
+                if (replyList != null) {
+                    for (Comment reply : replyList) {
+                        Map<String, Object> replyVo = new HashMap<>();
+                        // 回复
+                        replyVo.put("reply", reply);
+                        // 作者
+                        replyVo.put("user", userService.querySimpleUserById(reply.getUserId()));
+                        // 回复目标
+                        User target = reply.getTargetId() == 0 ? null : userService.querySimpleUserById(reply.getTargetId());
+                        replyVo.put("target", target);
+
+                        // TODO: 回复的赞
+                        // TODO: 当前用户是否对回复点赞
+
+                        replyVoList.add(replyVo);
+                    }
+                }
+                commentVo.put("replyVoList", replyVoList);
+
+                commentVoList.add(commentVo);
+            }
+        }
+
+        postDetail.put("commentVoList", commentVoList);
+
+        return postDetail;
     }
 
 }

@@ -132,5 +132,20 @@
         where email = #{email}
     </select>
 
+    <select id="queryUserType" resultType="java.lang.Integer">
+        select type
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="querySimpleUserById" resultMap="UserMap">
+        select id,
+               header_url,
+               nickname,
+               type
+        from user
+        where id = #{id}
+    </select>
+
 </mapper>
 

@@ -38,4 +38,21 @@ public interface UserService {
      * @return
      */
     User queryUserById(Integer userId);
+
+    /**
+     * 根据ID查询出用户类型
+     *
+     * @param userId
+     * @return
+     */
+    Integer queryUserType(Integer userId);
+
+    /**
+     * 查询出简略的用户信息[id nickname headerUrl type]
+     *
+     * @param userId
+     * @return
+     */
+    User querySimpleUserById(Integer userId);
+
 }
