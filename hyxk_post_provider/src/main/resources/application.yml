@@ -31,13 +31,13 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/hyxk?characterEncoding=utf-8&useSSL=false&serverTimezone=Hongkong
-    username: xxx
+    username: hyxk
     password: xxx
     type: com.alibaba.druid.pool.DruidDataSource
   # redis配置
   redis:
     # Redis数据库索引（默认为0）
-    database: 6
+    database: 12
     # Redis服务器地址
     host: 127.0.0.1
     # Redis服务器连接端口

@@ -11,6 +11,7 @@ import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
+import top.greatbiscuit.hyxk.service.LikeService;
 import top.greatbiscuit.hyxk.service.PostService;
 import top.greatbiscuit.hyxk.service.UserService;
 
@@ -36,6 +37,9 @@ public class PostServiceImpl implements PostService {
 
     @DubboReference(version = "v1.0.0")
     private UserService userService;
+
+    @DubboReference(version = "v1.0.0")
+    private LikeService likeService;
 
     /**
      * 新增帖子
@@ -82,9 +86,16 @@ public class PostServiceImpl implements PostService {
         User postAuthor = userService.querySimpleUserById(post.getUserId());
         postDetail.put("author", postAuthor);
 
-        // TODO: 查询帖子获得的赞
+        // 帖子获得的赞
+        long likeCount = likeService.findEntityLikeCount(Constants.ENTITY_TYPE_POST, id);
+        postDetail.put("likeCount", likeCount);
 
-        /**
+        // 当前用户是否对帖子点赞
+        boolean hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
+                likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_POST, id);
+        postDetail.put("hasLike", hasLike);
+
+        /*
          * 评论: 对帖子的评论
          * 回复: 对评论的评论
          */
@@ -101,8 +112,14 @@ public class PostServiceImpl implements PostService {
                 // 评论的作者
                 commentVo.put("user", userService.querySimpleUserById(comment.getUserId()));
 
-                // TODO: 评论的赞
-                // TODO: 当前用户是否点赞
+                // 评论的赞
+                likeCount = likeService.findEntityLikeCount(Constants.ENTITY_TYPE_COMMENT, comment.getId());
+                commentVo.put("likeCount", likeCount);
+
+                // 当前用户是否点赞
+                hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
+                        likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, comment.getId());
+                commentVo.put("hasLike", hasLike);
 
                 // 回复列表
                 List<Comment> replyList = commentDao.queryCommentsByEntity(Constants.ENTITY_TYPE_COMMENT, comment.getId());
@@ -119,8 +136,14 @@ public class PostServiceImpl implements PostService {
                         User target = reply.getTargetId() == 0 ? null : userService.querySimpleUserById(reply.getTargetId());
                         replyVo.put("target", target);
 
-                        // TODO: 回复的赞
-                        // TODO: 当前用户是否对回复点赞
+                        // 回复的赞
+                        likeCount = likeService.findEntityLikeCount(Constants.ENTITY_TYPE_COMMENT, reply.getId());
+                        replyVo.put("likeCount", likeCount);
+
+                        // 当前用户是否对回复点赞
+                        hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
+                                likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, reply.getId());
+                        replyVo.put("hasLike", hasLike);
 
                         replyVoList.add(replyVo);
                     }
