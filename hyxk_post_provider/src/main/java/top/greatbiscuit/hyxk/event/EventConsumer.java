@@ -40,7 +40,6 @@ public class EventConsumer {
             postDao.updateHtmlById(event.getEntityId(), htmlContent);
         }
 
-
     }
 
 }

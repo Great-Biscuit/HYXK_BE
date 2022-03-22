@@ -85,5 +85,13 @@ public interface PostDao {
      */
     int updateHtmlById(Integer id, String htmlContent);
 
+    /**
+     * 更新评论总数
+     *
+     * @param id
+     * @param comments
+     * @return
+     */
+    int updateCommentCount(Integer id, int comments);
 }
 

@@ -4,13 +4,13 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.common.core.constant.Constants;
+import top.greatbiscuit.hyxk.dao.CommentDao;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Comment;
 import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
-import top.greatbiscuit.hyxk.service.CommentService;
 import top.greatbiscuit.hyxk.service.PostService;
 import top.greatbiscuit.hyxk.service.UserService;
 
@@ -29,10 +29,10 @@ public class PostServiceImpl implements PostService {
     private PostDao postDao;
 
     @Autowired
-    private EventProducer eventProducer;
+    private CommentDao commentDao;
 
-    @DubboReference(version = "v1.0.0")
-    private CommentService commentService;
+    @Autowired
+    private EventProducer eventProducer;
 
     @DubboReference(version = "v1.0.0")
     private UserService userService;
@@ -89,7 +89,7 @@ public class PostServiceImpl implements PostService {
          * 回复: 对评论的评论
          */
         // 查询帖子的所有评论
-        List<Comment> commentList = commentService.findCommentsByEntity(Constants.ENTITY_TYPE_POST, post.getId());
+        List<Comment> commentList = commentDao.queryCommentsByEntity(Constants.ENTITY_TYPE_POST, post.getId());
         // 对每个评论进行处理[放入用户数据, 评论的回复等数据]
         List<Map<String, Object>> commentVoList = new ArrayList<>();
         if (commentList != null) {
@@ -105,7 +105,7 @@ public class PostServiceImpl implements PostService {
                 // TODO: 当前用户是否点赞
 
                 // 回复列表
-                List<Comment> replyList = commentService.findCommentsByEntity(Constants.ENTITY_TYPE_COMMENT, comment.getId());
+                List<Comment> replyList = commentDao.queryCommentsByEntity(Constants.ENTITY_TYPE_COMMENT, comment.getId());
                 // 回复的VO列表
                 List<Map<String, Object>> replyVoList = new ArrayList<>();
                 if (replyList != null) {
