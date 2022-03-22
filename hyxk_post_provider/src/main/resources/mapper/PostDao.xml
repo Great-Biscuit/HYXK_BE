@@ -182,5 +182,12 @@
         where id = #{id}
     </update>
 
+    <!--更新评论总数-->
+    <update id="updateCommentCount">
+        update post
+        set comments = #{comments}
+        where id = #{id}
+    </update>
+
 </mapper>
 

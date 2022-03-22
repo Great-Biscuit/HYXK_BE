@@ -73,5 +73,14 @@ public interface CommentDao {
      * @return
      */
     List<Comment> queryCommentsByEntity(Integer entityType, Integer entityId);
+
+    /**
+     * 查询对某个实体的评论总数
+     *
+     * @param entityType
+     * @param entityId
+     * @return
+     */
+    int queryCountByEntity(Integer entityType, Integer entityId);
 }
 

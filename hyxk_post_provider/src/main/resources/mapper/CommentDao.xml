@@ -152,5 +152,14 @@
         order by create_time asc
     </select>
 
+    <!--查询实体的评论总数-->
+    <select id="queryCountByEntity" resultType="int">
+        select count(id)
+        from comment
+        where state = 0
+          and entity_type = #{entityType}
+          and entity_id = #{entityId}
+    </select>
+
 </mapper>
 
