@@ -36,4 +36,11 @@ public class CommentController {
         return msg == null ? R.ok() : R.fail(msg);
     }
 
+    @SaCheckLogin
+    @PostMapping("/deleteComment")
+    public R deleteComment(int commentId) {
+        String msg = commentService.deleteComment(commentId, StpUtil.getLoginIdAsInt());
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
 }

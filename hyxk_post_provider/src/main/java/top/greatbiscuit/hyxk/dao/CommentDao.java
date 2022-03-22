@@ -82,5 +82,6 @@ public interface CommentDao {
      * @return
      */
     int queryCountByEntity(Integer entityType, Integer entityId);
+
 }
 

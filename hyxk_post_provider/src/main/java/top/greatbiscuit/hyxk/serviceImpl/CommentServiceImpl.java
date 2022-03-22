@@ -78,4 +78,28 @@ public class CommentServiceImpl implements CommentService {
         return null;
     }
 
+    /**
+     * 删除评论[改变评论状态]
+     *
+     * @param commentId
+     * @param userId
+     * @return
+     */
+    @Override
+    public String deleteComment(int commentId, int userId) {
+        Comment comment = commentDao.queryById(commentId);
+        if (comment == null) {
+            return "评论不存在!";
+        }
+        // 防止评论被他人删除
+        if (userId != comment.getUserId()) {
+            return "无权限!";
+        }
+        // 使评论失效
+        comment.setState(1);
+        // 修改数据库
+        commentDao.update(comment);
+        return null;
+    }
+
 }

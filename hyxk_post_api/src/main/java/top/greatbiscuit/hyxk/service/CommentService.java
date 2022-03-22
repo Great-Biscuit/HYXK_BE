@@ -18,4 +18,12 @@ public interface CommentService {
      */
     String addComment(Comment comment);
 
+    /**
+     * 删除评论[改变评论状态]
+     *
+     * @param commentId
+     * @param userId
+     * @return
+     */
+    String deleteComment(int commentId, int userId);
 }
