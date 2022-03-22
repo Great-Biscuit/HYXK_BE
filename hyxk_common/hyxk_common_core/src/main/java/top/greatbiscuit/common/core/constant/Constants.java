@@ -43,11 +43,6 @@ public class Constants {
     public static final String IS_ASC = "isAsc";
 
     /**
-     * 找回密码验证码
-     */
-    public static final String FIND_PASSWORD_CODE = "find_password_code:";
-
-    /**
      * 找回密码验证码有效期(5分钟)
      */
     public static final long FIND_PASSWORD_CODE_EXPIRATION = 5;

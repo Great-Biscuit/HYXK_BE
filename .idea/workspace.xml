@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="refactor: 去除首页查询帖子列表时的不必要数据">
+    <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 新增删除评论功能">
+      <change afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/utils/RedisKeyUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/LikeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LikeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/service/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,48 +95,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PostProvider">
-    <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="hyxk_post_consumer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.PostConsumer" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostProvider" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="hyxk_post_provider" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.PostProvider" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="true" temporary="true" nameIsGenerated="true">
-      <module name="hyxk_user_consumer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.UserConsumer" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserProvider" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="true" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="UserProvider" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_user_provider" />
       <extension name="coverage">
         <pattern>
@@ -140,23 +105,13 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.UserProvider" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.UserConsumer" />
-      <item itemvalue="Spring Boot.UserProvider" />
-      <item itemvalue="Spring Boot.PostProvider" />
-      <item itemvalue="Spring Boot.PostConsumer" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.PostProvider" />
-        <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
-        <item itemvalue="Spring Boot.UserConsumer" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +147,9 @@
       <workItem from="1647776498698" duration="8222000" />
       <workItem from="1647840085666" duration="3010000" />
       <workItem from="1647845651111" duration="11908000" />
-      <workItem from="1647934456406" duration="6235000" />
+      <workItem from="1647934456406" duration="16508000" />
+      <workItem from="1647961839629" duration="150000" />
+      <workItem from="1647962050808" duration="2363000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -250,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647939969429</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: 新增删除评论功能">
+      <created>1647941093947</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647941093947</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +243,8 @@
     <MESSAGE value="feat: 集成kafka并将markdown转html置于消息队列中处理" />
     <MESSAGE value="feat: 新增帖子详情功能" />
     <MESSAGE value="feat: 新增发布评论功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增发布评论功能" />
+    <MESSAGE value="feat: 新增删除评论功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增删除评论功能" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

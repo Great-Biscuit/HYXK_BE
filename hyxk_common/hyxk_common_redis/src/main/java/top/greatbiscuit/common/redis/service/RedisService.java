@@ -87,6 +87,35 @@ public class RedisService {
     }
 
     /**
+     * 判断 key是否存在于Set中
+     *
+     * @return
+     */
+    public Boolean isMemberOfSet(String key, Object object) {
+        return redisTemplate.opsForSet().isMember(key, object);
+    }
+
+    /**
+     * 值加一
+     *
+     * @param key
+     * @return
+     */
+    public long incrementCache(String key) {
+        return redisTemplate.opsForValue().increment(key);
+    }
+
+    /**
+     * 值减一
+     *
+     * @param key
+     * @return
+     */
+    public long decrementCache(String key) {
+        return redisTemplate.opsForValue().decrement(key);
+    }
+
+    /**
      * 获得缓存的基本对象。
      *
      * @param key 缓存键值
@@ -162,6 +191,38 @@ public class RedisService {
      */
     public <T> Set<T> getCacheSet(final String key) {
         return redisTemplate.opsForSet().members(key);
+    }
+
+    /**
+     * 往Set中添加数据
+     *
+     * @param key
+     * @param object
+     * @return
+     */
+    public long addCacheSet(String key, Object object) {
+        return redisTemplate.opsForSet().add(key, object);
+    }
+
+    /**
+     * 从Set中删除数据
+     *
+     * @param key
+     * @param object
+     * @return
+     */
+    public long removeCacheSet(String key, Object object) {
+        return redisTemplate.opsForSet().remove(key, object);
+    }
+
+    /**
+     * 得到Set的大小
+     *
+     * @param key
+     * @return
+     */
+    public long getSetSize(String key) {
+        return redisTemplate.opsForSet().size(key);
     }
 
     /**
