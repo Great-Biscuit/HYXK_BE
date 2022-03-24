@@ -3,15 +3,15 @@ package top.greatbiscuit.hyxk.serviceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.event.Event;
+import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.RegisterService;
-import top.greatbiscuit.hyxk.util.EmailUtil;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -27,7 +27,7 @@ public class RegisterServiceImpl implements RegisterService {
     private UserDao userDao;
 
     @Autowired
-    private EmailUtil emailUtil;
+    private EventProducer eventProducer;
 
     /**
      * 注册方法
@@ -39,8 +39,6 @@ public class RegisterServiceImpl implements RegisterService {
      */
     @Override
     public String toRegister(String username, String password, String email) {
-
-        Map<String, Object> map = new HashMap<>();
 
         //空值处理
         if (StringUtils.isBlank(username)) {
@@ -94,10 +92,21 @@ public class RegisterServiceImpl implements RegisterService {
         String text = "    亲爱的" + username + "用户, 您好! 欢迎注册皓月星空站, 请点击<a href=\"" + url + "\">链接</a>以激活账号。" +
                 "<br/><br/>" +
                 "若点击上述链接无法进行跳转, 请将下面的地址复制至浏览器打开: <br/>" +
-                url;
+                url +
+                "<br/><br/><br/>" +
+                "<div style=\"font-size:60%; color:#b1b3b8\">该邮件由系统自动发出。<br/>" +
+                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!</div>";
 
-        //返回邮件发送结果
-        return emailUtil.sendMail(email, "激活账号", text);
+        // 发布事件发送邮件
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_SEND_MAIL)
+                .setData("to", email)
+                .setData("subject", "激活账号")
+                .setData("content", text);
+        // 发布
+        eventProducer.fireEvent(event);
+
+        return null;
     }
 
     /**

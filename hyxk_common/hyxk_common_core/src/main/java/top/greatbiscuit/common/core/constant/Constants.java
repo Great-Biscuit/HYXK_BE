@@ -92,4 +92,8 @@ public class Constants {
      */
     public static final String TOPIC_DELETE = "delete";
 
+    /**
+     * 主题 发送邮件
+     */
+    public static final String TOPIC_SEND_MAIL = "sendMail";
 }
