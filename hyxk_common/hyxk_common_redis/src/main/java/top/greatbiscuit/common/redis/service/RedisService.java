@@ -89,6 +89,8 @@ public class RedisService {
     /**
      * 判断 key是否存在于Set中
      *
+     * @param key
+     * @param object
      * @return
      */
     public Boolean isMemberOfSet(String key, Object object) {
@@ -96,23 +98,26 @@ public class RedisService {
     }
 
     /**
-     * 值加一
+     * 判断 key是否存在于ZSet中
      *
      * @param key
+     * @param object
      * @return
      */
-    public long incrementCache(String key) {
-        return redisTemplate.opsForValue().increment(key);
+    public Boolean isMemberOfZSet(String key, Object object) {
+        // 分数不为空则表示存在
+        return redisTemplate.opsForZSet().score(key, object) != null;
     }
 
     /**
-     * 值减一
+     * 得到ZSet中某个值的分数
      *
      * @param key
+     * @param object
      * @return
      */
-    public long decrementCache(String key) {
-        return redisTemplate.opsForValue().decrement(key);
+    public Double getZSetScore(String key, Object object) {
+        return redisTemplate.opsForZSet().score(key, object);
     }
 
     /**
@@ -223,6 +228,16 @@ public class RedisService {
      */
     public long getSetSize(String key) {
         return redisTemplate.opsForSet().size(key);
+    }
+
+    /**
+     * 得到ZSet的大小
+     *
+     * @param key
+     * @return
+     */
+    public long getZSetSize(String key) {
+        return redisTemplate.opsForZSet().zCard(key);
     }
 
     /**

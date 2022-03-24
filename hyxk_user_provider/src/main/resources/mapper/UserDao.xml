@@ -142,7 +142,10 @@
         select id,
                header_url,
                nickname,
-               type
+               gender,
+               signature,
+               type,
+               create_time
         from user
         where id = #{id}
     </select>

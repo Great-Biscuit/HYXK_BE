@@ -1,0 +1,194 @@
+package top.greatbiscuit.hyxk.serviceImpl;
+
+import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SessionCallback;
+import top.greatbiscuit.common.core.constant.Constants;
+import top.greatbiscuit.common.redis.service.RedisService;
+import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
+import top.greatbiscuit.hyxk.dao.UserDao;
+import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.service.FollowService;
+
+import java.util.*;
+
+/**
+ * 关注服务生产者
+ *
+ * @Author: GreatBiscuit
+ * @Date: 2022/3/24 14:25
+ */
+@DubboService(version = "v1.0.0")
+public class FollowServiceImpl implements FollowService {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private UserDao userDao;
+
+    /**
+     * 关注
+     *
+     * @param userId     关注者
+     * @param entityType 被关注实体类型
+     * @param entityId   被关注实体ID
+     */
+    @Override
+    public void follow(int userId, int entityType, int entityId) {
+        redisTemplate.execute(new SessionCallback() {
+            @Override
+            public Object execute(RedisOperations redisOperations) throws DataAccessException {
+                String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);
+                String followeeKey = RedisKeyUtil.getFolloweeKey(userId, entityType);
+                redisOperations.multi();
+                long time = System.currentTimeMillis();
+                redisTemplate.opsForZSet().add(followeeKey, entityId, time);
+                redisTemplate.opsForZSet().add(followerKey, userId, time);
+                return redisOperations.exec();
+            }
+        });
+    }
+
+    /**
+     * 取消关注
+     *
+     * @param userId     关注者
+     * @param entityType 被关注实体类型
+     * @param entityId   被关注实体ID
+     */
+    @Override
+    public void unfollow(int userId, int entityType, int entityId) {
+        redisTemplate.execute(new SessionCallback() {
+            @Override
+            public Object execute(RedisOperations redisOperations) throws DataAccessException {
+                String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);
+                String followeeKey = RedisKeyUtil.getFolloweeKey(userId, entityType);
+                redisOperations.multi();
+                redisTemplate.opsForZSet().remove(followeeKey, entityId);
+                redisTemplate.opsForZSet().remove(followerKey, userId);
+                return redisOperations.exec();
+            }
+        });
+    }
+
+    /**
+     * 本用户关注了多少人
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public long queryFollowCount(int userId) {
+        String redisKey = RedisKeyUtil.getFolloweeKey(userId, Constants.ENTITY_TYPE_USER);
+        Long count = redisService.getZSetSize(redisKey);
+        // 防止没有数据而导致空指针
+        return count == null ? 0L : count;
+    }
+
+    /**
+     * 该用户的粉丝数量
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public long queryFansCount(int userId) {
+        String redisKey = RedisKeyUtil.getFollowerKey(Constants.ENTITY_TYPE_USER, userId);
+        Long count = redisService.getZSetSize(redisKey);
+        // 防止没有数据而导致空指针
+        return count == null ? 0L : count;
+    }
+
+    /**
+     * 该用户是否关注了该实体
+     *
+     * @param userId     关注者
+     * @param entityType 被关注实体类型
+     * @param entityId   被关注实体ID
+     * @return
+     */
+    @Override
+    public boolean hasFollowed(int userId, int entityType, int entityId) {
+        String redisKey = RedisKeyUtil.getFolloweeKey(userId, entityType);
+        return redisService.isMemberOfZSet(redisKey, entityId);
+    }
+
+    /**
+     * 查询该用户关注的人的列表[分页]
+     *
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> queryFolloweeList(Integer holderId, int userId, int offset, int limit) {
+        String redisKey = RedisKeyUtil.getFolloweeKey(userId, Constants.ENTITY_TYPE_USER);
+        // 按分数从小到大返回set中的值, 也就是按时间从近到远
+        Set<Integer> followeeIdSet = redisTemplate.opsForZSet().reverseRange(redisKey, offset, offset + limit - 1);
+        // 如果用户没有关注过任何人就会返回空
+        if (followeeIdSet == null)
+            return null;
+
+        // 用户List对上述结果进行加工
+        List<Map<String, Object>> followeeInfo = new ArrayList<>();
+        for (Integer followeeId : followeeIdSet) {
+            Map<String, Object> map = new HashMap<>();
+            // 用简单信息就够了
+            User user = userDao.querySimpleUserById(followeeId);
+            map.put("user", user);
+            // 把关注的时间转换为时间格式返回去
+            Double score = redisService.getZSetScore(redisKey, followeeId);
+            map.put("followTime", new Date(score.longValue()));
+            // 看当前系统用户是否关注了[当前系统用户没登录则判断为没登录]
+            map.put("hasFollowed",
+                    holderId != null && hasFollowed(holderId, Constants.ENTITY_TYPE_USER, followeeId));
+            // 把加工好的信息放入list
+            followeeInfo.add(map);
+        }
+        return followeeInfo;
+    }
+
+    /**
+     * 查询该用户的粉丝的列表[分页]
+     *
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> queryFansList(Integer holderId, int userId, int offset, int limit) {
+        String redisKey = RedisKeyUtil.getFollowerKey(Constants.ENTITY_TYPE_USER, userId);
+        // 按分数从小到大返回set中的值, 也就是按时间从近到远
+        Set<Integer> fansIdSet = redisTemplate.opsForZSet().reverseRange(redisKey, offset, offset + limit - 1);
+        // 如果用户没有粉丝就会返回空
+        if (fansIdSet == null)
+            return null;
+
+        // 用户List对上述结果进行加工
+        List<Map<String, Object>> fansInfo = new ArrayList<>();
+        for (Integer fansId : fansIdSet) {
+            Map<String, Object> map = new HashMap<>();
+            // 用简单信息就够了
+            User user = userDao.querySimpleUserById(fansId);
+            map.put("user", user);
+            // 把关注的时间转换为时间格式返回去
+            Double score = redisService.getZSetScore(redisKey, fansId);
+            map.put("followTime", new Date(score.longValue()));
+            // 看当前系统用户是否关注了[当前系统用户没登录则判断为没登录]
+            map.put("hasFollowed",
+                    holderId != null && hasFollowed(holderId, Constants.ENTITY_TYPE_USER, fansId));
+            // 把加工好的信息放入list
+            fansInfo.add(map);
+        }
+        return fansInfo;
+    }
+}
