@@ -8,8 +8,9 @@ import top.greatbiscuit.common.redis.service.RedisService;
 import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.event.Event;
+import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.LoginService;
-import top.greatbiscuit.hyxk.util.EmailUtil;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
     private UserDao userDao;
 
     @Autowired
-    private EmailUtil emailUtil;
+    private EventProducer eventProducer;
 
     @Autowired
     private RedisService redisService;
@@ -86,10 +87,21 @@ public class LoginServiceImpl implements LoginService {
         if (user == null)
             return "用户不存在!";
         // 存在该用户则给用户发送邮件
-        String text = "亲爱的用户, 您正在通过邮箱找回账号。<br/>经系统查询，您的账号为: " + user.getUsername() + "<br/><br/><br/>该邮件由系统自动发出。<br/>" +
-                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!";
-        //返回邮件发送结果
-        return emailUtil.sendMail(email, "找回账号", text);
+        String text = "亲爱的用户, 您正在通过邮箱找回账号。<br/>经系统查询，您的账号为: " + user.getUsername() +
+                "<br/><br/><br/>" +
+                "<div style=\"font-size:60%; color:#b1b3b8\">该邮件由系统自动发出。<br/>" +
+                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!</div>";
+
+        // 发布事件发送邮件
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_SEND_MAIL)
+                .setData("to", email)
+                .setData("subject", "找回账号")
+                .setData("content", text);
+        // 发布
+        eventProducer.fireEvent(event);
+
+        return null;
     }
 
     /**
@@ -110,11 +122,20 @@ public class LoginServiceImpl implements LoginService {
         redisService.setCacheObject(RedisKeyUtil.getFindPasswordCodeKey(email), code, Constants.FIND_PASSWORD_CODE_EXPIRATION, TimeUnit.MINUTES);
         // 发送邮件通知用户
         String text = "验证码为: " + code + "<br/>您正在找回密码, 该验证码5分钟内有效, 请尽快完成操作." +
-                "<br/><br/><br/>该邮件由系统自动发出。<br/>" +
-                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!";
+                "<br/><br/><br/>" +
+                "<div style=\"font-size:60%; color:#b1b3b8\">该邮件由系统自动发出。<br/>" +
+                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!</div>";
 
-        //返回邮件发送结果
-        return emailUtil.sendMail(email, "找回密码", text);
+        // 发布事件发送邮件
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_SEND_MAIL)
+                .setData("to", email)
+                .setData("subject", "找回密码")
+                .setData("content", text);
+        // 发布
+        eventProducer.fireEvent(event);
+
+        return null;
     }
 
     /**
