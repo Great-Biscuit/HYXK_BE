@@ -2,6 +2,8 @@ package top.greatbiscuit.hyxk.serviceImpl;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import top.greatbiscuit.common.redis.service.RedisService;
+import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.UserService;
@@ -9,6 +11,7 @@ import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户相关服务
@@ -21,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 修改密码
@@ -69,12 +75,14 @@ public class UserServiceImpl implements UserService {
         u.setSignature(user.getSignature());
 
         userDao.update(u);
+        // 修改用户信息后要清除缓存
+        clearCache(user.getId());
         return null;
     }
 
 
     /**
-     * 根据ID查询用户
+     * 根据ID查询用户全部信息
      *
      * @param userId
      * @return
@@ -92,7 +100,11 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Integer queryUserType(Integer userId) {
-        return userDao.queryUserType(userId);
+        User user = getCache(userId);//看Redis里有没有
+        if (user == null) {
+            user = initCache(userId);
+        }
+        return user.getType();
     }
 
     /**
@@ -103,6 +115,32 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User querySimpleUserById(Integer userId) {
-        return userDao.querySimpleUserById(userId);
+        User user = getCache(userId);//看Redis里有没有
+        if (user == null) {
+            user = initCache(userId);
+        }
+        return user;
     }
+
+    //使用Redis优化
+    //1.优先从缓存里查
+    private User getCache(int userId) {
+        String redisKey = RedisKeyUtil.getUserKey(userId);
+        return redisService.getCacheObject(redisKey);
+    }
+
+    //2.缓存没有就初始化
+    private User initCache(int userId) {
+        User user = userDao.querySimpleUserById(userId);
+        String redisKey = RedisKeyUtil.getUserKey(userId);
+        redisService.setCacheObject(redisKey, user, 1L, TimeUnit.HOURS);//1小时有效
+        return user;
+    }
+
+    //3.修改后清除缓存
+    private void clearCache(int userId) {
+        String redisKey = RedisKeyUtil.getUserKey(userId);
+        redisService.deleteObject(redisKey);
+    }
+
 }
