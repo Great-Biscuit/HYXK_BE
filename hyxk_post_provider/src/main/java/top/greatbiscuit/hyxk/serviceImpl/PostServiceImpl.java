@@ -3,6 +3,7 @@ package top.greatbiscuit.hyxk.serviceImpl;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.hyxk.dao.CommentDao;
 import top.greatbiscuit.hyxk.dao.PostDao;
@@ -53,6 +54,8 @@ public class PostServiceImpl implements PostService {
             return "未获取到帖子信息!";
         }
 
+        // 将标题进行转义
+        post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
         post.setCreateTime(new Date());
         // 暂时将Html中的内容设置为特定内容
         post.setHtmlContent("系统处理中, 请刷新页面...");
