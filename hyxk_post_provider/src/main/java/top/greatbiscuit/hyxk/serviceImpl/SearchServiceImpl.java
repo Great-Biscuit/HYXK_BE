@@ -90,8 +90,7 @@ public class SearchServiceImpl implements SearchService {
                     .withSorts(SortBuilders.fieldSort("createTime").order(SortOrder.DESC))
                     .withPageable(PageRequest.of(current, limit))
                     .withHighlightFields(
-                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>"),
-                            new HighlightBuilder.Field("htmlContent").preTags("<em>").postTags("</em>")
+                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>")
                     )
                     .build();
         }
@@ -106,14 +105,13 @@ public class SearchServiceImpl implements SearchService {
         for (SearchHit hit : searchHits) {
             Post post = (Post) hit.getContent();
             Map<String, Object> highlightFields = hit.getHighlightFields();
-            System.out.println(highlightFields);
             // 替换为高亮内容
             if (highlightFields.containsKey("title")) {
                 post.setTitle((String) hit.getHighlightField("title").get(0));
             }
-            if (highlightFields.containsKey("htmlContent")) {
-                post.setHtmlContent((String) hit.getHighlightField("htmlContent").get(0));
-            }
+            // 由于内容自带样式, 所以页面不能再进行内容展示
+            post.setHtmlContent(null);
+            post.setMarkdownContent(null);
             postList.add(post);
         }
 
