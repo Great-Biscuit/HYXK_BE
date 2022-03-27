@@ -1,5 +1,10 @@
 package top.greatbiscuit.hyxk.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,63 +14,79 @@ import java.util.Date;
  * @author makejava
  * @since 2022-03-19 17:56:35
  */
+@Document(indexName = "post")
 public class Post implements Serializable {
     private static final long serialVersionUID = 117918344050047135L;
     /**
      * 主键
      */
+    @Id
     private Integer id;
     /**
      * 作者
      */
+    @Field(type = FieldType.Integer)
     private Integer userId;
     /**
      * 标题
      */
+    // 前面存储器是存储时（存储更多分词）  后面那个是搜索时(智能分词，防止过多无用词)
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
     private String title;
     /**
      * 类型[0-文章 1-问答]
      */
+    @Field(type = FieldType.Integer)
     private Integer type;
     /**
      * Markdown内容
      */
+    @Field(type = FieldType.Auto)
     private String markdownContent;
     /**
      * HTML内容
      */
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
     private String htmlContent;
     /**
      * 状态[0-正常 1-加精 2-删除]
      */
+    @Field(type = FieldType.Integer)
     private Integer state;
     /**
      * 置顶[0-不置顶 1-置顶]
      */
+    @Field(type = FieldType.Integer)
     private Integer top;
     /**
      * 官方[0-非官方 1-官方]
      */
+    @Field(type = FieldType.Integer)
     private Integer official;
     /**
      * 最佳回复
      */
+    @Field(type = FieldType.Integer)
     private Integer bestCommentId;
     /**
      * 评论数
      */
+    @Field(type = FieldType.Integer)
     private Integer comments;
     /**
      * 文章头图
      */
+    @Field(type = FieldType.Auto)
     private String headImg;
     /**
      * 创建时间
      */
+    @Field(type = FieldType.Date)
     private Date createTime;
     /**
      * 分数
      */
+    @Field(type = FieldType.Double)
     private Double score;
 
 

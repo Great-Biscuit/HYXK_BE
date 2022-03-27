@@ -132,7 +132,8 @@ public class FollowServiceImpl implements FollowService {
     public List<Map<String, Object>> queryFolloweeList(Integer holderId, int userId, int offset, int limit) {
         String redisKey = RedisKeyUtil.getFolloweeKey(userId, Constants.ENTITY_TYPE_USER);
         // 按分数从小到大返回set中的值, 也就是按时间从近到远
-        Set<Integer> followeeIdSet = redisTemplate.opsForZSet().reverseRange(redisKey, offset, offset + limit - 1);
+        Set<Integer> followeeIdSet = redisTemplate.opsForZSet()
+                .reverseRange(redisKey, offset, offset + limit - 1);
         // 如果用户没有关注过任何人就会返回空
         if (followeeIdSet == null)
             return null;
@@ -168,7 +169,8 @@ public class FollowServiceImpl implements FollowService {
     public List<Map<String, Object>> queryFansList(Integer holderId, int userId, int offset, int limit) {
         String redisKey = RedisKeyUtil.getFollowerKey(Constants.ENTITY_TYPE_USER, userId);
         // 按分数从小到大返回set中的值, 也就是按时间从近到远
-        Set<Integer> fansIdSet = redisTemplate.opsForZSet().reverseRange(redisKey, offset, offset + limit - 1);
+        Set<Integer> fansIdSet = redisTemplate.opsForZSet()
+                .reverseRange(redisKey, offset, offset + limit - 1);
         // 如果用户没有粉丝就会返回空
         if (fansIdSet == null)
             return null;
