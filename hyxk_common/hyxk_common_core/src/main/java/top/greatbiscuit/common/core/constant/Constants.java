@@ -83,6 +83,11 @@ public class Constants {
     public static final String TOPIC_FOLLOW = "follow";
 
     /**
+     * 主题 收藏
+     */
+    public static final String TOPIC_COLLECT = "collect";
+
+    /**
      * 主题 发帖
      */
     public static final String TOPIC_PUBLISH = "publish";
@@ -96,4 +101,9 @@ public class Constants {
      * 主题 发送邮件
      */
     public static final String TOPIC_SEND_MAIL = "sendMail";
+
+    /**
+     * 系统用户ID
+     */
+    public static final Integer SYSTEM_USER_ID = 0;
 }
