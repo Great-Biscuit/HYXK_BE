@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/entity/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/MessageDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/MessageDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/MessageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/MessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_0_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_2_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_2_2_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/MessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/MessageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/event/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/event/EventConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/MessageDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/MessageDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +109,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PostConsumer">
+  <component name="RunManager" selected="Spring Boot.PostProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -125,6 +136,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hyxk_user_consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.greatbiscuit.hyxk.UserConsumer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserProvider" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_user_provider" />
       <extension name="coverage">
@@ -140,9 +164,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.PostConsumer" />
+        <item itemvalue="Spring Boot.UserConsumer" />
       </list>
     </recent_temporary>
   </component>
@@ -188,6 +213,9 @@
       <workItem from="1648281438187" duration="16598000" />
       <workItem from="1648359795796" duration="17011000" />
       <workItem from="1648463417071" duration="1032000" />
+      <workItem from="1648481921661" duration="5909000" />
+      <workItem from="1648540345774" duration="17916000" />
+      <workItem from="1648572873295" duration="2943000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -294,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648381449282</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: 新增消息实体类">
+      <created>1648481987758</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1648481987758</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +365,8 @@
     <MESSAGE value="feat: 新增redis缓存用户信息, 减轻数据库压力" />
     <MESSAGE value="feat: 集成Elasticsearch实现搜索功能" />
     <MESSAGE value="fix: 将搜索结果中匹配内容的高亮部分去除[页面处理会出错]" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: 将搜索结果中匹配内容的高亮部分去除[页面处理会出错]" />
+    <MESSAGE value="feat: 新增消息实体类" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增消息实体类" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

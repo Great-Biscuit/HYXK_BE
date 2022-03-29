@@ -46,7 +46,7 @@ public class PostPublicServiceImpl implements PostPublicService {
      * @return
      */
     @Override
-    @ShenyuDubboClient(path = "/queryAll", desc = "查询帖子列表")
+    @ShenyuDubboClient(path = "/queryAllByLimit", desc = "查询帖子列表")
     public List<Map<String, Object>> queryAllByLimit(int userId, int type, int offset, int limit, int orderMode) {
         // 并且此处的帖子信息已被优化, 没必要全部传输
         List<Post> postList = postDao.queryAllByLimit(userId, type, offset, limit, orderMode);
