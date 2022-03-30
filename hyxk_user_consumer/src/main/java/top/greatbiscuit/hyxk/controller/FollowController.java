@@ -23,24 +23,23 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/follow/**")
 public class FollowController {
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 6000)
     private FollowService followService;
 
     /**
      * 关注/收藏
      *
-     * @param entityType 实体类型
-     * @param entityId   实体Id
+     * @param entityType   实体类型
+     * @param entityId     实体Id
+     * @param entityUserId 实体所属用户
      * @return
      */
     @SaCheckLogin
     @RequestMapping("/toFollow")
-    public R follow(int entityType, int entityId) {
+    public R follow(int entityType, int entityId, int entityUserId) {
         // 得到当前用户的ID
         int userId = StpUtil.getLoginIdAsInt();
-        followService.follow(userId, entityType, entityId);
-        // TODO: 发送系统通知
-
+        followService.follow(userId, entityType, entityId, entityUserId);
         return R.ok();
     }
 
@@ -57,7 +56,6 @@ public class FollowController {
         // 得到当前用户的ID
         int userId = StpUtil.getLoginIdAsInt();
         followService.unfollow(userId, entityType, entityId);
-        // 取消关注就不发送系统通知了
         return R.ok();
     }
 

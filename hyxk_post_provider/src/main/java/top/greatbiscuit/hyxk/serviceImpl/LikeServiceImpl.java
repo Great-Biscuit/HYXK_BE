@@ -6,8 +6,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.redis.service.RedisService;
 import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
+import top.greatbiscuit.hyxk.dao.CommentDao;
+import top.greatbiscuit.hyxk.event.Event;
+import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.LikeService;
 
 /**
@@ -25,6 +29,12 @@ public class LikeServiceImpl implements LikeService {
     @Autowired
     private RedisService redisService;
 
+    @Autowired
+    private CommentDao commentDao;
+
+    @Autowired
+    private EventProducer eventProducer;
+
     /**
      * 点赞[取消点赞也是调用该方法, 在此处进行判断]
      *
@@ -35,7 +45,7 @@ public class LikeServiceImpl implements LikeService {
      * @return
      */
     @Override
-    public String like(int userId, int entityType, int entityId, int entityUserId) {
+    public String like(int userId, int entityType, int entityId, int entityUserId, int postId) {
         // 此处需要使用Redis的事务
         redisTemplate.execute(new SessionCallback() {
             @Override
@@ -63,6 +73,18 @@ public class LikeServiceImpl implements LikeService {
                 return operations.exec();
             }
         });
+        // 查看刚刚是进行点赞还是取消点赞[是点赞就发送系统通知 取消点赞不发]
+        if (redisTemplate.opsForSet().isMember(RedisKeyUtil.getEntityLikeKey(entityType, entityId), userId)) {
+            Event event = new Event()
+                    .setTopic(Constants.TOPIC_LIKE)
+                    .setUserId(userId)
+                    .setEntityType(entityType)
+                    .setEntityId(entityId)
+                    .setEntityUserId(entityUserId)
+                    .setData("postId", postId);
+            // 发布事件
+            eventProducer.fireEvent(event);
+        }
         return null;
     }
 

@@ -30,13 +30,14 @@ public class LikeController {
      * @param entityType   被点赞的实体类型
      * @param entityId     被点赞的实体ID
      * @param entityUserId 被点赞的实体的发布者
+     * @param postId       帖子Id, 让前端传入, 减少数据库交互次数
      * @return
      */
     @SaCheckLogin
     @PostMapping("/execute")
-    public R like(int entityType, int entityId, int entityUserId) {
+    public R like(int entityType, int entityId, int entityUserId, int postId) {
         int userId = StpUtil.getLoginIdAsInt();
-        String msg = likeService.like(userId, entityType, entityId, entityUserId);
+        String msg = likeService.like(userId, entityType, entityId, entityUserId, postId);
         return msg == null ? R.ok() : R.fail(msg);
     }
 

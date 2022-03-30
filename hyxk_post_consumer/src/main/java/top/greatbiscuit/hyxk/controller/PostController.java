@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/action/**")
 public class PostController {
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 6000)
     private PostService postService;
 
     @DubboReference(version = "v1.0.0")
@@ -66,8 +67,8 @@ public class PostController {
      * @param postId
      * @return
      */
-    @RequestMapping("/detail")
-    public R getPost(int postId) {
+    @RequestMapping("/detail/{postId}")
+    public R getPost(@PathVariable("postId") int postId) {
         // 得到当前用户的ID
         Integer userId = null;
         if (StpUtil.isLogin()) {
