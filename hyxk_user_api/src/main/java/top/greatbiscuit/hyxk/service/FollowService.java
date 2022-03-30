@@ -12,13 +12,14 @@ import java.util.Map;
 public interface FollowService {
 
     /**
-     * 关注
+     * 关注/收藏
      *
-     * @param userId     关注者
-     * @param entityType 被关注实体类型
-     * @param entityId   被关注实体ID
+     * @param entityType   实体类型
+     * @param entityId     实体Id
+     * @param entityUserId 实体所属用户
+     * @return
      */
-    void follow(int userId, int entityType, int entityId);
+    void follow(int userId, int entityType, int entityId, int entityUserId);
 
     /**
      * 取消关注

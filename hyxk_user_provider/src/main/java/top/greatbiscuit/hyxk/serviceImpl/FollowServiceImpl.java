@@ -11,6 +11,8 @@ import top.greatbiscuit.common.redis.service.RedisService;
 import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.event.Event;
+import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.FollowService;
 
 import java.util.*;
@@ -33,15 +35,19 @@ public class FollowServiceImpl implements FollowService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private EventProducer eventProducer;
+
     /**
-     * 关注
+     * 关注/收藏
      *
-     * @param userId     关注者
-     * @param entityType 被关注实体类型
-     * @param entityId   被关注实体ID
+     * @param entityType   实体类型
+     * @param entityId     实体Id
+     * @param entityUserId 实体所属用户
+     * @return
      */
     @Override
-    public void follow(int userId, int entityType, int entityId) {
+    public void follow(int userId, int entityType, int entityId, int entityUserId) {
         redisTemplate.execute(new SessionCallback() {
             @Override
             public Object execute(RedisOperations redisOperations) throws DataAccessException {
@@ -54,6 +60,16 @@ public class FollowServiceImpl implements FollowService {
                 return redisOperations.exec();
             }
         });
+        // 发送系统通知
+        Event event = new Event()
+                .setTopic(entityType == Constants.ENTITY_TYPE_POST ?
+                        Constants.TOPIC_COLLECT : Constants.TOPIC_FOLLOW) // 判断是收藏帖子还是关注用户
+                .setUserId(userId)
+                .setEntityType(entityType)
+                .setEntityId(entityId)
+                .setEntityUserId(entityUserId);
+        // 发布事件
+        eventProducer.fireEvent(event);
     }
 
     /**
@@ -76,6 +92,7 @@ public class FollowServiceImpl implements FollowService {
                 return redisOperations.exec();
             }
         });
+        // 取消关注就不发送系统通知了
     }
 
     /**

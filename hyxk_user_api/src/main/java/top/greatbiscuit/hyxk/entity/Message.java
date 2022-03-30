@@ -28,7 +28,7 @@ public class Message implements Serializable {
      */
     private String conversationId;
     /**
-     * 状态[0-已读 1-未读 2-删除]
+     * 状态[0-未读 1-已读 2-删除]
      */
     private Integer state;
     /**

@@ -26,9 +26,24 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/message/**")
 public class MessageController {
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 6000)
     private MessageService messageService;
 
+    /**
+     * 是否有未读消息
+     *
+     * @return
+     */
+    @RequestMapping("/hasUnread")
+    public R hasUnread() {
+        // 判断是否登录[不能进行登录拦截, 因为未登录用户主页也需要请求这一数据]
+        if (!StpUtil.isLogin()) {
+            return R.ok(false);
+        }
+        // 当前登录用户
+        int holderUserId = StpUtil.getLoginIdAsInt();
+        return R.ok(messageService.hasUnreadMessage(holderUserId));
+    }
 
     /**
      * 返回消息首页需要的数据
@@ -78,7 +93,7 @@ public class MessageController {
                 topic.equals(Constants.TOPIC_LIKE) ||
                 topic.equals(Constants.TOPIC_COLLECT) ||
                 topic.equals(Constants.TOPIC_COMMENT))) {
-
+            return R.fail("通知类型不存在!");
         }
         int holderUserId = StpUtil.getLoginIdAsInt();
         return R.ok(messageService.getNoticeDetail(holderUserId, topic));

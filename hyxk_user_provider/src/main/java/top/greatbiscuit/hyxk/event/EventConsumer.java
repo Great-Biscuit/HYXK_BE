@@ -68,7 +68,8 @@ public class EventConsumer {
      *
      * @param record
      */
-    @KafkaListener(topics = {Constants.TOPIC_COMMENT, Constants.TOPIC_FOLLOW, Constants.TOPIC_LIKE, Constants.TOPIC_COLLECT})
+    @KafkaListener(topics = {Constants.TOPIC_COMMENT, Constants.TOPIC_FOLLOW,
+            Constants.TOPIC_LIKE, Constants.TOPIC_COLLECT})
     private void handleCommentMessage(ConsumerRecord record) {
         // 消息内容为空
         if (record == null || record.value() == null) {
@@ -89,6 +90,8 @@ public class EventConsumer {
         message.setToId(event.getEntityUserId());
         // 处理系统通知标题(此处存主题)
         message.setConversationId(event.getTopic());
+        // 未读
+        message.setState(0);
         // 时间
         message.setCreateTime(new Date());
         // 设置内容

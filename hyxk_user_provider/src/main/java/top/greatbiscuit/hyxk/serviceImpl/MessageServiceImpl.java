@@ -1,5 +1,6 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.common.core.constant.Constants;
@@ -25,6 +26,28 @@ public class MessageServiceImpl implements MessageService {
 
     @Autowired
     private UserDao userDao;
+
+    /**
+     * 是否有未读消息
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean hasUnreadMessage(int userId) {
+        // 判断是否有未读系统通知
+        Map<String, Integer> noticeUnreadCount = getNoticeUnreadCount(userId);
+        for (Integer value : noticeUnreadCount.values()) {
+            if (value != 0) {
+                return true;
+            }
+        }
+        // 判断是否有未读私信
+        if (messageDao.queryLetterUnreadCount(userId, null) != 0) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 得到每个通知在消息首页显示的信息
@@ -84,11 +107,26 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public List<Message> getNoticeDetail(int userId, String topic) {
+    public List<Map<String, Object>> getNoticeDetail(int userId, String topic) {
         List<Message> noticeList = messageDao.queryNotices(userId, topic);
+        if (noticeList == null) {
+            return null;
+        }
+        List<Map<String, Object>> noticeListVo = new ArrayList<>();
+        for (Message notice : noticeList) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("notice", notice);
+            // 得到其他数据
+            Map<String, Object> data = JSONObject.parseObject(notice.getContent(), HashMap.class);
+            map.put("data", data);
+            // 加上对方的名字
+            map.put("targetName", userDao.querySimpleUserById((Integer) data.get("userId")).getNickname());
+            // 将处理好的数据返回
+            noticeListVo.add(map);
+        }
         // 设置未读消息为已读
         readMessage(noticeList, userId);
-        return noticeList;
+        return noticeListVo;
     }
 
     /**

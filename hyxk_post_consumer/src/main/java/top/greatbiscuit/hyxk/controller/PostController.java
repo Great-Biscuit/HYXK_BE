@@ -27,7 +27,7 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/action/**")
 public class PostController {
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 6000)
     private PostService postService;
 
     @DubboReference(version = "v1.0.0")

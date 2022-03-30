@@ -9,6 +9,7 @@ import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.hyxk.dao.CommentDao;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Comment;
+import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.CommentService;
@@ -64,16 +65,31 @@ public class CommentServiceImpl implements CommentService {
             int count = commentDao.queryCountByEntity(Constants.ENTITY_TYPE_POST, comment.getEntityId());
             postDao.updateCommentCount(postId, count);
 
-            // 触发发帖事件
-            Event event = new Event()
+            // 触发发帖事件[需要修改帖子信息, 以及插入es]
+            Event publishEvent = new Event()
                     .setTopic(Constants.TOPIC_PUBLISH)
                     .setUserId(comment.getUserId())
                     .setEntityType(Constants.ENTITY_TYPE_POST)
                     .setEntityId(postId);
-            eventProducer.fireEvent(event);
+            eventProducer.fireEvent(publishEvent);
         }
 
-        // TODO: 触发系统通知, 使系统给用户发送消息
+        // 触发系统通知, 使系统给用户发送消息
+        Event commentEvent = new Event()
+                .setTopic(Constants.TOPIC_COMMENT)
+                .setUserId(comment.getUserId())
+                .setEntityType(comment.getEntityType())
+                .setEntityId(comment.getEntityId())
+                .setData("postId", postId);
+        // 找出该消息是发给谁的
+        if (comment.getEntityType() == Constants.ENTITY_TYPE_POST) {
+            Post target = postDao.queryById(comment.getEntityId());
+            commentEvent.setEntityUserId(target.getUserId());
+        } else {
+            Comment target = commentDao.queryById(comment.getEntityId());
+            commentEvent.setEntityUserId(target.getUserId());
+        }
+        eventProducer.fireEvent(commentEvent);
 
         return null;
     }

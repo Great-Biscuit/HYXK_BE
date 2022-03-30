@@ -1,7 +1,5 @@
 package top.greatbiscuit.hyxk.service;
 
-import top.greatbiscuit.hyxk.entity.Message;
-
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +10,14 @@ import java.util.Map;
  * @Date: 2022/3/28 23:42
  */
 public interface MessageService {
+
+    /**
+     * 是否有未读消息
+     *
+     * @param userId
+     * @return
+     */
+    boolean hasUnreadMessage(int userId);
 
     /**
      * 得到每个通知在消息首页显示的信息[即有几个未读]
@@ -36,7 +42,7 @@ public interface MessageService {
      * @param topic
      * @return
      */
-    List<Message> getNoticeDetail(int userId, String topic);
+    List<Map<String, Object>> getNoticeDetail(int userId, String topic);
 
     /**
      * 得到私信详情
