@@ -106,4 +106,9 @@ public class Constants {
      * 系统用户ID
      */
     public static final Integer SYSTEM_USER_ID = 0;
+
+    /**
+     * Quart自动任务时间
+     */
+    public static final Integer QUARTZ_JOB_TIME = 1000 * 60 * 5; // TODO: 正式上线需要修改时间
 }

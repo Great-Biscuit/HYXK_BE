@@ -5,6 +5,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.constant.Constants;
+import top.greatbiscuit.common.redis.service.RedisService;
+import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.CommentDao;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Comment;
@@ -35,6 +37,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private EventProducer eventProducer;
+
+    @Autowired
+    private RedisService redisService;
 
     @DubboReference(version = "v1.0.0")
     private UserService userService;
@@ -70,6 +75,11 @@ public class PostServiceImpl implements PostService {
                 .setEntityId(post.getId());
         // 发布事件
         eventProducer.fireEvent(event);
+
+        // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+        String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+        redisService.addCacheSet(flushScoreKey, post.getId());
+
         return null;
     }
 
@@ -130,8 +140,9 @@ public class PostServiceImpl implements PostService {
         postDetail.put("likeCount", likeCount);
 
         // 当前用户是否对帖子点赞
-        boolean hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
-                likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_POST, id);
+        boolean hasLike = holderUserId != null
+                && userService.queryUserById(holderUserId) != null
+                && likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_POST, id);
         postDetail.put("hasLike", hasLike);
 
         /*
@@ -156,8 +167,9 @@ public class PostServiceImpl implements PostService {
                 commentVo.put("likeCount", likeCount);
 
                 // 当前用户是否点赞
-                hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
-                        likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, comment.getId());
+                hasLike = holderUserId != null
+                        && userService.queryUserById(holderUserId) != null
+                        && likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, comment.getId());
                 commentVo.put("hasLike", hasLike);
 
                 // 回复列表
@@ -180,8 +192,9 @@ public class PostServiceImpl implements PostService {
                         replyVo.put("likeCount", likeCount);
 
                         // 当前用户是否对回复点赞
-                        hasLike = (holderUserId == null || userService.queryUserById(holderUserId) == null) ? false :
-                                likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, reply.getId());
+                        hasLike = holderUserId != null
+                                && userService.queryUserById(holderUserId) != null
+                                && likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_COMMENT, reply.getId());
                         replyVo.put("hasLike", hasLike);
 
                         replyVoList.add(replyVo);
@@ -197,5 +210,7 @@ public class PostServiceImpl implements PostService {
 
         return postDetail;
     }
+
+    // TODO: 还有帖子的置顶和加精
 
 }

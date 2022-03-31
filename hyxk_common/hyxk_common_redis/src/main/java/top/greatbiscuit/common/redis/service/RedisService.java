@@ -189,6 +189,16 @@ public class RedisService {
     }
 
     /**
+     * 得到BoundSetOperations
+     *
+     * @param key
+     * @return
+     */
+    public BoundSetOperations getBoundSetOperations(String key) {
+        return redisTemplate.boundSetOps(key);
+    }
+
+    /**
      * 获得缓存的set
      *
      * @param key

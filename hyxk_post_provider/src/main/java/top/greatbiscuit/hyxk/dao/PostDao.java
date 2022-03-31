@@ -93,5 +93,14 @@ public interface PostDao {
      * @return
      */
     int updateCommentCount(Integer id, int comments);
+
+    /**
+     * 更新帖子分数
+     *
+     * @param id
+     * @param score
+     * @return
+     */
+    int updateScore(Integer id, double score);
 }
 

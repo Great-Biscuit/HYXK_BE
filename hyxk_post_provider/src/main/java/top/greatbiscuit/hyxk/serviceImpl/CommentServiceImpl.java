@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import top.greatbiscuit.common.core.constant.Constants;
+import top.greatbiscuit.common.redis.service.RedisService;
+import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.CommentDao;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Comment;
@@ -33,6 +35,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private EventProducer eventProducer;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 新增评论
@@ -72,6 +77,12 @@ public class CommentServiceImpl implements CommentService {
                     .setEntityType(Constants.ENTITY_TYPE_POST)
                     .setEntityId(postId);
             eventProducer.fireEvent(publishEvent);
+
+            // 如果是对帖子评论, 就需要更新帖子分数
+            // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+            String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+            redisService.addCacheSet(flushScoreKey, postId);
+
         }
 
         // 触发系统通知, 使系统给用户发送消息
@@ -90,6 +101,7 @@ public class CommentServiceImpl implements CommentService {
             commentEvent.setEntityUserId(target.getUserId());
         }
         eventProducer.fireEvent(commentEvent);
+
 
         return null;
     }
@@ -115,6 +127,16 @@ public class CommentServiceImpl implements CommentService {
         comment.setState(1);
         // 修改数据库
         commentDao.update(comment);
+        // 如果是对帖子的评论就要更新帖子的评论数和帖子分数
+        if (comment.getEntityType() == Constants.ENTITY_TYPE_POST) {
+            // 更新对帖子的评论数[回复是对评论的评论, 不做为对帖子的评论数]
+            int count = commentDao.queryCountByEntity(Constants.ENTITY_TYPE_POST, comment.getEntityId());
+            postDao.updateCommentCount(comment.getEntityId(), count);
+
+            // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+            String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+            redisService.addCacheSet(flushScoreKey, comment.getEntityId());
+        }
         return null;
     }
 

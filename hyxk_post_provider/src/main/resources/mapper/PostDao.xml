@@ -189,5 +189,12 @@
         where id = #{id}
     </update>
 
+    <!--更新帖子分数-->
+    <update id="updateScore">
+        update post
+        set score = #{score}
+        where id = #{id}
+    </update>
+
 </mapper>
 

@@ -42,6 +42,7 @@ public class LikeServiceImpl implements LikeService {
      * @param entityType   被点赞的实体类型
      * @param entityId     被点赞的实体ID
      * @param entityUserId 被点赞的实体的发布者
+     * @param postId       让前端传入, 否则数据库交互过多
      * @return
      */
     @Override
@@ -85,6 +86,14 @@ public class LikeServiceImpl implements LikeService {
             // 发布事件
             eventProducer.fireEvent(event);
         }
+
+        // 如果是对帖子点赞/取消点赞, 就需要更新帖子分数
+        if (entityType == Constants.ENTITY_TYPE_POST) {
+            // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+            String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+            redisService.addCacheSet(flushScoreKey, entityId);
+        }
+
         return null;
     }
 
@@ -115,6 +124,7 @@ public class LikeServiceImpl implements LikeService {
         return redisService.isMemberOfSet(redisKey, userId);
     }
 
+    // TODO: 该方法需放到用户服务中去
     /**
      * 用户被点赞总数
      *

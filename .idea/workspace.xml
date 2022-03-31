@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/config/QuartzConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/quart/PostScoreRefreshJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_be.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_be.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/hyxk_common_redis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/hyxk_common_redis.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/service/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/event/EventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LikeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_api/hyxk_user_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/hyxk_user_api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/hyxk_user_provider.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserProvider">
+  <component name="RunManager" selected="Spring Boot.PostProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -164,10 +161,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.PostConsumer" />
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
+        <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +216,7 @@
       <workItem from="1648621697855" duration="17799000" />
       <workItem from="1648655333470" duration="148000" />
       <workItem from="1648655507057" duration="186000" />
-      <workItem from="1648715363445" duration="2365000" />
+      <workItem from="1648715363445" duration="9085000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -347,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648654334402</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: 新增删除帖子功能以及新增删除帖子时对elasticsearch的操作">
+      <created>1648717891694</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1648717891694</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +390,8 @@
     <MESSAGE value="feat: 新增消息实体类" />
     <MESSAGE value="feat: 新增消息显示以及发送私信功能" />
     <MESSAGE value="feat&amp;fix: 新增触发系统以及查询是否有未读消息功能, 并修复消息数据处理问题以及消息初始状态问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat&amp;fix: 新增触发系统以及查询是否有未读消息功能, 并修复消息数据处理问题以及消息初始状态问题" />
+    <MESSAGE value="feat: 新增删除帖子功能以及新增删除帖子时对elasticsearch的操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增删除帖子功能以及新增删除帖子时对elasticsearch的操作" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
