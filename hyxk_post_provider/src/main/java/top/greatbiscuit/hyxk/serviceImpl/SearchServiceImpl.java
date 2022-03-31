@@ -38,11 +38,11 @@ public class SearchServiceImpl implements SearchService {
     /**
      * 保存帖子
      *
-     * @param postId
+     * @param post
      */
     @Override
-    public void savePost(int postId) {
-        elasticsearchRestTemplate.save(postDao.queryById(postId));
+    public void savePost(Post post) {
+        elasticsearchRestTemplate.save(post);
     }
 
     /**

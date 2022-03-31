@@ -15,9 +15,9 @@ public interface SearchService {
     /**
      * 保存帖子
      *
-     * @param postId
+     * @param post
      */
-    void savePost(int postId);
+    void savePost(Post post);
 
     /**
      * 删除帖子

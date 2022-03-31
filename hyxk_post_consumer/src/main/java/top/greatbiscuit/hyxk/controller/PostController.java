@@ -84,4 +84,17 @@ public class PostController {
         return userId == null ? R.ok(postDetail) : R.ok(postDetail, userId.toString());
     }
 
+    /**
+     * 删除帖子
+     *
+     * @param postId
+     * @return
+     */
+    @SaCheckLogin
+    @PostMapping("/deletePost")
+    public R deletePost(int postId) {
+        String msg = postService.deletePost(StpUtil.getLoginIdAsInt(), postId);
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
 }

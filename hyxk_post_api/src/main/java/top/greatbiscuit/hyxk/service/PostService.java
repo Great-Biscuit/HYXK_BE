@@ -21,6 +21,15 @@ public interface PostService {
     String insertPost(Post post);
 
     /**
+     * 删除帖子
+     *
+     * @param userId
+     * @param postId
+     * @return
+     */
+    String deletePost(int userId, int postId);
+
+    /**
      * 通过ID查询单条数据
      *
      * @param id

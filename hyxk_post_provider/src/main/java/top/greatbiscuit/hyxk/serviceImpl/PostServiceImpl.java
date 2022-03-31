@@ -62,12 +62,44 @@ public class PostServiceImpl implements PostService {
         postDao.insert(post);
 
         // Markdown转Html耗时太长, 放到消息队列里去
+        // 同时将数据加入es
         Event event = new Event()
                 .setTopic(Constants.TOPIC_PUBLISH)
                 .setUserId(post.getUserId())
                 .setEntityType(Constants.ENTITY_TYPE_POST)
                 .setEntityId(post.getId());
         // 发布事件
+        eventProducer.fireEvent(event);
+        return null;
+    }
+
+    /**
+     * 删除帖子
+     *
+     * @param userId
+     * @param postId
+     * @return
+     */
+    @Override
+    public String deletePost(int userId, int postId) {
+        // 该请求数量较少, 可以直接把帖子全部查出来
+        Post post = postDao.queryById(postId);
+        if (post == null) {
+            return "数据不存在!";
+        }
+        // 防止删除别人的帖子
+        if (post.getUserId() != userId) {
+            return "权限不足!";
+        }
+        // 删除帖子[修改状态为2]
+        post.setState(2);
+        postDao.update(post);
+        // 触发删帖事件, 从es中删除数据
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_DELETE)
+                .setUserId(userId)
+                .setEntityType(Constants.ENTITY_TYPE_POST)
+                .setEntityId(postId);
         eventProducer.fireEvent(event);
         return null;
     }
@@ -83,6 +115,10 @@ public class PostServiceImpl implements PostService {
         Map<String, Object> postDetail = new HashMap<>();
         // 先查询帖子自身的数据
         Post post = postDao.queryById(id);
+        // 帖子不存在或者被删除
+        if (post == null || post.getState() == 2) {
+            return null;
+        }
         postDetail.put("post", post);
 
         // 查询帖子作者的数据
