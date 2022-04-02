@@ -102,7 +102,6 @@ public class CommentServiceImpl implements CommentService {
         }
         eventProducer.fireEvent(commentEvent);
 
-
         return null;
     }
 
