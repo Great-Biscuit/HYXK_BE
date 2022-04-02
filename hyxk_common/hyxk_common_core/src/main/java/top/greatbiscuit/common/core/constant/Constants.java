@@ -53,6 +53,16 @@ public class Constants {
     public static final Integer REMEMBER_ME = 60 * 60 * 24 * 7;
 
     /**
+     * 用户类型[超级管理员]
+     */
+    public static final Integer USER_TYPE_SUPER_ADMIN = 999;
+
+    /**
+     * 用户类型[注销]
+     */
+    public static final Integer USER_TYPE_DESTROY = 886;
+
+    /**
      * 实体类型 帖子
      */
     public static final Integer ENTITY_TYPE_POST = 1;

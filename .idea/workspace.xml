@@ -6,18 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 集成Quartz使用自动任务对帖子分数进行刷新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/utils/RedisKeyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_redis/src/main/java/top/greatbiscuit/common/redis/utils/RedisKeyUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/RegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/RegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/RegisterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserConsumer">
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -158,8 +156,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
       </list>
@@ -214,7 +212,7 @@
       <workItem from="1648655333470" duration="148000" />
       <workItem from="1648655507057" duration="186000" />
       <workItem from="1648715363445" duration="12420000" />
-      <workItem from="1648791778581" duration="9583000" />
+      <workItem from="1648791778581" duration="11490000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -370,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648882547387</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix: 修改注册逻辑, 修复潜在漏洞">
+      <created>1648891091008</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1648891091008</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +418,8 @@
     <MESSAGE value="feat: 集成Quartz使用自动任务对帖子分数进行刷新" />
     <MESSAGE value="fix: 补充quartz配置信息" />
     <MESSAGE value="refactor: 查询用户被赞数量功能移入用户服务中去" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 查询用户被赞数量功能移入用户服务中去" />
+    <MESSAGE value="fix: 修改注册逻辑, 修复潜在漏洞" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 修改注册逻辑, 修复潜在漏洞" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -59,6 +59,9 @@ public class PostServiceImpl implements PostService {
             return "未获取到帖子信息!";
         }
 
+        // 如果是不是普通用户或者注销用户就是官方
+        int userType = userService.queryUserType(post.getUserId());
+        post.setOfficial((userType != 0 && userType != Constants.USER_TYPE_DESTROY) ? 1 : 0);
         // 将标题进行转义
         post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
         post.setCreateTime(new Date());

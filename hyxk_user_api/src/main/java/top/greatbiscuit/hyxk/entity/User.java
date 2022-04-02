@@ -48,7 +48,7 @@ public class User implements Serializable {
      */
     private String signature;
     /**
-     * 用户类型[0-普通 999-超级管理员 886-注销]
+     * 用户类型[0-普通 1...9-对应各版主 999-超级管理员 886-注销]
      */
     private Integer type;
     /**

@@ -12,7 +12,6 @@ import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.service.PostService;
-import top.greatbiscuit.hyxk.service.UserService;
 
 import java.util.Map;
 
@@ -29,9 +28,6 @@ public class PostController {
 
     @DubboReference(version = "v1.0.0", timeout = 6000)
     private PostService postService;
-
-    @DubboReference(version = "v1.0.0")
-    private UserService userService;
 
     /**
      * 新增帖子
@@ -54,8 +50,6 @@ public class PostController {
         post.setMarkdownContent(markdownContent);
         post.setHeadImg(headerUrl);
         post.setType(type);
-        // 如果是普通用户就是非官方, 否则就是官方
-        post.setOfficial(userService.queryUserType(userId) != 0 ? 1 : 0);
 
         String msg = postService.insertPost(post);
         return msg == null ? R.ok("发布成功!") : R.fail(msg);

@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         }
 
         //旧密码正确, 则修改密码
-        user.setPassword(newPassword);
+        user.setPassword(PasswordUtil.md5(newPassword + user.getSalt()));
         userDao.update(user);
 
         return map;

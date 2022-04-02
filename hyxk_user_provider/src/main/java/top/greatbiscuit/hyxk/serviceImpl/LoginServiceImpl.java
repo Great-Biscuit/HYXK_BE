@@ -58,8 +58,8 @@ public class LoginServiceImpl implements LoginService {
             return "账号不存在!";
         }
 
-        // 判断账号是否注销
-        if (user.getType() == 886) {
+        // 判断账号是否注销[886为注销]
+        if (user.getType() == Constants.USER_TYPE_DESTROY) {
             return "账号已被注销!";
         }
 
