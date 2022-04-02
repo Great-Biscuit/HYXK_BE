@@ -14,9 +14,7 @@ import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
-import top.greatbiscuit.hyxk.service.LikeService;
-import top.greatbiscuit.hyxk.service.PostService;
-import top.greatbiscuit.hyxk.service.UserService;
+import top.greatbiscuit.hyxk.service.*;
 
 import java.util.*;
 
@@ -46,6 +44,12 @@ public class PostServiceImpl implements PostService {
 
     @DubboReference(version = "v1.0.0")
     private LikeService likeService;
+
+    @DubboReference(version = "v1.0.0")
+    private CollectService collectService;
+
+    @DubboReference(version = "v1.0.0")
+    private FollowService followService;
 
     /**
      * 新增帖子
@@ -144,9 +148,17 @@ public class PostServiceImpl implements PostService {
 
         // 当前用户是否对帖子点赞
         boolean hasLike = holderUserId != null
-                && userService.queryUserById(holderUserId) != null
                 && likeService.userHasLike(holderUserId, Constants.ENTITY_TYPE_POST, id);
         postDetail.put("hasLike", hasLike);
+
+        // 帖子收藏数
+        long collectCount = collectService.findPostCollectCount(id);
+        postDetail.put("collectCount", collectCount);
+
+        // 当前用户是否收藏
+        boolean hasCollect = holderUserId != null
+                && followService.hasFollowed(holderUserId, Constants.ENTITY_TYPE_POST, id);
+        postDetail.put("hasCollect", hasCollect);
 
         /*
          * 评论: 对帖子的评论

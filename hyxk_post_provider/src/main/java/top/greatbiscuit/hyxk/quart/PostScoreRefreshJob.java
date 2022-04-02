@@ -85,10 +85,12 @@ public class PostScoreRefreshJob implements Job {
         // 点赞数量
         String likeKey = RedisKeyUtil.getEntityLikeKey(Constants.ENTITY_TYPE_POST, postId);
         long likeCount = redisService.getSetSize(likeKey);
-        //TODO: 收藏加分
+        // 收藏加分
+        String collectKey = RedisKeyUtil.getFollowerKey(Constants.ENTITY_TYPE_POST, postId);
+        long collectCount = redisService.getZSetSize(collectKey);
 
         // 计算权重
-        double w = (wonderful ? 75 : 0) + commentCount * 10 + likeCount * 2;
+        double w = (wonderful ? 75 : 0) + commentCount * 10 + likeCount * 2 + collectCount * 20;
         // 分数 = 权重 + 天数
         double score = Math.log10(Math.max(w, 1)) + (post.getCreateTime().getTime() - epoch.getTime()) / (1000 * 3600 * 24);
 

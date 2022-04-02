@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.entity.Post;
+import top.greatbiscuit.hyxk.service.CollectService;
 import top.greatbiscuit.hyxk.service.LikeService;
 import top.greatbiscuit.hyxk.service.SearchService;
 import top.greatbiscuit.hyxk.service.UserService;
@@ -37,6 +38,9 @@ public class SearchController {
     @DubboReference(version = "v1.0.0", timeout = 6000)
     private LikeService likeService;
 
+    @DubboReference(version = "v1.0.0")
+    private CollectService collectService;
+
     /**
      * 搜索
      *
@@ -63,7 +67,8 @@ public class SearchController {
             map.put("author", userService.querySimpleUserById(post.getUserId()));
             // 点赞数量
             map.put("likeCount", likeService.findEntityLikeCount(Constants.ENTITY_TYPE_POST, post.getId()));
-            // TODO: 收藏数量
+            // 收藏数量
+            map.put("collectCount", collectService.findPostCollectCount(post.getId()));
 
             searchResult.add(map);
         }

@@ -70,6 +70,13 @@ public class FollowServiceImpl implements FollowService {
                 .setEntityUserId(entityUserId);
         // 发布事件
         eventProducer.fireEvent(event);
+
+        // 如果是收藏帖子就需要刷新帖子分数
+        if (entityType == Constants.ENTITY_TYPE_POST) {
+            // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+            String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+            redisService.addCacheSet(flushScoreKey, entityId);
+        }
     }
 
     /**
