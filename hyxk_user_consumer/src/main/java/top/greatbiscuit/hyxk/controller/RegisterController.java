@@ -2,6 +2,7 @@ package top.greatbiscuit.hyxk.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.greatbiscuit.common.core.domain.R;
@@ -23,30 +24,30 @@ public class RegisterController {
     private RegisterService registerService;
 
     /**
+     * 注册时通过邮箱获取验证码
+     *
+     * @param email
+     * @return
+     */
+    @RequestMapping("/getVerificationCode")
+    public R getVerificationCode(String email) {
+        String msg = registerService.getVerificationCode(email);
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
+    /**
      * 进行注册
      *
      * @param username
      * @param password
      * @param email
-     * @return
-     */
-    @RequestMapping("/toRegister")
-    public R toRegister(String username, String password, String email) {
-        String message = registerService.toRegister(username, password, email);
-        return message == null ? R.ok() : R.fail(message);
-    }
-
-    /**
-     * 激活账号
-     *
-     * @param id
      * @param code
      * @return
      */
-    @RequestMapping("/activation")
-    public String activation(Integer id, String code) {
-        return registerService.activation(id, code);
+    @PostMapping("/toRegister")
+    public R toRegister(String username, String password, String email, String code) {
+        String message = registerService.toRegister(username, password, email, code);
+        return message == null ? R.ok() : R.fail(message);
     }
-
 
 }

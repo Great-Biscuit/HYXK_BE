@@ -16,6 +16,17 @@ public class RedisKeyUtil {
     private static final String PREFIX_USER = "user";
     private static final String PREFIX_POST = "post";
     private static final String FIND_PASSWORD_CODE = "find_password_code";
+    private static final String REGISTER_CODE = "register_code";
+
+    /**
+     * 生成注册时的验证码Key
+     *
+     * @param email
+     * @return
+     */
+    public static String getRegisterCodeKey(String email) {
+        return REGISTER_CODE + SPLIT + email;
+    }
 
     /**
      * 生成找回密码时的验证码Key

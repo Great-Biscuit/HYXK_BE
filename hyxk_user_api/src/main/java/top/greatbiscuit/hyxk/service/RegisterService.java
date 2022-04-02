@@ -8,8 +8,23 @@ package top.greatbiscuit.hyxk.service;
  */
 public interface RegisterService {
 
-    String toRegister(String username, String password, String email);
+    /**
+     * 注册时通过邮箱获取验证码
+     *
+     * @param email
+     * @return
+     */
+    String getVerificationCode(String email);
 
-    String activation(Integer userId, String code);
+    /**
+     * 注册方法
+     *
+     * @param username
+     * @param password
+     * @param email
+     * @param code     验证码
+     * @return
+     */
+    String toRegister(String username, String password, String email, String code);
 
 }

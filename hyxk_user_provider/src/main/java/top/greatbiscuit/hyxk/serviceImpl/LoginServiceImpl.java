@@ -58,17 +58,17 @@ public class LoginServiceImpl implements LoginService {
             return "账号不存在!";
         }
 
+        // 判断账号是否注销
+        if (user.getType() == 886) {
+            return "账号已被注销!";
+        }
+
         //将提供的密码进行相同方式的加密
         password = PasswordUtil.md5(password + user.getSalt());
 
         //验证密码
         if (!password.equals(user.getPassword())) {
             return "密码错误!";
-        }
-
-        //激活状态判断
-        if (user.getStatus() == 0) {
-            return "账号未激活!";
         }
 
         //成功登录, 返回用户ID用于登录状态标记

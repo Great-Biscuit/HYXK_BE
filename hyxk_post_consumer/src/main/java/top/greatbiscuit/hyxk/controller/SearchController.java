@@ -34,7 +34,7 @@ public class SearchController {
     @DubboReference(version = "v1.0.0", timeout = 6000)
     private SearchService searchService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 6000)
     private LikeService likeService;
 
     /**

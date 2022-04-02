@@ -48,17 +48,9 @@ public class User implements Serializable {
      */
     private String signature;
     /**
-     * 用户类型
+     * 用户类型[0-普通 999-超级管理员 886-注销]
      */
     private Integer type;
-    /**
-     * 用户状态[0-未激活 1-已激活]
-     */
-    private Integer status;
-    /**
-     * 用户激活码
-     */
-    private String activationCode;
     /**
      * 创建时间
      */
@@ -145,22 +137,6 @@ public class User implements Serializable {
         this.type = type;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -182,8 +158,6 @@ public class User implements Serializable {
                 ", gender=" + gender +
                 ", signature='" + signature + '\'' +
                 ", type=" + type +
-                ", status=" + status +
-                ", activationCode='" + activationCode + '\'' +
                 ", createTime=" + createTime +
                 '}';
     }
