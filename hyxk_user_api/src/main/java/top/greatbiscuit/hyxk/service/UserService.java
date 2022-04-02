@@ -55,4 +55,12 @@ public interface UserService {
      */
     User querySimpleUserById(Integer userId);
 
+    /**
+     * 用户被点赞总数
+     *
+     * @param userId
+     * @return
+     */
+    int findUserLikeCount(int userId);
+
 }

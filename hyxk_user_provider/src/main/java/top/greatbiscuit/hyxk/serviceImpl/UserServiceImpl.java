@@ -122,6 +122,20 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * 用户被点赞总数
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public int findUserLikeCount(int userId) {
+        String redisKey = RedisKeyUtil.getUserLikeKey(userId);
+        Integer count = redisService.getCacheObject(redisKey);
+        // 防止用户没被点赞过
+        return count == null ? 0 : count;
+    }
+
     //使用Redis优化
     //1.优先从缓存里查
     private User getCache(int userId) {

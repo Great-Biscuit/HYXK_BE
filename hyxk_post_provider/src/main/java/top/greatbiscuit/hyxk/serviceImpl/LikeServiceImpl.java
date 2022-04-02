@@ -124,19 +124,4 @@ public class LikeServiceImpl implements LikeService {
         return redisService.isMemberOfSet(redisKey, userId);
     }
 
-    // TODO: 该方法需放到用户服务中去
-    /**
-     * 用户被点赞总数
-     *
-     * @param userId
-     * @return
-     */
-    @Override
-    public int findUserLikeCount(int userId) {
-        String redisKey = RedisKeyUtil.getUserLikeKey(userId);
-        Integer count = redisService.getCacheObject(redisKey);
-        // 防止用户没被点赞过
-        return count == null ? 0 : count;
-    }
-
 }

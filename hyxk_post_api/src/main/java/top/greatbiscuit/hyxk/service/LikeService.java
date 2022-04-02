@@ -39,11 +39,4 @@ public interface LikeService {
      */
     boolean userHasLike(int userId, int entityType, int entityId);
 
-    /**
-     * 用户被点赞总数
-     *
-     * @param userId
-     * @return
-     */
-    int findUserLikeCount(int userId);
 }
