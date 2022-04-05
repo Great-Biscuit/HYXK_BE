@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Post;
-import top.greatbiscuit.hyxk.service.CollectService;
 import top.greatbiscuit.hyxk.service.LikeService;
 import top.greatbiscuit.hyxk.service.PostPublicService;
 import top.greatbiscuit.hyxk.service.UserService;
@@ -34,9 +33,6 @@ public class PostPublicServiceImpl implements PostPublicService {
 
     @DubboReference(version = "v1.0.0")
     private LikeService likeService;
-
-    @DubboReference(version = "v1.0.0")
-    private CollectService collectService;
 
     /**
      * 查询指定行数据[用户id不为0就查询指定用户, 否则查询所有--先按top排序保证顶置在最前]
@@ -65,8 +61,6 @@ public class PostPublicServiceImpl implements PostPublicService {
             map.put("author", userService.querySimpleUserById(post.getUserId()));
             // 点赞数量
             map.put("likeCount", likeService.findEntityLikeCount(Constants.ENTITY_TYPE_POST, post.getId()));
-            // 收藏数量
-            map.put("collectCount", collectService.findPostCollectCount(post.getId()));
 
             posts.add(map);
         }
