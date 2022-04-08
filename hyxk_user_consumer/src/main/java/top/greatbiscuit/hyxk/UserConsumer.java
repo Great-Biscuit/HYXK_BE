@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2022/1/21 16:25
  */
 @EnableDubbo
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"top.greatbiscuit.hyxk", "top.greatbiscuit.common.redis"})
 public class UserConsumer {
     public static void main(String[] args) {
         SpringApplication.run(UserConsumer.class, args);

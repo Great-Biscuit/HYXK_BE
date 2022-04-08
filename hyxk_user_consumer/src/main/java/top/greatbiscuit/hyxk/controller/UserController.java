@@ -4,13 +4,20 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
+import top.greatbiscuit.common.redis.service.RedisService;
+import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.service.FollowService;
 import top.greatbiscuit.hyxk.service.UserService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,16 +34,65 @@ public class UserController {
     @DubboReference(version = "v1.0.0")
     private UserService userService;
 
+    @DubboReference(version = "v1.0.0", timeout = 6000)
+    private FollowService followService;
+
+    @Autowired
+    private RedisService redisService;
+
     /**
-     * 查询当前用户信息
+     * 查询当前用户Id[不存在则返回空]
      *
      * @return
      */
-    @SaCheckLogin
-    @RequestMapping("/getMyself")
-    public R getMyself() {
-        User user = userService.queryUserById(StpUtil.getLoginIdAsInt());
-        return user == null ? R.fail("错误!") : R.ok(user);
+    @RequestMapping("/getHolderUserId")
+    public R getHolderUserId() {
+        if (StpUtil.isLogin()) {
+            // 如果已经登录
+            return R.ok(StpUtil.getLoginIdAsInt());
+        } else {
+            // 如果未登录
+            return R.ok();
+        }
+    }
+
+    /**
+     * 查询用户信息
+     *
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/getUserInfo/{userId}")
+    public R getUserInfo(@PathVariable("userId") int userId) {
+        User user = userService.querySimpleUserById(userId);
+        if (user == null) {
+            return R.fail("用户不存在!");
+        }
+
+        // 构造返回数据
+        Map<String, Object> userInfo = new HashMap<>();
+        // 装入用户信息
+        userInfo.put("user", user);
+        // 装入被赞数
+        String redisKey = RedisKeyUtil.getEntityLikeKey(Constants.ENTITY_TYPE_USER, userId);
+        userInfo.put("beLikedCount", redisService.getSetSize(redisKey));
+        // 装入关注用户数
+        userInfo.put("followCount", followService.queryFollowCount(userId));
+        // 装入粉丝数
+        userInfo.put("fansCount", followService.queryFansCount(userId));
+
+        if (StpUtil.isLogin()) {
+            int holderUserId = StpUtil.getLoginIdAsInt();
+            // 当前用户是否关注
+            userInfo.put("hasFollow", followService.hasFollowed(holderUserId, Constants.ENTITY_TYPE_USER, userId));
+            // 已登录就把当前用户Id也返回
+            return R.ok(userInfo, holderUserId + "");
+        } else {
+            // 未登录就判定为未关注
+            userInfo.put("hasFollow", false);
+            // 未登录就只返回查询的用户信息
+            return R.ok(userInfo);
+        }
     }
 
     /**
