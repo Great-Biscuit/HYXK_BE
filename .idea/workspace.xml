@@ -97,7 +97,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserConsumer">
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -153,9 +153,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.UserConsumer" />
+        <item itemvalue="Spring Boot.UserProvider" />
         <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
-        <item itemvalue="Spring Boot.UserProvider" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +216,8 @@
       <workItem from="1649321162839" duration="532000" />
       <workItem from="1649402670017" duration="82000" />
       <workItem from="1649405035911" duration="2830000" />
+      <workItem from="1649422268693" duration="262000" />
+      <workItem from="1649428702674" duration="1836000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -399,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649162942160</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feat: 新增查询用户首页数据接口">
+      <created>1649422497815</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1649422497815</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chore: 集成apache shenyu网关" />
     <MESSAGE value="feat: 新增查询帖子列表功能" />
     <MESSAGE value="feat: 新增Markdown转Html功能, 并新增发帖接口" />
     <MESSAGE value="refactor: 去除首页查询帖子列表时的不必要数据" />
@@ -445,7 +453,8 @@
     <MESSAGE value="fix: 修改密码时对新密码进行加密再存储" />
     <MESSAGE value="feat: 新增收藏帖子以及查询收藏数量功能" />
     <MESSAGE value="refactor: 帖子概况不需要显示收藏数量" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 帖子概况不需要显示收藏数量" />
+    <MESSAGE value="feat: 新增查询用户首页数据接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询用户首页数据接口" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
