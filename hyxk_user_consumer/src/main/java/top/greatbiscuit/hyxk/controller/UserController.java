@@ -5,14 +5,13 @@ import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
-import top.greatbiscuit.common.redis.service.RedisService;
-import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.FollowService;
 import top.greatbiscuit.hyxk.service.UserService;
@@ -38,7 +37,7 @@ public class UserController {
     private FollowService followService;
 
     @Autowired
-    private RedisService redisService;
+    private RedisTemplate redisTemplate;
 
     /**
      * 查询当前用户Id[不存在则返回空]
@@ -74,8 +73,7 @@ public class UserController {
         // 装入用户信息
         userInfo.put("user", user);
         // 装入被赞数
-        String redisKey = RedisKeyUtil.getEntityLikeKey(Constants.ENTITY_TYPE_USER, userId);
-        userInfo.put("beLikedCount", redisService.getSetSize(redisKey));
+        userInfo.put("beLikedCount", userService.findUserLikeCount(userId));
         // 装入关注用户数
         userInfo.put("followCount", followService.queryFollowCount(userId));
         // 装入粉丝数
