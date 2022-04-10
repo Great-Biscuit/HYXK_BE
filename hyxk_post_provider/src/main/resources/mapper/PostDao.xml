@@ -51,6 +51,9 @@
         <if test="userId!=0">
             and user_id = #{userId}
         </if>
+        <if test="orderMode==2">
+            order by create_time desc
+        </if>
         <if test="orderMode==0">
             order by top desc, create_time desc
         </if>

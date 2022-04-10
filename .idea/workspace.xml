@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
@@ -222,6 +221,7 @@
       <workItem from="1649492363569" duration="14000" />
       <workItem from="1649494233672" duration="119000" />
       <workItem from="1649496775475" duration="224000" />
+      <workItem from="1649579835082" duration="226000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -426,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649431811368</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat: 修改帖子列表接口, 使其支持查询所有类型帖子功能">
+      <created>1649580045231</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1649580045231</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 去除首页查询帖子列表时的不必要数据" />
     <MESSAGE value="feat: 集成kafka并将markdown转html置于消息队列中处理" />
     <MESSAGE value="feat: 新增帖子详情功能" />
     <MESSAGE value="feat: 新增发布评论功能" />
@@ -472,7 +478,8 @@
     <MESSAGE value="feat: 新增查询用户首页数据接口" />
     <MESSAGE value="fix: 修复用户详情页获赞数量获取[provider和consumer用的redis库不同]" />
     <MESSAGE value="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]" />
+    <MESSAGE value="feat: 修改帖子列表接口, 使其支持查询所有类型帖子功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 修改帖子列表接口, 使其支持查询所有类型帖子功能" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -36,7 +36,7 @@ public class PostPublicServiceImpl implements PostPublicService {
 
     /**
      * 查询指定行数据[用户id不为0就查询指定用户, 否则查询所有--先按top排序保证顶置在最前]
-     * [orderMode为1则按分数再按时间排序 为0则按时间排序]
+     * [orderMode为1则按分数再按时间排序 为0则按时间排序 为2则只按时间排序]
      * [type为-1则查询所有帖子]
      *
      * @param userId
