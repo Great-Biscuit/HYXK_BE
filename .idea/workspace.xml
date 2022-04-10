@@ -7,7 +7,6 @@
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
@@ -68,7 +67,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.last.edited" value="Facet" />
     <property name="project.structure.proportion" value="0.15234375" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -217,7 +216,12 @@
       <workItem from="1649405035911" duration="2830000" />
       <workItem from="1649422268693" duration="262000" />
       <workItem from="1649428702674" duration="2513000" />
-      <workItem from="1649431407829" duration="322000" />
+      <workItem from="1649431407829" duration="415000" />
+      <workItem from="1649484731854" duration="3508000" />
+      <workItem from="1649490992801" duration="26000" />
+      <workItem from="1649492363569" duration="14000" />
+      <workItem from="1649494233672" duration="119000" />
+      <workItem from="1649496775475" duration="224000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -415,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649430893267</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]">
+      <created>1649431811368</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649431811368</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +447,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增Markdown转Html功能, 并新增发帖接口" />
     <MESSAGE value="refactor: 去除首页查询帖子列表时的不必要数据" />
     <MESSAGE value="feat: 集成kafka并将markdown转html置于消息队列中处理" />
     <MESSAGE value="feat: 新增帖子详情功能" />
@@ -461,7 +471,8 @@
     <MESSAGE value="refactor: 帖子概况不需要显示收藏数量" />
     <MESSAGE value="feat: 新增查询用户首页数据接口" />
     <MESSAGE value="fix: 修复用户详情页获赞数量获取[provider和consumer用的redis库不同]" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: 修复用户详情页获赞数量获取[provider和consumer用的redis库不同]" />
+    <MESSAGE value="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

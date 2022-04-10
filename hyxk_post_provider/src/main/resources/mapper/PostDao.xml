@@ -44,7 +44,10 @@
         select
         id, user_id, title, state, top, official, best_comment_id, comments, head_img
         from post
-        where state != 2 and type = #{type}
+        where state != 2
+        <if test="type!=-1">
+            and type = #{type}
+        </if>
         <if test="userId!=0">
             and user_id = #{userId}
         </if>
