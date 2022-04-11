@@ -6,6 +6,7 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.service.FollowService;
 
@@ -39,6 +40,10 @@ public class FollowController {
     public R follow(int entityType, int entityId, int entityUserId) {
         // 得到当前用户的ID
         int userId = StpUtil.getLoginIdAsInt();
+        // 防止用户关注自己
+        if (entityType == Constants.ENTITY_TYPE_USER && entityId == userId) {
+            return R.fail("不能关注自己!");
+        }
         followService.follow(userId, entityType, entityId, entityUserId);
         return R.ok();
     }
