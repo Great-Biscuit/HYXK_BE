@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.entity.Post;
+import top.greatbiscuit.hyxk.service.CollectService;
 import top.greatbiscuit.hyxk.service.PostService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +30,9 @@ public class PostController {
 
     @DubboReference(version = "v1.0.0", timeout = 6000)
     private PostService postService;
+
+    @DubboReference(version = "v1.0.0")
+    private CollectService collectService;
 
     /**
      * 新增帖子
@@ -89,6 +94,20 @@ public class PostController {
     public R deletePost(int postId) {
         String msg = postService.deletePost(StpUtil.getLoginIdAsInt(), postId);
         return msg == null ? R.ok() : R.fail(msg);
+    }
+
+    /**
+     * 查询用户关注的帖子列表
+     *
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/getCollectedPostList")
+    public R getCollectedPostList(int userId, int offset, int limit) {
+        List<Map<String, Object>> collectedPostList = collectService.getCollectedPostList(userId, offset, limit);
+        return R.ok(collectedPostList);
     }
 
 }
