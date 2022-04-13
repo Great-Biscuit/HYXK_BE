@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CollectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CollectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
@@ -150,10 +153,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserConsumer" />
-        <item itemvalue="Spring Boot.UserProvider" />
         <item itemvalue="Spring Boot.PostConsumer" />
+        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
+        <item itemvalue="Spring Boot.UserProvider" />
       </list>
     </recent_temporary>
   </component>
@@ -225,6 +228,8 @@
       <workItem from="1649579835082" duration="226000" />
       <workItem from="1649580214762" duration="265000" />
       <workItem from="1649658818682" duration="1560000" />
+      <workItem from="1649664860765" duration="374000" />
+      <workItem from="1649763966674" duration="3885000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -443,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649580426907</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="fix: 修复关注接口, 防止用户关注自己">
+      <created>1649665095429</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1649665095429</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,7 +476,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增帖子详情功能" />
     <MESSAGE value="feat: 新增发布评论功能" />
     <MESSAGE value="feat: 新增删除评论功能" />
     <MESSAGE value="feat: 新增点赞功能以及补充需要点赞信息的逻辑" />
@@ -489,7 +500,8 @@
     <MESSAGE value="refactor: 帖子详情接口中评论对象只返回评论内容[减少不必要的数据]" />
     <MESSAGE value="feat: 修改帖子列表接口, 使其支持查询所有类型帖子功能" />
     <MESSAGE value="feat: 修改帖子列表接口, 新增只按时间排序方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 修改帖子列表接口, 新增只按时间排序方式" />
+    <MESSAGE value="fix: 修复关注接口, 防止用户关注自己" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 修复关注接口, 防止用户关注自己" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
