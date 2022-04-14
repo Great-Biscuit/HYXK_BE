@@ -7,6 +7,7 @@ import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
@@ -109,6 +110,17 @@ public class UserController {
     }
 
     /**
+     * 得到当前用户的信息[用于修改用户信息]
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @PostMapping("/getHolderInfo")
+    public R getHolderInfo() {
+        return R.ok(userService.queryUserById(StpUtil.getLoginIdAsInt()));
+    }
+
+    /**
      * 修改用户信息
      *
      * @param user
@@ -119,7 +131,7 @@ public class UserController {
     public R updateInfo(User user) {
         if (user == null) return R.fail("为获取到用户信息!");
         // 基础处理
-        if (user.getNickname().length() > 20) return R.fail("昵称过长!");
+        if (user.getNickname().length() > 15) return R.fail("昵称过长!");
         if (user.getGender() < 0 || user.getGender() > 2) return R.fail("请选择正确的性别类型!");
         // 将nickname signature进行html转义
         user.setNickname(HtmlUtils.htmlEscape(user.getNickname()));

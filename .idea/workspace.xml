@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
+      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/src/test/java/top/greatbiscuit/hyxk/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CollectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/CollectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
@@ -98,7 +97,23 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserProvider">
+  <component name="RunManager" selected="JUnit.UserTest.getCharLength">
+    <configuration name="UserTest.getCharLength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hyxk_user_provider" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.greatbiscuit.hyxk" />
+      <option name="MAIN_CLASS_NAME" value="top.greatbiscuit.hyxk.UserTest" />
+      <option name="METHOD_NAME" value="getCharLength" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -153,10 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.PostConsumer" />
+        <item itemvalue="JUnit.UserTest.getCharLength" />
         <item itemvalue="Spring Boot.UserConsumer" />
-        <item itemvalue="Spring Boot.PostProvider" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.PostConsumer" />
+        <item itemvalue="Spring Boot.PostProvider" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +245,10 @@
       <workItem from="1649580214762" duration="265000" />
       <workItem from="1649658818682" duration="1560000" />
       <workItem from="1649664860765" duration="374000" />
-      <workItem from="1649763966674" duration="3885000" />
+      <workItem from="1649763966674" duration="4706000" />
+      <workItem from="1649904175325" duration="598000" />
+      <workItem from="1649938831142" duration="538000" />
+      <workItem from="1649942030203" duration="1238000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -455,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649665095429</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="feat: 新增查询某用户收藏帖子列表接口">
+      <created>1649811122864</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1649811122864</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +502,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增发布评论功能" />
     <MESSAGE value="feat: 新增删除评论功能" />
     <MESSAGE value="feat: 新增点赞功能以及补充需要点赞信息的逻辑" />
     <MESSAGE value="feat: 新增关注功能" />
@@ -501,7 +526,8 @@
     <MESSAGE value="feat: 修改帖子列表接口, 使其支持查询所有类型帖子功能" />
     <MESSAGE value="feat: 修改帖子列表接口, 新增只按时间排序方式" />
     <MESSAGE value="fix: 修复关注接口, 防止用户关注自己" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: 修复关注接口, 防止用户关注自己" />
+    <MESSAGE value="feat: 新增查询某用户收藏帖子列表接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询某用户收藏帖子列表接口" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
