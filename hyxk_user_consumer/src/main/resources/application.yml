@@ -42,3 +42,10 @@ spring:
         max-idle: 10
         # 连接池中的最小空闲连接
         min-idle: 0
+
+# 七牛云
+qiniu:
+  key:
+    access: xxx
+    secret: xxx
+  bucket: hyxk-avatar

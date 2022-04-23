@@ -2,9 +2,11 @@ package top.greatbiscuit.hyxk.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
+import com.qiniu.util.Auth;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,15 @@ import java.util.Map;
 @RequestMapping("/action")
 @ShenyuSpringMvcClient(path = "/action/**")
 public class UserController {
+
+    @Value("${qiniu.key.access}")
+    private String accessKey;
+
+    @Value("${qiniu.key.secret}")
+    private String secretKey;
+
+    @Value("${qiniu.bucket}")
+    private String bucket;
 
     @DubboReference(version = "v1.0.0")
     private UserService userService;
@@ -140,5 +151,18 @@ public class UserController {
         return msg == null ? R.ok("昵称修改成功!") : R.fail(msg);
     }
 
+    /**
+     * 得到上传头像的凭证
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @RequestMapping("/getUploadAvatarToken")
+    public R getUploadAvatarToken() {
+        Auth auth = Auth.create(accessKey, secretKey);
+        // 过期时间
+        long expireSeconds = 60 * 60 * 3;
+        return R.ok(auth.uploadToken(bucket, null, expireSeconds, null));
+    }
 
 }

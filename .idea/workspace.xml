@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
-      <change afterPath="$PROJECT_DIR$/hyxk_user_provider/src/test/java/top/greatbiscuit/hyxk/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
@@ -62,6 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -69,7 +70,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Facet" />
+    <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15234375" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -97,23 +98,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserTest.getCharLength">
-    <configuration name="UserTest.getCharLength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hyxk_user_provider" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.greatbiscuit.hyxk.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.greatbiscuit.hyxk" />
-      <option name="MAIN_CLASS_NAME" value="top.greatbiscuit.hyxk.UserTest" />
-      <option name="METHOD_NAME" value="getCharLength" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="PostConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_post_consumer" />
       <extension name="coverage">
@@ -166,9 +151,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.PostConsumer" />
+      <item itemvalue="Spring Boot.PostProvider" />
+      <item itemvalue="Spring Boot.UserConsumer" />
+      <item itemvalue="Spring Boot.UserProvider" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTest.getCharLength" />
         <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
         <item itemvalue="Spring Boot.PostConsumer" />
@@ -248,7 +238,15 @@
       <workItem from="1649763966674" duration="4706000" />
       <workItem from="1649904175325" duration="598000" />
       <workItem from="1649938831142" duration="538000" />
-      <workItem from="1649942030203" duration="1238000" />
+      <workItem from="1649942030203" duration="1957000" />
+      <workItem from="1650276500297" duration="2455000" />
+      <workItem from="1650358916839" duration="1360000" />
+      <workItem from="1650365319515" duration="1629000" />
+      <workItem from="1650367211736" duration="927000" />
+      <workItem from="1650369499837" duration="2112000" />
+      <workItem from="1650642129280" duration="110000" />
+      <workItem from="1650705912328" duration="1428000" />
+      <workItem from="1650707578510" duration="229000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -481,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649811122864</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="feat: 新增查询当前用户信息接口">
+      <created>1649944154785</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1649944154785</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增删除评论功能" />
     <MESSAGE value="feat: 新增点赞功能以及补充需要点赞信息的逻辑" />
     <MESSAGE value="feat: 新增关注功能" />
     <MESSAGE value="feat: 用户服务新增消息队列用于发送邮件" />
@@ -527,7 +531,8 @@
     <MESSAGE value="feat: 修改帖子列表接口, 新增只按时间排序方式" />
     <MESSAGE value="fix: 修复关注接口, 防止用户关注自己" />
     <MESSAGE value="feat: 新增查询某用户收藏帖子列表接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询某用户收藏帖子列表接口" />
+    <MESSAGE value="feat: 新增查询当前用户信息接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询当前用户信息接口" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
