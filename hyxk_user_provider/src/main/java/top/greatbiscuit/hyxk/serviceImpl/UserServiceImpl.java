@@ -80,6 +80,19 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    /**
+     * 修改所有用户信息[用于后台管理]
+     *
+     * @param user
+     */
+    @Override
+    public String updateUserForAdmin(User user) {
+        userDao.update(user);
+        // 修改用户信息后要清除缓存
+        clearCache(user.getId());
+        return null;
+    }
+
 
     /**
      * 根据ID查询用户全部信息

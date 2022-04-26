@@ -32,6 +32,13 @@ public interface UserService {
     String updateUser(User user);
 
     /**
+     * 修改所有用户信息[用于后台管理]
+     *
+     * @param user
+     */
+    String updateUserForAdmin(User user);
+
+    /**
      * 根据ID查询用户
      *
      * @param userId
