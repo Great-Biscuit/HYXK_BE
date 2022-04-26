@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/hyxk_admin_api/hyxk_admin_api.iml" filepath="$PROJECT_DIR$/hyxk_admin_api/hyxk_admin_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_admin_consumer/hyxk_admin_consumer.iml" filepath="$PROJECT_DIR$/hyxk_admin_consumer/hyxk_admin_consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hyxk_admin_provider/hyxk_admin_provider.iml" filepath="$PROJECT_DIR$/hyxk_admin_provider/hyxk_admin_provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/hyxk_be.iml" filepath="$PROJECT_DIR$/hyxk_be.iml" />
       <module fileurl="file://$PROJECT_DIR$/hyxk_common/hyxk_common.iml" filepath="$PROJECT_DIR$/hyxk_common/hyxk_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" filepath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/hyxk_common_core.iml" />

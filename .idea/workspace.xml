@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
@@ -159,8 +158,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
       </list>
@@ -247,6 +246,14 @@
       <workItem from="1650642129280" duration="110000" />
       <workItem from="1650705912328" duration="1428000" />
       <workItem from="1650707578510" duration="229000" />
+      <workItem from="1650708219546" duration="473000" />
+      <workItem from="1650797617218" duration="7000" />
+      <workItem from="1650798618069" duration="4193000" />
+      <workItem from="1650867567366" duration="1329000" />
+      <workItem from="1650956190778" duration="2084000" />
+      <workItem from="1650962013432" duration="613000" />
+      <workItem from="1650965337550" duration="225000" />
+      <workItem from="1650965602590" duration="1360000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -486,7 +493,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649944154785</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat: 集成七牛云并新增生成上传头像Token接口">
+      <created>1650708332880</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1650708332880</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: 集成七牛云并新增生成上传头像Token接口">
+      <created>1650708445963</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1650708445963</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增点赞功能以及补充需要点赞信息的逻辑" />
     <MESSAGE value="feat: 新增关注功能" />
     <MESSAGE value="feat: 用户服务新增消息队列用于发送邮件" />
     <MESSAGE value="feat: 新增redis缓存用户信息, 减轻数据库压力" />
@@ -532,7 +552,8 @@
     <MESSAGE value="fix: 修复关注接口, 防止用户关注自己" />
     <MESSAGE value="feat: 新增查询某用户收藏帖子列表接口" />
     <MESSAGE value="feat: 新增查询当前用户信息接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询当前用户信息接口" />
+    <MESSAGE value="feat: 集成七牛云并新增生成上传头像Token接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 集成七牛云并新增生成上传头像Token接口" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
