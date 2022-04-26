@@ -11,7 +11,6 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import top.greatbiscuit.hyxk.dao.PostDao;
 import top.greatbiscuit.hyxk.entity.Post;
 import top.greatbiscuit.hyxk.service.SearchService;
 
@@ -27,9 +26,6 @@ import java.util.Map;
  */
 @DubboService(version = "v1.0.0")
 public class SearchServiceImpl implements SearchService {
-
-    @Autowired
-    private PostDao postDao;
 
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
