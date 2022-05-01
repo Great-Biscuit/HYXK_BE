@@ -129,5 +129,21 @@
         where id = #{id}
     </select>
 
+    <select id="queryUserListByLimit" resultMap="UserMap">
+        select id,
+               username,
+               password,
+               salt,
+               email,
+               header_url,
+               nickname,
+               gender,
+               signature,
+               type,
+               create_time
+        from user
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>
 

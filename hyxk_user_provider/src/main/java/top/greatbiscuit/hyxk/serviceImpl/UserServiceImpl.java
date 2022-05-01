@@ -10,6 +10,7 @@ import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -147,6 +148,18 @@ public class UserServiceImpl implements UserService {
         Integer count = redisService.getCacheObject(redisKey);
         // 防止用户没被点赞过
         return count == null ? 0 : count;
+    }
+
+    /**
+     * 查询用户列表
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @Override
+    public List<User> getUserListByLimit(int offset, int limit) {
+        return userDao.queryUserListByLimit(offset, limit);
     }
 
     //使用Redis优化

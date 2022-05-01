@@ -3,6 +3,8 @@ package top.greatbiscuit.hyxk.dao;
 import org.apache.ibatis.annotations.Mapper;
 import top.greatbiscuit.hyxk.entity.User;
 
+import java.util.List;
+
 /**
  * 用户表(User)表数据库访问层
  *
@@ -75,4 +77,13 @@ public interface UserDao {
      * @return
      */
     User querySimpleUserById(Integer id);
+
+    /**
+     * 查询用户列表
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<User> queryUserListByLimit(int offset, int limit);
 }

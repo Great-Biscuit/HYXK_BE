@@ -2,6 +2,7 @@ package top.greatbiscuit.hyxk.service;
 
 import top.greatbiscuit.hyxk.entity.User;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,4 +71,12 @@ public interface UserService {
      */
     int findUserLikeCount(int userId);
 
+    /**
+     * 查询用户列表
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<User> getUserListByLimit(int offset, int limit);
 }

@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_api/src/main/java/top/greatbiscuit/hyxk/service/ManageUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/AdminConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/exceptionHandler/SaTokenExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/roleUtil/StpInterfaceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/java/top/greatbiscuit/hyxk/AdminProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/ManageUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManagePostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_admin_api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +104,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdminProvider">
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="AdminConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_admin_consumer" />
       <extension name="coverage">
@@ -186,10 +179,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.AdminConsumer" />
-        <item itemvalue="Spring Boot.AdminProvider" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
+        <item itemvalue="Spring Boot.AdminProvider" />
         <item itemvalue="Spring Boot.PostConsumer" />
       </list>
     </recent_temporary>
@@ -282,7 +275,9 @@
       <workItem from="1650956190778" duration="2084000" />
       <workItem from="1650962013432" duration="613000" />
       <workItem from="1650965337550" duration="225000" />
-      <workItem from="1650965602590" duration="8466000" />
+      <workItem from="1650965602590" duration="8757000" />
+      <workItem from="1651040923633" duration="596000" />
+      <workItem from="1651314693527" duration="6718000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -543,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650967723402</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="feat: 新增接口角色权限验证, 新增修改用户类型接口">
+      <created>1650986449064</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1650986449064</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +566,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 用户服务新增消息队列用于发送邮件" />
     <MESSAGE value="feat: 新增redis缓存用户信息, 减轻数据库压力" />
     <MESSAGE value="feat: 集成Elasticsearch实现搜索功能" />
     <MESSAGE value="fix: 将搜索结果中匹配内容的高亮部分去除[页面处理会出错]" />
@@ -589,7 +590,8 @@
     <MESSAGE value="feat: 新增查询当前用户信息接口" />
     <MESSAGE value="feat: 集成七牛云并新增生成上传头像Token接口" />
     <MESSAGE value="chore: 构建后台管理服务" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: 构建后台管理服务" />
+    <MESSAGE value="feat: 新增接口角色权限验证, 新增修改用户类型接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增接口角色权限验证, 新增修改用户类型接口" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
