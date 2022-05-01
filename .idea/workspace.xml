@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
-      <change afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManagePostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/mapper/UserDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +271,7 @@
       <workItem from="1650965337550" duration="225000" />
       <workItem from="1650965602590" duration="8757000" />
       <workItem from="1651040923633" duration="596000" />
-      <workItem from="1651314693527" duration="6718000" />
+      <workItem from="1651314693527" duration="7380000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -545,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650986449064</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="feat: 新增用户列表查询以及封禁用户功能">
+      <created>1651408636345</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1651408636345</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增redis缓存用户信息, 减轻数据库压力" />
     <MESSAGE value="feat: 集成Elasticsearch实现搜索功能" />
     <MESSAGE value="fix: 将搜索结果中匹配内容的高亮部分去除[页面处理会出错]" />
     <MESSAGE value="feat: 新增消息实体类" />
@@ -591,7 +591,8 @@
     <MESSAGE value="feat: 集成七牛云并新增生成上传头像Token接口" />
     <MESSAGE value="chore: 构建后台管理服务" />
     <MESSAGE value="feat: 新增接口角色权限验证, 新增修改用户类型接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增接口角色权限验证, 新增修改用户类型接口" />
+    <MESSAGE value="feat: 新增用户列表查询以及封禁用户功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增用户列表查询以及封禁用户功能" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

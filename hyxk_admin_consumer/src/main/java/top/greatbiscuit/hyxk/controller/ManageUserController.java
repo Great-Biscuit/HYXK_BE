@@ -69,6 +69,8 @@ public class ManageUserController {
     @SaCheckRole("admin")
     @PostMapping("/banUser")
     public R banUser(int userId, long banTime) {
+        // 先踢下线
+        StpUtil.kickout(userId);
         StpUtil.disable(userId, banTime);
         return R.ok();
     }
