@@ -226,6 +226,60 @@ public class PostServiceImpl implements PostService {
         return postDetail;
     }
 
-    // TODO: 还有帖子的置顶和加精
+    /**
+     * 修改帖子状态
+     *
+     * @param postId
+     * @param state  [0-正常 1-加精 2-删除]
+     * @return
+     */
+    @Override
+    public String updatePostState(int postId, int state) {
+        Post post = postDao.queryById(postId);
+        if (post == null) {
+            return "帖子不存在!";
+        }
+        post.setState(state);
+        postDao.update(post);
+        return null;
+    }
+
+    /**
+     * 设置帖子置顶
+     *
+     * @param postId
+     * @return
+     */
+    @Override
+    public String setPostTop(int postId) {
+        Post post = postDao.queryById(postId);
+        if (post == null) {
+            return "帖子不存在!";
+        }
+        if (post.getTop() == 0) {
+            // 置顶
+            post.setTop(1);
+        } else {
+            // 取消置顶
+            post.setTop(0);
+        }
+        postDao.update(post);
+        return null;
+    }
+
+    /**
+     * 得到帖子数量
+     *
+     * @param type -1则为所有
+     * @return
+     */
+    @Override
+    public long getPostCount(int type) {
+        Post post = new Post();
+        if (type != -1) {
+            post.setType(type);
+        }
+        return postDao.count(post);
+    }
 
 }

@@ -38,4 +38,29 @@ public interface PostService {
      */
     Map<String, Object> queryPostDetailById(Integer id, Integer holderUserId);
 
+    /**
+     * 修改帖子状态
+     *
+     * @param postId
+     * @param state  [0-正常 1-加精 2-删除]
+     * @return
+     */
+    String updatePostState(int postId, int state);
+
+    /**
+     * 设置帖子置顶
+     *
+     * @param postId
+     * @return
+     */
+    String setPostTop(int postId);
+
+    /**
+     * 得到帖子数量
+     *
+     * @param type -1则为所有
+     * @return
+     */
+    long getPostCount(int type);
+
 }
