@@ -173,7 +173,9 @@ public class PostServiceImpl implements PostService {
                 // 一个评论的VO
                 Map<String, Object> commentVo = new HashMap<>();
                 // 往VO里添加评论
+                commentVo.put("id", comment.getId());
                 commentVo.put("commentText", comment.getContent());
+                commentVo.put("commentTime", comment.getCreateTime());
                 // 评论的作者
                 commentVo.put("user", userService.querySimpleUserById(comment.getUserId()));
 
@@ -195,7 +197,9 @@ public class PostServiceImpl implements PostService {
                     for (Comment reply : replyList) {
                         Map<String, Object> replyVo = new HashMap<>();
                         // 回复
+                        commentVo.put("id", reply.getId());
                         replyVo.put("replyText", reply.getContent());
+                        commentVo.put("replyTime", reply.getCreateTime());
                         // 作者
                         replyVo.put("user", userService.querySimpleUserById(reply.getUserId()));
                         // 回复目标
