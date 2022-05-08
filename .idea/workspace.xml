@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
@@ -272,6 +273,14 @@
       <workItem from="1650965602590" duration="8757000" />
       <workItem from="1651040923633" duration="596000" />
       <workItem from="1651314693527" duration="15706000" />
+      <workItem from="1651586435958" duration="823000" />
+      <workItem from="1651657647220" duration="191000" />
+      <workItem from="1651657974425" duration="1124000" />
+      <workItem from="1651663707176" duration="5199000" />
+      <workItem from="1651730131126" duration="5774000" />
+      <workItem from="1651751168453" duration="2027000" />
+      <workItem from="1651911888794" duration="4513000" />
+      <workItem from="1651987101696" duration="6118000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -560,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651415249392</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="fix: 补充评论的Id和时间">
+      <created>1651586615197</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1651586615197</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +597,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增消息实体类" />
     <MESSAGE value="feat: 新增消息显示以及发送私信功能" />
     <MESSAGE value="feat&amp;fix: 新增触发系统以及查询是否有未读消息功能, 并修复消息数据处理问题以及消息初始状态问题" />
     <MESSAGE value="feat: 新增删除帖子功能以及新增删除帖子时对elasticsearch的操作" />
@@ -606,7 +621,8 @@
     <MESSAGE value="feat: 新增用户列表查询以及封禁用户功能" />
     <MESSAGE value="fix: 新踢下线再封禁" />
     <MESSAGE value="feat: 新增查询帖子数量、帖子删除、置顶、加精功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增查询帖子数量、帖子删除、置顶、加精功能" />
+    <MESSAGE value="fix: 补充评论的Id和时间" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 补充评论的Id和时间" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
