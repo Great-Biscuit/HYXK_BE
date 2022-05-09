@@ -59,7 +59,7 @@ public class FollowController {
         if (entityType == Constants.ENTITY_TYPE_POST && !postService.exitsPost(entityId)) {
             return R.fail("帖子不存在!");
         }
-        //followService.follow(userId, entityType, entityId, entityUserId);
+        followService.follow(userId, entityType, entityId, entityUserId);
         return R.ok();
     }
 
