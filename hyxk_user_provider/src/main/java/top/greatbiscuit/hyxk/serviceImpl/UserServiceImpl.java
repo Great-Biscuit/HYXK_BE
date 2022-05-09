@@ -162,6 +162,19 @@ public class UserServiceImpl implements UserService {
         return userDao.queryUserListByLimit(offset, limit);
     }
 
+    /**
+     * 用户是否存在
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public boolean exitsUser(int userId) {
+        User user = new User();
+        user.setId(userId);
+        return userDao.count(user) > 0;
+    }
+
     //使用Redis优化
     //1.优先从缓存里查
     private User getCache(int userId) {

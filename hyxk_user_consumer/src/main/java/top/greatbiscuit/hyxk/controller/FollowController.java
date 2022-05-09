@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.service.FollowService;
+import top.greatbiscuit.hyxk.service.PostService;
+import top.greatbiscuit.hyxk.service.UserService;
 
 import java.util.List;
 import java.util.Map;
@@ -24,8 +26,14 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/follow/**")
 public class FollowController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private FollowService followService;
+
+    @DubboReference(version = "v1.0.0", timeout = 10000)
+    private UserService userService;
+
+    @DubboReference(version = "v1.0.0", timeout = 10000)
+    private PostService postService;
 
     /**
      * 关注/收藏
@@ -44,7 +52,14 @@ public class FollowController {
         if (entityType == Constants.ENTITY_TYPE_USER && entityId == userId) {
             return R.fail("不能关注自己!");
         }
-        followService.follow(userId, entityType, entityId, entityUserId);
+        // 判断是否存在
+        if (entityType == Constants.ENTITY_TYPE_USER && !userService.exitsUser(entityId)) {
+            return R.fail("用户不存在!");
+        }
+        if (entityType == Constants.ENTITY_TYPE_POST && !postService.exitsPost(entityId)) {
+            return R.fail("帖子不存在!");
+        }
+        //followService.follow(userId, entityType, entityId, entityUserId);
         return R.ok();
     }
 

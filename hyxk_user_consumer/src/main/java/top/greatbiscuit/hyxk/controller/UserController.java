@@ -42,10 +42,10 @@ public class UserController {
     @Value("${qiniu.bucket}")
     private String bucket;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private FollowService followService;
 
     @Autowired

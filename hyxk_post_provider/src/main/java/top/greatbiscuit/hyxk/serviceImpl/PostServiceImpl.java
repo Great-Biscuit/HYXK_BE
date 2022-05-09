@@ -286,4 +286,17 @@ public class PostServiceImpl implements PostService {
         return postDao.count(post);
     }
 
+    /**
+     * 查询帖子是否存在
+     *
+     * @param postId
+     * @return
+     */
+    @Override
+    public boolean exitsPost(int postId) {
+        Post post = new Post();
+        post.setId(postId);
+        return postDao.count(post) > 0;
+    }
+
 }

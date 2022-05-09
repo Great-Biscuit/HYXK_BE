@@ -23,6 +23,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>top.greatbiscuit</groupId>
+            <artifactId>hyxk_post_api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!--导入通用核心组件-->
         <dependency>
             <groupId>top.greatbiscuit</groupId>

@@ -79,4 +79,12 @@ public interface UserService {
      * @return
      */
     List<User> getUserListByLimit(int offset, int limit);
+
+    /**
+     * 用户是否存在
+     *
+     * @param userId
+     * @return
+     */
+    boolean exitsUser(int userId);
 }
