@@ -23,7 +23,7 @@ import top.greatbiscuit.hyxk.service.CommentService;
 @ShenyuSpringMvcClient(path = "/comment/**")
 public class CommentController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private CommentService commentService;
 
     @SaCheckLogin

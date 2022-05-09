@@ -23,10 +23,10 @@ import top.greatbiscuit.hyxk.service.UserService;
 @ShenyuSpringMvcClient(path = "/user/**")
 public class ManageUserController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private ManageUserService manageUserService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
     /**

@@ -28,10 +28,10 @@ public class PostPublicServiceImpl implements PostPublicService {
     @Autowired
     private PostDao postDao;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private LikeService likeService;
 
     /**

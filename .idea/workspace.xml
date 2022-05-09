@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4dabd-d05c-46dc-9cdd-3e7d4e9827d3" name="变更" comment="feat: 修改帖子列表接口, 新增只按时间排序方式">
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManagePostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManagePostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/java/top/greatbiscuit/hyxk/controller/ManageUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/ManageUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/ManageUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/LikeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
@@ -281,7 +291,7 @@
       <workItem from="1651987101696" duration="22621000" />
       <workItem from="1652025161663" duration="485000" />
       <workItem from="1652026097268" duration="644000" />
-      <workItem from="1652085793138" duration="3639000" />
+      <workItem from="1652085793138" duration="4019000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -591,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652089287581</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="fix: 从注释中放开关注代码">
+      <created>1652089740484</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1652089740485</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +629,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增删除帖子功能以及新增删除帖子时对elasticsearch的操作" />
     <MESSAGE value="feat: 集成Quartz使用自动任务对帖子分数进行刷新" />
     <MESSAGE value="fix: 补充quartz配置信息" />
     <MESSAGE value="refactor: 查询用户被赞数量功能移入用户服务中去" />
@@ -637,7 +653,8 @@
     <MESSAGE value="fix: 补充评论的Id和时间" />
     <MESSAGE value="fix: 修复修改用户信息时无用户编号" />
     <MESSAGE value="fix: 修复关注时帖子或者用户可能不存在的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: 修复关注时帖子或者用户可能不存在的问题" />
+    <MESSAGE value="fix: 从注释中放开关注代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 从注释中放开关注代码" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

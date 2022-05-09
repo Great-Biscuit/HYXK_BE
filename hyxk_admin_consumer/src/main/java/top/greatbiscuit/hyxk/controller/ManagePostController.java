@@ -21,7 +21,7 @@ import top.greatbiscuit.hyxk.service.PostService;
 @ShenyuSpringMvcClient(path = "/post/**")
 public class ManagePostController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private PostService postService;
 
     /**

@@ -21,7 +21,7 @@ import top.greatbiscuit.hyxk.service.LikeService;
 @ShenyuSpringMvcClient(path = "/like/**")
 public class LikeController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private LikeService likeService;
 
     /**

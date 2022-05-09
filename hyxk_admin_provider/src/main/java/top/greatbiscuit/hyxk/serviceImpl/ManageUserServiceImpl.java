@@ -15,7 +15,7 @@ import top.greatbiscuit.hyxk.service.UserService;
 @DubboService(version = "v1.0.0")
 public class ManageUserServiceImpl implements ManageUserService {
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
     /**

@@ -39,16 +39,16 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private RedisService redisService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private LikeService likeService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private CollectService collectService;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private FollowService followService;
 
     /**
