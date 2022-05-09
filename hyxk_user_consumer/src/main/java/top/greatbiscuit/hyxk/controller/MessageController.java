@@ -26,7 +26,7 @@ import java.util.Map;
 @ShenyuSpringMvcClient(path = "/message/**")
 public class MessageController {
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private MessageService messageService;
 
     /**

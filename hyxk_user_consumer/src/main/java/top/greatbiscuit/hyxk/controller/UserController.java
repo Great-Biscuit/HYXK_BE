@@ -42,10 +42,10 @@ public class UserController {
     @Value("${qiniu.bucket}")
     private String bucket;
 
-    @DubboReference(version = "v1.0.0")
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private UserService userService;
 
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private FollowService followService;
 
     @Autowired
@@ -113,7 +113,7 @@ public class UserController {
      * @return 修改结果
      */
     @SaCheckLogin
-    @RequestMapping("/updatePassword")
+    @PostMapping("/updatePassword")
     public R updatePassword(String oldPassword, String newPassword) {
         Map map = userService.updatePassword(StpUtil.getLoginIdAsInt(), oldPassword, newPassword);
         if (!map.isEmpty()) return R.fail(map);
@@ -140,15 +140,17 @@ public class UserController {
     @SaCheckLogin
     @RequestMapping("/updateInfo")
     public R updateInfo(User user) {
-        if (user == null) return R.fail("为获取到用户信息!");
+        if (user == null) return R.fail("未获取到用户信息!");
         // 基础处理
         if (user.getNickname().length() > 15) return R.fail("昵称过长!");
         if (user.getGender() < 0 || user.getGender() > 2) return R.fail("请选择正确的性别类型!");
         // 将nickname signature进行html转义
         user.setNickname(HtmlUtils.htmlEscape(user.getNickname()));
         user.setSignature(HtmlUtils.htmlEscape(user.getSignature()));
+        // 设置用户编号
+        user.setId(StpUtil.getLoginIdAsInt());
         String msg = userService.updateUser(user);
-        return msg == null ? R.ok("昵称修改成功!") : R.fail(msg);
+        return msg == null ? R.ok() : R.fail(msg);
     }
 
     /**

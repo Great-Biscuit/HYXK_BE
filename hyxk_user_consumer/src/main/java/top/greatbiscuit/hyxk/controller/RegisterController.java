@@ -20,7 +20,7 @@ import top.greatbiscuit.hyxk.service.RegisterService;
 public class RegisterController {
 
     //记得同时设置网关的超时时间!!!!!!!!!!!!!!!!!!
-    @DubboReference(version = "v1.0.0", timeout = 6000)
+    @DubboReference(version = "v1.0.0", timeout = 10000)
     private RegisterService registerService;
 
     /**

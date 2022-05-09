@@ -63,4 +63,12 @@ public interface PostService {
      */
     long getPostCount(int type);
 
+    /**
+     * 查询帖子是否存在
+     *
+     * @param postId
+     * @return
+     */
+    boolean exitsPost(int postId);
+
 }
