@@ -8,11 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostPublicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostPublicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/dao/PostDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostPublicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/SearchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/mapper/PostDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/FollowServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/FollowServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -284,7 +287,9 @@
       <workItem from="1651987101696" duration="22621000" />
       <workItem from="1652025161663" duration="485000" />
       <workItem from="1652026097268" duration="644000" />
-      <workItem from="1652085793138" duration="5683000" />
+      <workItem from="1652085793138" duration="6531000" />
+      <workItem from="1652175212189" duration="4632000" />
+      <workItem from="1652190874068" duration="7009000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
       <created>1641808684984</created>
@@ -608,7 +613,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652090009452</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fix: 查询关注、粉丝、收藏列表时, 若用户或帖子被删除, 则将数据在redis里删除">
+      <created>1652169417127</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1652169417127</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +641,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: 补充quartz配置信息" />
     <MESSAGE value="refactor: 查询用户被赞数量功能移入用户服务中去" />
     <MESSAGE value="fix: 修改注册逻辑, 修复潜在漏洞" />
     <MESSAGE value="fix: 修改密码时对新密码进行加密再存储" />
@@ -654,7 +665,8 @@
     <MESSAGE value="fix: 修复关注时帖子或者用户可能不存在的问题" />
     <MESSAGE value="fix: 从注释中放开关注代码" />
     <MESSAGE value="refactor: 修改所有注入项的超时时长为10s" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 修改所有注入项的超时时长为10s" />
+    <MESSAGE value="fix: 查询关注、粉丝、收藏列表时, 若用户或帖子被删除, 则将数据在redis里删除" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 查询关注、粉丝、收藏列表时, 若用户或帖子被删除, 则将数据在redis里删除" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

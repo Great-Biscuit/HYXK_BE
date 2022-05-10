@@ -202,5 +202,35 @@
         where id = #{id}
     </update>
 
+    <!--查询用户的关注的笔记列表-->
+    <select id="queryFolloweePosts" resultMap="PostMap">
+        select
+        id, user_id, title, state, top, official, best_comment_id, comments, head_img
+        from post
+        where type = 0 and state != 2 and ( 1 = 0
+        <foreach collection="ids" item="id" separator=",">
+            or user_id = #{id}
+        </foreach>
+        )
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--根据问答状态查询问答 0全部 1已解决 2未解决-->
+    <select id="queryFolloweePosts" resultMap="PostMap">
+        select
+        id, user_id, title, state, top, official, best_comment_id, comments, head_img
+        from post
+        where type = 2 and state != 2
+        <if test="state==1">
+            and best_comment_id is not null
+        </if>
+        <if test="state==2">
+            and best_comment_id is null
+        </if>
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>
 
