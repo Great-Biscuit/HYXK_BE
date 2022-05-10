@@ -73,6 +73,8 @@ public class CollectServiceImpl implements CollectService {
             Post post = postDao.queryById(postId);
             // 防止帖子被删除而不存在
             if (post == null) {
+                // 从zset把它删除, 因为已经不存在了
+                redisTemplate.opsForZSet().remove(redisKey, postId);
                 continue;
             }
             // 帖子
