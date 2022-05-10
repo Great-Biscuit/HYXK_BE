@@ -72,8 +72,7 @@ public class SearchServiceImpl implements SearchService {
                     .withSorts(SortBuilders.fieldSort("createTime").order(SortOrder.DESC))
                     .withPageable(PageRequest.of(current, limit))
                     .withHighlightFields(
-                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>"),
-                            new HighlightBuilder.Field("htmlContent").preTags("<em>").postTags("</em>")
+                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>")
                     )
                     .build();
         } else {

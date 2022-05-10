@@ -1,9 +1,11 @@
 package top.greatbiscuit.hyxk.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import top.greatbiscuit.hyxk.entity.Post;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 帖子表(Post)表数据库访问层
@@ -102,5 +104,25 @@ public interface PostDao {
      * @return
      */
     int updateScore(Integer id, double score);
+
+    /**
+     * 查询用户的关注的文章列表
+     *
+     * @param offset
+     * @param limit
+     * @param ids    关注的Id
+     * @return
+     */
+    List<Post> queryFolloweePosts(int offset, int limit, @Param("ids") Set<Integer> ids);
+
+    /**
+     * 根据问答状态查询问答
+     *
+     * @param state
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Post> queryQAByState(int state, int offset, int limit);
 }
 

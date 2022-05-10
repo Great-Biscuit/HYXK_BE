@@ -24,4 +24,24 @@ public interface PostPublicService {
      */
     List<Map<String, Object>> queryAllByLimit(int userId, int type, int offset, int limit, int orderMode);
 
+    /**
+     * 查询用户的关注的笔记
+     *
+     * @param holderId
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Map<String, Object>> queryFolloweeNotes(int holderId, int offset, int limit);
+
+    /**
+     * 根据问答状态查询问答
+     *
+     * @param QAState
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Map<String, Object>> queryQAByState(int QAState, int offset, int limit);
+
 }
