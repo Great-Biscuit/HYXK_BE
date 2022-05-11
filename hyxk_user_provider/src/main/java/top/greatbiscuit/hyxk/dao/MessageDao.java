@@ -74,5 +74,36 @@ public interface MessageDao {
      */
     int updateState(List<Integer> ids, int state);
 
+    /**
+     * 查询帖子的头图
+     *
+     * @param postId
+     * @return
+     */
+    String queryPostHeaderImg(Integer postId);
+
+    /**
+     * 查询评论的内容
+     *
+     * @param commentId
+     * @return
+     */
+    String queryCommentContent(Integer commentId);
+
+    /**
+     * 查询被评论的实体类型
+     *
+     * @param commentId
+     * @return
+     */
+    Integer queryCommentEntityType(Integer commentId);
+
+    /**
+     * 查询被评论的实体ID
+     *
+     * @param commentId
+     * @return
+     */
+    Integer queryCommentEntityId(Integer commentId);
 }
 

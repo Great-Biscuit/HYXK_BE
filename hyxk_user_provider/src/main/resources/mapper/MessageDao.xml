@@ -105,5 +105,33 @@
         </foreach>
     </update>
 
+    <!--查询帖子的头图-->
+    <select id="queryPostHeaderImg" resultType="string">
+        select head_img
+        from post
+        where id = #{postId}
+    </select>
+
+    <!--查询评论的内容-->
+    <select id="queryCommentContent" resultType="string">
+        select content
+        from comment
+        where id = #{commentId}
+    </select>
+
+    <!--查询被评论的实体类型-->
+    <select id="queryCommentEntityType" resultType="int">
+        select entity_type
+        from comment
+        where id = #{commentId}
+    </select>
+
+    <!--查询被评论的实体ID-->
+    <select id="queryCommentEntityId" resultType="int">
+        select entity_id
+        from comment
+        where id = #{commentId}
+    </select>
+
 </mapper>
 
