@@ -71,14 +71,6 @@ public interface PostDao {
     int deleteById(Integer id);
 
     /**
-     * 通过Id查询Markdown内容
-     *
-     * @param id
-     * @return
-     */
-    String queryMarkdownById(Integer id);
-
-    /**
      * 根据Id修改Html内容
      *
      * @param id

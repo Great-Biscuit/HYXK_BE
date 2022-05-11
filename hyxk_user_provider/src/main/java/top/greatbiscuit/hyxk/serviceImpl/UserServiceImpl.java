@@ -1,6 +1,11 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
+import com.github.benmanes.caffeine.cache.CacheLoader;
+import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.LoadingCache;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.greatbiscuit.common.redis.service.RedisService;
 import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
@@ -9,6 +14,7 @@ import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +34,41 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RedisService redisService;
+
+    private int maxSize = 100;   // 最多存100个数据
+
+    private int expireSeconds = 60 * 60;    // 60分钟过期
+
+    // 用户caffeine的缓存
+    private LoadingCache<Integer, User> userCache;
+
+    @PostConstruct
+    public void init() {
+        //初始化用户缓存
+        userCache = Caffeine.newBuilder()
+                .maximumSize(maxSize)
+                .expireAfterWrite(expireSeconds, TimeUnit.SECONDS)
+                .build(new CacheLoader<Integer, User>() {
+                    //这里是往缓存里加数据
+                    @Override
+                    public @Nullable User load(@NonNull Integer key) throws Exception {
+                        // 没有数据就先看redis里有没有
+                        User user = getRedisCache(key);
+                        if (user != null) {
+                            // 查到了就返回
+                            return user;
+                        }
+                        // 没查到就初始化数据
+                        user = initCache(key);
+                        if (user != null) {
+                            return user;
+                        }
+                        // 实在没有就返回一个什么都没有的用户
+                        user = new User();
+                        return user;
+                    }
+                });
+    }
 
     /**
      * 修改密码
@@ -78,6 +119,7 @@ public class UserServiceImpl implements UserService {
         userDao.update(u);
         // 修改用户信息后要清除缓存
         clearCache(user.getId());
+        userCache.refresh(user.getId());
         return null;
     }
 
@@ -91,6 +133,7 @@ public class UserServiceImpl implements UserService {
         userDao.update(user);
         // 修改用户信息后要清除缓存
         clearCache(user.getId());
+        userCache.refresh(user.getId());
         return null;
     }
 
@@ -114,9 +157,10 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Integer queryUserType(Integer userId) {
-        User user = getCache(userId);//看Redis里有没有
-        if (user == null) {
-            user = initCache(userId);
+        User user = getCache(userId);//看缓存里有没有
+        if (user == null || user.getId() == null) {
+            // 没查到就当作普通用户
+            return 0;
         }
         return user.getType();
     }
@@ -130,8 +174,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User querySimpleUserById(Integer userId) {
         User user = getCache(userId);//看Redis里有没有
-        if (user == null) {
-            user = initCache(userId);
+        if (user == null || user.getId() == null) {
+            // 没查到就返回空
+            return null;
         }
         return user;
     }
@@ -175,9 +220,12 @@ public class UserServiceImpl implements UserService {
         return userDao.count(user) > 0;
     }
 
-    //使用Redis优化
     //1.优先从缓存里查
     private User getCache(int userId) {
+        return userCache.get(userId);
+    }
+
+    private User getRedisCache(int userId) {
         String redisKey = RedisKeyUtil.getUserKey(userId);
         return redisService.getCacheObject(redisKey);
     }

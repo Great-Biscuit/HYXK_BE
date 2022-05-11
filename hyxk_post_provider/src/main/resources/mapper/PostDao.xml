@@ -175,13 +175,6 @@
         where id = #{id}
     </delete>
 
-    <!--查询Markdown内容-->
-    <select id="queryMarkdownById" resultType="string">
-        select markdown_content
-        from post
-        where id = #{id}
-    </select>
-
     <update id="updateHtmlById">
         update post
         set html_content = #{htmlContent}
@@ -217,7 +210,7 @@
     </select>
 
     <!--根据问答状态查询问答 0全部 1已解决 2未解决-->
-    <select id="queryFolloweePosts" resultMap="PostMap">
+    <select id="queryQAByState" resultMap="PostMap">
         select
         id, user_id, title, state, top, official, best_comment_id, comments, head_img
         from post
