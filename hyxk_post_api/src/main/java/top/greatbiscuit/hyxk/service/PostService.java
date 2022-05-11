@@ -71,4 +71,20 @@ public interface PostService {
      */
     boolean exitsPost(int postId);
 
+    /**
+     * 查询待编辑的帖子信息
+     *
+     * @param holderId
+     * @param postId
+     * @return
+     */
+    Post getPostForUpdate(int holderId, int postId);
+
+    /**
+     * 修改帖子
+     *
+     * @param post
+     * @return
+     */
+    String updatePost(Post post);
 }

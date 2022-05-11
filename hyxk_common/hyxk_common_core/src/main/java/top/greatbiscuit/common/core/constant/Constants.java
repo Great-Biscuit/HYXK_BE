@@ -63,6 +63,26 @@ public class Constants {
     public static final Integer USER_TYPE_DESTROY = 886;
 
     /**
+     * 帖子类型[文章]
+     */
+    public static final Integer POST_TYPE_ARTICLE = 0;
+
+    /**
+     * 帖子类型[公告]
+     */
+    public static final Integer POST_TYPE_ANNOUNCEMENT = 1;
+
+    /**
+     * 帖子类型[问答]
+     */
+    public static final Integer POST_TYPE_QA = 2;
+
+    /**
+     * 帖子类型[表白墙]
+     */
+    public static final Integer POST_TYPE_CONFESSION_WALL = 3;
+
+    /**
      * 实体类型 帖子
      */
     public static final Integer ENTITY_TYPE_POST = 1;

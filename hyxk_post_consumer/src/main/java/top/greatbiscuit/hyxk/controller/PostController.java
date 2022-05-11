@@ -4,10 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.entity.Post;
@@ -40,6 +37,7 @@ public class PostController {
      * @param title
      * @param markdownContent
      * @param headerUrl
+     * @param type
      * @return
      */
     @SaCheckLogin
@@ -97,7 +95,7 @@ public class PostController {
     }
 
     /**
-     * 查询用户关注的帖子列表
+     * 查询用户收藏的帖子列表
      *
      * @param userId
      * @param offset
@@ -108,6 +106,47 @@ public class PostController {
     public R getCollectedPostList(int userId, int offset, int limit) {
         List<Map<String, Object>> collectedPostList = collectService.getCollectedPostList(userId, offset, limit);
         return R.ok(collectedPostList);
+    }
+
+    /**
+     * 查询待编辑的帖子信息
+     *
+     * @param postId
+     * @return
+     */
+    @SaCheckLogin
+    @GetMapping("/getPostForUpdate/{postId}")
+    public R getPostForUpdate(@PathVariable("postId") int postId) {
+        Post post = postService.getPostForUpdate(StpUtil.getLoginIdAsInt(), postId);
+        return post == null ? R.fail("获取帖子信息出错!") : R.ok(post);
+    }
+
+    /**
+     * 修改帖子
+     *
+     * @param id
+     * @param title
+     * @param markdownContent
+     * @param headerUrl
+     * @param type
+     * @return
+     */
+    @SaCheckLogin
+    @PostMapping("/updatePost")
+    public R updatePost(Integer id, String title, String markdownContent, String headerUrl, Integer type) {
+        Post post = new Post();
+        post.setId(id);
+        // 当前登录的用户ID就是帖子作者 后面再判断对不对
+        Integer userId = StpUtil.getLoginIdAsInt();
+        post.setUserId(userId);
+        //转义HTML标记
+        post.setTitle(HtmlUtils.htmlEscape(title));
+        post.setMarkdownContent(markdownContent);
+        post.setHeadImg(headerUrl);
+        post.setType(type);
+
+        String msg = postService.updatePost(post);
+        return msg == null ? R.ok("修改成功!") : R.fail(msg);
     }
 
 }
