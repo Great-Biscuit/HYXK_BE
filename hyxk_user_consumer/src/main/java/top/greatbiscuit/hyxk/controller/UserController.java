@@ -8,10 +8,7 @@ import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.core.domain.R;
@@ -159,12 +156,24 @@ public class UserController {
      * @return
      */
     @SaCheckLogin
-    @RequestMapping("/getUploadAvatarToken")
+    @GetMapping("/getUploadAvatarToken")
     public R getUploadAvatarToken() {
         Auth auth = Auth.create(accessKey, secretKey);
         // 过期时间
         long expireSeconds = 60 * 60 * 3;
         return R.ok(auth.uploadToken(bucket, null, expireSeconds, null));
+    }
+
+    /**
+     * 注销账号
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @PostMapping("/invalidUser")
+    public R invalidUser() {
+        userService.invalidUser(StpUtil.getLoginIdAsInt());
+        return R.ok("成功注销账号");
     }
 
 }

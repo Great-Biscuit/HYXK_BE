@@ -7,10 +7,13 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import top.greatbiscuit.common.core.constant.Constants;
 import top.greatbiscuit.common.redis.service.RedisService;
 import top.greatbiscuit.common.redis.utils.RedisKeyUtil;
 import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
+import top.greatbiscuit.hyxk.event.Event;
+import top.greatbiscuit.hyxk.event.EventProducer;
 import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
@@ -41,6 +44,9 @@ public class UserServiceImpl implements UserService {
 
     // 用户caffeine的缓存
     private LoadingCache<Integer, User> userCache;
+
+    @Autowired
+    private EventProducer eventProducer;
 
     @PostConstruct
     public void init() {
@@ -218,6 +224,43 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setId(userId);
         return userDao.count(user) > 0;
+    }
+
+    /**
+     * 注销账号
+     *
+     * @param holderId
+     */
+    @Override
+    public void invalidUser(int holderId) {
+        User user = userDao.queryById(holderId);
+        if (user == null || user.getType() == Constants.USER_TYPE_DESTROY) {
+            // 用户已经不存在或注销
+            return;
+        }
+        // 发邮件
+        String text = "【皓月星空站】亲爱的用户" +
+                user.getNickname() +
+                "(" +
+                user.getUsername() +
+                "), 您正在注销账号. <br/>感谢您对皓月星空站的支持, 让皓月星空站拥有您的印记, 愿追逐梦想的你梦想成真!" +
+                "<br/>如果您在不久的将来想重回皓月星空站, 请回复此邮件进行申请, 皓月星空站永远欢迎您!" +
+                "<br/><br/><br/>" +
+                "<div style=\"font-size:60%; color:#b1b3b8\">该邮件由系统自动发出。<br/>" +
+                "若您未进行相关操作, 请忽略本邮件, 对您造成打扰, 非常抱歉!</div>";
+
+        // 发布事件发送邮件
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_SEND_MAIL)
+                .setData("to", user.getEmail())
+                .setData("subject", "注销账号")
+                .setData("content", text);
+        // 发布
+        eventProducer.fireEvent(event);
+
+        user.setType(Constants.USER_TYPE_DESTROY);
+
+        userDao.update(user);
     }
 
     //1.优先从缓存里查

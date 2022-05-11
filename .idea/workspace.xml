@@ -8,11 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_api/src/main/java/top/greatbiscuit/hyxk/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/java/top/greatbiscuit/hyxk/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -288,13 +289,8 @@
       <workItem from="1652175212189" duration="4632000" />
       <workItem from="1652190874068" duration="7459000" />
       <workItem from="1652252023616" duration="7578000" />
-    </task>
-    <task id="LOCAL-00002" summary="chore: 集成apache shenyu网关">
-      <created>1641922120737</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1641922120737</updated>
+      <workItem from="1652259917299" duration="2421000" />
+      <workItem from="1652263809321" duration="758000" />
     </task>
     <task id="LOCAL-00003" summary="feat: 新增查询帖子列表功能">
       <created>1647703664748</created>
@@ -632,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652259195967</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="feat: 新增获取帖子图片上传的Token功能">
+      <created>1652260211947</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1652260211948</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +656,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 新增收藏帖子以及查询收藏数量功能" />
     <MESSAGE value="refactor: 帖子概况不需要显示收藏数量" />
     <MESSAGE value="feat: 新增查询用户首页数据接口" />
     <MESSAGE value="fix: 修复用户详情页获赞数量获取[provider和consumer用的redis库不同]" />
@@ -678,7 +680,8 @@
     <MESSAGE value="feat: 新增区分问答状态功能以及查询关注的用户的文章功能" />
     <MESSAGE value="feat&amp;fix: 集成caffeine实现应用服务器缓存, 并修复postDao中名称不匹配问题" />
     <MESSAGE value="feat&amp;fix: 新增修改帖子功能并修复发布帖子时各项数据的校验" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat&amp;fix: 新增修改帖子功能并修复发布帖子时各项数据的校验" />
+    <MESSAGE value="feat: 新增获取帖子图片上传的Token功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 新增获取帖子图片上传的Token功能" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -87,4 +87,11 @@ public interface UserService {
      * @return
      */
     boolean exitsUser(int userId);
+
+    /**
+     * 注销账号
+     *
+     * @param holderId
+     */
+    void invalidUser(int holderId);
 }
