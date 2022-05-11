@@ -64,7 +64,7 @@ public class CollectServiceImpl implements CollectService {
                 .reverseRange(redisKey, offset, offset + limit - 1);
         // 如果用户没有关注过任何人就会返回空
         if (followeeIdSet == null)
-            return null;
+            return new ArrayList<>();
 
         // 用户List对上述结果进行加工
         List<Map<String, Object>> collectedPostList = new ArrayList<>();

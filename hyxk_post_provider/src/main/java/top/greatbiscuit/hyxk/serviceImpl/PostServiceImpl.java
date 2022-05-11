@@ -64,7 +64,21 @@ public class PostServiceImpl implements PostService {
         }
 
         // 如果是不是普通用户或者注销用户就是官方
-        int userType = userService.queryUserType(post.getUserId());
+        Integer userType = userService.queryUserType(post.getUserId());
+
+        if (userType == Constants.USER_TYPE_DESTROY || userType == null) {
+            return "该用户不存在!";
+        }
+        if (userType != Constants.USER_TYPE_SUPER_ADMIN && post.getType() == Constants.POST_TYPE_ANNOUNCEMENT) {
+            return "当前用户不能发布公告!";
+        }
+        if (post.getType() != Constants.POST_TYPE_ARTICLE
+                && post.getType() != Constants.POST_TYPE_QA
+                && post.getType() != Constants.POST_TYPE_CONFESSION_WALL
+                && post.getType() != Constants.POST_TYPE_ANNOUNCEMENT) {
+            return "帖子类型不被允许!";
+        }
+
         post.setOfficial((userType != 0 && userType != Constants.USER_TYPE_DESTROY) ? 1 : 0);
         // 将标题进行转义
         post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
@@ -297,6 +311,74 @@ public class PostServiceImpl implements PostService {
         Post post = new Post();
         post.setId(postId);
         return postDao.count(post) > 0;
+    }
+
+    /**
+     * 查询待编辑的帖子信息
+     *
+     * @param holderId
+     * @param postId
+     * @return
+     */
+    @Override
+    public Post getPostForUpdate(int holderId, int postId) {
+        Post post = postDao.queryById(postId);
+        // 如果帖子不存在或不是当前用户的帖子
+        if (post == null || holderId != post.getUserId()) {
+            return null;
+        }
+        return post;
+    }
+
+    /**
+     * 修改帖子
+     *
+     * @param post
+     * @return
+     */
+    @Override
+    public String updatePost(Post post) {
+        Post oldPost = postDao.queryById(post.getId());
+        if (oldPost == null) {
+            return "帖子不存在!";
+        }
+        if (oldPost.getUserId() != post.getUserId()) {
+            return "非本用户的帖子!";
+        }
+
+        // 如果是不是普通用户或者注销用户就是官方
+        Integer userType = userService.queryUserType(post.getUserId());
+        if (userType == Constants.USER_TYPE_DESTROY || userType == null) {
+            return "该用户不存在!";
+        }
+        if (userType != Constants.USER_TYPE_SUPER_ADMIN && post.getType() == Constants.POST_TYPE_ANNOUNCEMENT) {
+            return "当前用户不能发布公告!";
+        }
+        if (post.getType() != Constants.POST_TYPE_ARTICLE
+                && post.getType() != Constants.POST_TYPE_QA
+                && post.getType() != Constants.POST_TYPE_CONFESSION_WALL
+                && post.getType() != Constants.POST_TYPE_ANNOUNCEMENT) {
+            return "帖子类型不被允许!";
+        }
+
+        // 更新帖子
+        postDao.update(post);
+
+        // Markdown转Html耗时太长, 放到消息队列里去
+        // 同时将数据加入es
+        Event event = new Event()
+                .setTopic(Constants.TOPIC_PUBLISH)
+                .setUserId(post.getUserId())
+                .setEntityType(Constants.ENTITY_TYPE_POST)
+                .setEntityId(post.getId());
+        // 发布事件
+        eventProducer.fireEvent(event);
+
+        // 将帖子加入需要更新分数的帖子编号Set中, 等待自动任务更新帖子分数
+        String flushScoreKey = RedisKeyUtil.getPostScoreKey();
+        redisService.addCacheSet(flushScoreKey, post.getId());
+
+        return null;
     }
 
 }
