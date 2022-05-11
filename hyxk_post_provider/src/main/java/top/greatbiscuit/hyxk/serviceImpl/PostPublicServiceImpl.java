@@ -1,8 +1,13 @@
 package top.greatbiscuit.hyxk.serviceImpl;
 
+import com.github.benmanes.caffeine.cache.CacheLoader;
+import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.LoadingCache;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.shenyu.client.dubbo.common.annotation.ShenyuDubboClient;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import top.greatbiscuit.common.core.constant.Constants;
@@ -13,7 +18,9 @@ import top.greatbiscuit.hyxk.service.LikeService;
 import top.greatbiscuit.hyxk.service.PostPublicService;
 import top.greatbiscuit.hyxk.service.UserService;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 公开服务[直接通过网关调用DUBBO服务, 跳过consumer检验操作]
@@ -35,6 +42,38 @@ public class PostPublicServiceImpl implements PostPublicService {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    private int maxSize = 15;   // 最多存15个数据
+
+    private int expireSeconds = 60 * 30;    // 30分钟过期
+
+    // 帖子列表的缓存
+    private LoadingCache<String, List<Post>> postListCache;
+
+    @PostConstruct
+    public void init() {
+        //初始化帖子列表缓存
+        postListCache = Caffeine.newBuilder()
+                .maximumSize(maxSize)
+                .expireAfterWrite(expireSeconds, TimeUnit.SECONDS)
+                .build(new CacheLoader<String, List<Post>>() {
+                    //这里是往缓存里加数据
+                    @Override
+                    public @Nullable List<Post> load(@NonNull String key) throws Exception {
+                        if (key == null || key.length() == 0) {
+                            throw new IllegalArgumentException("参数错误!");
+                        }
+                        String[] params = key.split(":");
+                        if (params == null || params.length != 2) {
+                            throw new IllegalArgumentException("参数错误!");
+                        }
+                        int offset = Integer.valueOf(params[0]);
+                        int limit = Integer.valueOf(params[1]);
+                        // 没有就去查数据库
+                        return postDao.queryAllByLimit(0, 0, offset, limit, 1);
+                    }
+                });
+    }
 
     /**
      * 查询指定行数据[用户id不为0就查询指定用户, 否则查询所有--先按top排序保证顶置在最前]
@@ -60,7 +99,16 @@ public class PostPublicServiceImpl implements PostPublicService {
             return queryQAByState(orderMode, offset, limit);
         }
         // 并且此处的帖子信息已被优化, 没必要全部传输
-        List<Post> postList = postDao.queryAllByLimit(userId, type, offset, limit, orderMode);
+        List<Post> postList;
+
+        if (userId == 0 && type == 0 && orderMode == 1) {
+            // 如果是查询首页文章的热门就调用caffeine应用服务器缓存
+            postList = postListCache.get(offset + ":" + limit);
+        } else {
+            // 其他的就直接查数据库
+            postList = postDao.queryAllByLimit(userId, type, offset, limit, orderMode);
+        }
+
         if (postList == null || postList.size() == 0)
             return new ArrayList<>();
 
