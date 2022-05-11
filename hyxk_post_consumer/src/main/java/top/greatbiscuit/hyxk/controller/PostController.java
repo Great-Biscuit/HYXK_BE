@@ -2,8 +2,10 @@ package top.greatbiscuit.hyxk.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
+import com.qiniu.util.Auth;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 import top.greatbiscuit.common.core.domain.R;
@@ -30,6 +32,15 @@ public class PostController {
 
     @DubboReference(version = "v1.0.0", timeout = 10000)
     private CollectService collectService;
+
+    @Value("${qiniu.key.access}")
+    private String accessKey;
+
+    @Value("${qiniu.key.secret}")
+    private String secretKey;
+
+    @Value("${qiniu.bucket}")
+    private String bucket;
 
     /**
      * 新增帖子
@@ -147,6 +158,20 @@ public class PostController {
 
         String msg = postService.updatePost(post);
         return msg == null ? R.ok("修改成功!") : R.fail(msg);
+    }
+
+    /**
+     * 得到上传图片的凭证
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @RequestMapping("/getUploadImageToken")
+    public R getUploadImageToken() {
+        Auth auth = Auth.create(accessKey, secretKey);
+        // 过期时间
+        long expireSeconds = 60 * 60 * 10;
+        return R.ok(auth.uploadToken(bucket, null, expireSeconds, null));
     }
 
 }

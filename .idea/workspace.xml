@@ -8,12 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_admin_provider/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_common/hyxk_common_core/src/main/java/top/greatbiscuit/common/core/constant/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_api/src/main/java/top/greatbiscuit/hyxk/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/java/top/greatbiscuit/hyxk/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/CollectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/java/top/greatbiscuit/hyxk/serviceImpl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_post_provider/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_consumer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hyxk_user_provider/src/main/resources/application.yml" afterDir="false" />
@@ -103,7 +100,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PostConsumer">
+  <component name="RunManager" selected="Spring Boot.UserProvider">
     <configuration name="AdminConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hyxk_admin_consumer" />
       <extension name="coverage">
@@ -179,9 +176,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.PostConsumer" />
-        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.PostProvider" />
         <item itemvalue="Spring Boot.UserProvider" />
+        <item itemvalue="Spring Boot.UserConsumer" />
         <item itemvalue="Spring Boot.AdminConsumer" />
       </list>
     </recent_temporary>
@@ -290,14 +287,7 @@
       <workItem from="1652085793138" duration="6531000" />
       <workItem from="1652175212189" duration="4632000" />
       <workItem from="1652190874068" duration="7459000" />
-      <workItem from="1652252023616" duration="6632000" />
-    </task>
-    <task id="LOCAL-00001" summary="chore: Dubbo3+SpringBoot调试通过">
-      <created>1641808684984</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1641808684984</updated>
+      <workItem from="1652252023616" duration="7578000" />
     </task>
     <task id="LOCAL-00002" summary="chore: 集成apache shenyu网关">
       <created>1641922120737</created>
@@ -635,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652254909495</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="feat&amp;fix: 新增修改帖子功能并修复发布帖子时各项数据的校验">
+      <created>1652259195966</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1652259195967</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: 修改密码时对新密码进行加密再存储" />
     <MESSAGE value="feat: 新增收藏帖子以及查询收藏数量功能" />
     <MESSAGE value="refactor: 帖子概况不需要显示收藏数量" />
     <MESSAGE value="feat: 新增查询用户首页数据接口" />
@@ -681,7 +677,8 @@
     <MESSAGE value="fix: 查询关注、粉丝、收藏列表时, 若用户或帖子被删除, 则将数据在redis里删除" />
     <MESSAGE value="feat: 新增区分问答状态功能以及查询关注的用户的文章功能" />
     <MESSAGE value="feat&amp;fix: 集成caffeine实现应用服务器缓存, 并修复postDao中名称不匹配问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat&amp;fix: 集成caffeine实现应用服务器缓存, 并修复postDao中名称不匹配问题" />
+    <MESSAGE value="feat&amp;fix: 新增修改帖子功能并修复发布帖子时各项数据的校验" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat&amp;fix: 新增修改帖子功能并修复发布帖子时各项数据的校验" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
