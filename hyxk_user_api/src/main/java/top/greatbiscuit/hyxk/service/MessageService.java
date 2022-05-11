@@ -36,15 +36,6 @@ public interface MessageService {
     List<Map<String, Object>> getLetterHome(int userId);
 
     /**
-     * 得到通知详情
-     *
-     * @param userId
-     * @param topic
-     * @return
-     */
-    List<Map<String, Object>> getNoticeDetail(int userId, String topic);
-
-    /**
      * 得到私信详情
      *
      * @param userId
@@ -63,4 +54,20 @@ public interface MessageService {
      */
     String sendLetter(int fromId, int toId, String content);
 
+    /**
+     * 获取通知列表[点赞、收藏、评论]
+     *
+     * @param holderId
+     * @param type
+     * @return
+     */
+    List<Map<String, Object>> getNoticeList(int holderId, String type);
+
+    /**
+     * 获取关注通知列表
+     *
+     * @param holderId
+     * @return
+     */
+    List<Map<String, Object>> getFollowNoticeList(int holderId);
 }

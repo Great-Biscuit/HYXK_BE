@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,23 +81,32 @@ public class MessageController {
     }
 
     /**
-     * 得到通知详情
+     * 获取通知列表[点赞、收藏、评论]
      *
-     * @param topic
+     * @param type
      * @return
      */
     @SaCheckLogin
-    @PostMapping("/notice")
-    public R noticeDetail(String topic) {
+    @PostMapping("/getNoticeList")
+    public R getNoticeList(String type) {
         // 看topic是否合法
-        if (!(topic.equals(Constants.TOPIC_FOLLOW) ||
-                topic.equals(Constants.TOPIC_LIKE) ||
-                topic.equals(Constants.TOPIC_COLLECT) ||
-                topic.equals(Constants.TOPIC_COMMENT))) {
+        if (!(type.equals(Constants.TOPIC_LIKE) ||
+                type.equals(Constants.TOPIC_COLLECT) ||
+                type.equals(Constants.TOPIC_COMMENT))) {
             return R.fail("通知类型不存在!");
         }
-        int holderUserId = StpUtil.getLoginIdAsInt();
-        return R.ok(messageService.getNoticeDetail(holderUserId, topic));
+        return R.ok(messageService.getNoticeList(StpUtil.getLoginIdAsInt(), type));
+    }
+
+    /**
+     * 获取关注通知列表
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @GetMapping("/getFollowNoticeList")
+    public R getFollowNoticeList() {
+        return R.ok(messageService.getFollowNoticeList(StpUtil.getLoginIdAsInt()));
     }
 
     /**
