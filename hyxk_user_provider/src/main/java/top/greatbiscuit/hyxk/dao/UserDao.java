@@ -86,4 +86,12 @@ public interface UserDao {
      * @return
      */
     List<User> queryUserListByLimit(int offset, int limit);
+
+    /**
+     * 搜索用户
+     *
+     * @param key
+     * @return
+     */
+    List<User> searchByNickname(String key);
 }

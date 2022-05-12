@@ -3,6 +3,7 @@ package top.greatbiscuit.hyxk.serviceImpl;
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -14,10 +15,12 @@ import top.greatbiscuit.hyxk.dao.UserDao;
 import top.greatbiscuit.hyxk.entity.User;
 import top.greatbiscuit.hyxk.event.Event;
 import top.greatbiscuit.hyxk.event.EventProducer;
+import top.greatbiscuit.hyxk.service.FollowService;
 import top.greatbiscuit.hyxk.service.UserService;
 import top.greatbiscuit.hyxk.util.PasswordUtil;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +40,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RedisService redisService;
+
+    @DubboReference(version = "v1.0.0", timeout = 10000)
+    private FollowService followService;
 
     private int maxSize = 100;   // 最多存100个数据
 
@@ -261,6 +267,33 @@ public class UserServiceImpl implements UserService {
         user.setType(Constants.USER_TYPE_DESTROY);
 
         userDao.update(user);
+    }
+
+    /**
+     * 搜索用户
+     *
+     * @param holderId 当前用户不存在则为null
+     * @param key
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> searchByNickname(Integer holderId, String key) {
+        List<User> userList = userDao.searchByNickname("%" + key + "%");
+        if (userList == null) {
+            return new ArrayList<>();
+        }
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (User user : userList) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", user.getId());
+            map.put("nickname", user.getNickname());
+            map.put("avatar", user.getHeaderUrl());
+            map.put("sex", user.getGender());
+            map.put("description", user.getSignature());
+            map.put("hasFollowed", holderId != null && followService.hasFollowed(holderId, Constants.ENTITY_TYPE_USER, user.getId()));
+            result.add(map);
+        }
+        return result;
     }
 
     //1.优先从缓存里查
