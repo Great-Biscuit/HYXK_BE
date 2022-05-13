@@ -38,8 +38,22 @@ public class CommentController {
 
     @SaCheckLogin
     @PostMapping("/deleteComment")
-    public R deleteComment(int commentId) {
-        String msg = commentService.deleteComment(commentId, StpUtil.getLoginIdAsInt());
+    public R deleteComment(int commentId, int postId) {
+        String msg = commentService.deleteComment(commentId, postId, StpUtil.getLoginIdAsInt());
+        return msg == null ? R.ok() : R.fail(msg);
+    }
+
+    /**
+     * 设置最佳评论
+     *
+     * @param commentId
+     * @param postId
+     * @return
+     */
+    @SaCheckLogin
+    @PostMapping("/setBestComment")
+    public R setBestComment(int commentId, int postId) {
+        String msg = commentService.setBestComment(StpUtil.getLoginIdAsInt(), commentId, postId);
         return msg == null ? R.ok() : R.fail(msg);
     }
 

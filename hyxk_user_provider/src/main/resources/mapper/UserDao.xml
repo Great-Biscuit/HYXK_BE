@@ -186,5 +186,15 @@
         limit #{offset}, #{limit}
     </select>
 
+    <select id="searchByNickname" resultMap="UserMap">
+        select id,
+               header_url,
+               nickname,
+               gender,
+               signature
+        from user
+        where nickname like #{key}
+    </select>
+
 </mapper>
 

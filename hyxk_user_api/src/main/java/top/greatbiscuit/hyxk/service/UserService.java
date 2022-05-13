@@ -94,4 +94,13 @@ public interface UserService {
      * @param holderId
      */
     void invalidUser(int holderId);
+
+    /**
+     * 搜索用户
+     *
+     * @param holderId 当前用户不存在则为null
+     * @param key
+     * @return
+     */
+    List<Map<String, Object>> searchByNickname(Integer holderId, String key);
 }

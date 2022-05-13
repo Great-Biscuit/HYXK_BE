@@ -3,6 +3,7 @@ package top.greatbiscuit.hyxk.controller;
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import com.qiniu.util.Auth;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shenyu.client.springmvc.annotation.ShenyuSpringMvcClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,6 +175,14 @@ public class UserController {
     public R invalidUser() {
         userService.invalidUser(StpUtil.getLoginIdAsInt());
         return R.ok("成功注销账号");
+    }
+
+    @PostMapping("/searchByNickname")
+    public R searchByNickname(String key) {
+        if (StringUtils.isBlank(key)) {
+            return R.fail("键为空!");
+        }
+        return R.ok(userService.searchByNickname(StpUtil.isLogin() ? StpUtil.getLoginIdAsInt() : null, key));
     }
 
 }

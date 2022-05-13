@@ -110,17 +110,18 @@ public class CommentServiceImpl implements CommentService {
      * 删除评论[改变评论状态]
      *
      * @param commentId
+     * @param postId
      * @param userId
      * @return
      */
     @Override
-    public String deleteComment(int commentId, int userId) {
+    public String deleteComment(int commentId, int postId, int userId) {
         Comment comment = commentDao.queryById(commentId);
         if (comment == null) {
             return "评论不存在!";
         }
         // 防止评论被他人删除
-        if (userId != comment.getUserId()) {
+        if (userId != comment.getUserId() && userId != postDao.queryById(postId).getUserId()) {
             return "无权限!";
         }
         // 使评论失效
@@ -137,6 +138,35 @@ public class CommentServiceImpl implements CommentService {
             String flushScoreKey = RedisKeyUtil.getPostScoreKey();
             redisService.addCacheSet(flushScoreKey, comment.getEntityId());
         }
+        return null;
+    }
+
+    /**
+     * 设置最佳评论
+     *
+     * @param holder
+     * @param commentId
+     * @param postId
+     * @return
+     */
+    @Override
+    public String setBestComment(int holder, int commentId, int postId) {
+        Post post = postDao.queryById(postId);
+        if (post == null) {
+            return "帖子不存在!";
+        }
+        if (post.getUserId() != holder) {
+            return "无权限!";
+        }
+        Comment comment = commentDao.queryById(commentId);
+        if (comment == null) {
+            return "评论不存在!";
+        }
+        // 设置最佳评论
+        Post post1 = new Post();
+        post1.setId(postId);
+        post1.setBestCommentId(commentId);
+        postDao.update(post1);
         return null;
     }
 
