@@ -2,7 +2,6 @@ package top.greatbiscuit.hyxk.serviceImpl;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import top.greatbiscuit.hyxk.service.SearchService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 搜索服务生产者
@@ -71,9 +69,6 @@ public class SearchServiceImpl implements SearchService {
                     .withSorts(SortBuilders.fieldSort("score").order(SortOrder.DESC))
                     .withSorts(SortBuilders.fieldSort("createTime").order(SortOrder.DESC))
                     .withPageable(PageRequest.of(current, limit))
-                    .withHighlightFields(
-                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>")
-                    )
                     .build();
         } else {
             searchQuery = new NativeSearchQueryBuilder()
@@ -84,9 +79,6 @@ public class SearchServiceImpl implements SearchService {
                     .withSorts(SortBuilders.fieldSort("score").order(SortOrder.DESC))
                     .withSorts(SortBuilders.fieldSort("createTime").order(SortOrder.DESC))
                     .withPageable(PageRequest.of(current, limit))
-                    .withHighlightFields(
-                            new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>")
-                    )
                     .build();
         }
 
@@ -99,11 +91,6 @@ public class SearchServiceImpl implements SearchService {
         List<Post> postList = new ArrayList<>();
         for (SearchHit hit : searchHits) {
             Post post = (Post) hit.getContent();
-            Map<String, Object> highlightFields = hit.getHighlightFields();
-            // 替换为高亮内容
-            if (highlightFields.containsKey("title")) {
-                post.setTitle((String) hit.getHighlightField("title").get(0));
-            }
             // 由于内容自带样式, 所以页面不能再进行内容展示
             post.setHtmlContent(null);
             post.setMarkdownContent(null);

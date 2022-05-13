@@ -201,7 +201,7 @@
         id, user_id, title, state, top, official, best_comment_id, comments, head_img
         from post
         where type = 0 and state != 2 and ( 1 = 0
-        <foreach collection="ids" item="id" separator=",">
+        <foreach collection="ids" item="id">
             or user_id = #{id}
         </foreach>
         )

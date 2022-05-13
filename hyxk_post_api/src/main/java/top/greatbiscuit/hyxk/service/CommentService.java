@@ -22,8 +22,19 @@ public interface CommentService {
      * 删除评论[改变评论状态]
      *
      * @param commentId
+     * @param postId
      * @param userId
      * @return
      */
-    String deleteComment(int commentId, int userId);
+    String deleteComment(int commentId, int postId, int userId);
+
+    /**
+     * 设置最佳评论
+     *
+     * @param holder
+     * @param commentId
+     * @param postId
+     * @return
+     */
+    String setBestComment(int holder, int commentId, int postId);
 }

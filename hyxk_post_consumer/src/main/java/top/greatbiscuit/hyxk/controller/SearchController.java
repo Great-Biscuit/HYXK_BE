@@ -43,15 +43,15 @@ public class SearchController {
      * @param keyword 关键字
      * @param current 当前页[从0开始]
      * @param limit   结果数量
-     * @param type    搜索类型
+     * @param type    搜索类型 -1则查询全部
      * @return
      */
     @SaCheckLogin
     @RequestMapping("/execute")
     public R search(String keyword, int current, int limit, Integer type) {
-        List<Post> postList = searchService.searchPostList(keyword, current, limit, type);
+        List<Post> postList = searchService.searchPostList(keyword, current, limit, type == -1 ? null : type);
         if (postList == null) {
-            return R.ok();
+            return R.ok(new ArrayList<>());
         }
         // 处理结果
         List<Map<String, Object>> searchResult = new ArrayList<>();

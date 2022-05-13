@@ -152,6 +152,15 @@ public class PostServiceImpl implements PostService {
         }
         postDetail.put("post", post);
 
+        // 处理最佳评论
+        if (post.getBestCommentId() != null) {
+            Map<String, Object> bestComment = new HashMap<>();
+            Comment bComment = commentDao.queryById(post.getBestCommentId());
+            bestComment.put("comment", bComment);
+            bestComment.put("author", userService.querySimpleUserById(bComment.getUserId()));
+            postDetail.put("bestComment", bestComment);
+        }
+
         // 查询帖子作者的数据
         User postAuthor = userService.querySimpleUserById(post.getUserId());
         postDetail.put("author", postAuthor);
@@ -211,9 +220,9 @@ public class PostServiceImpl implements PostService {
                     for (Comment reply : replyList) {
                         Map<String, Object> replyVo = new HashMap<>();
                         // 回复
-                        commentVo.put("id", reply.getId());
+                        replyVo.put("id", reply.getId());
                         replyVo.put("replyText", reply.getContent());
-                        commentVo.put("replyTime", reply.getCreateTime());
+                        replyVo.put("replyTime", reply.getCreateTime());
                         // 作者
                         replyVo.put("user", userService.querySimpleUserById(reply.getUserId()));
                         // 回复目标
