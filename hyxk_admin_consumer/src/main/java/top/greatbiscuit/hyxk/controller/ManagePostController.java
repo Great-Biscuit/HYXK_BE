@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import top.greatbiscuit.common.core.domain.R;
 import top.greatbiscuit.hyxk.service.PostService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 管理帖子服务消费者
  *
@@ -56,14 +59,19 @@ public class ManagePostController {
     /**
      * 得到帖子数量
      *
-     * @param type -1则为所有帖子
      * @return
      */
     @SaCheckLogin
-    @SaCheckRole("moderator")
+    @SaCheckRole("admin")
     @PostMapping("/getPostCount")
-    public R getPostCount(int type) {
-        return R.ok(postService.getPostCount(type));
+    public R getPostCount() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("allPost", postService.getPostCount(-1));
+        map.put("article", postService.getPostCount(0));
+        map.put("announcement", postService.getPostCount(1));
+        map.put("QA", postService.getPostCount(2));
+        map.put("confessionWall", postService.getPostCount(3));
+        return R.ok(map);
     }
 
 }

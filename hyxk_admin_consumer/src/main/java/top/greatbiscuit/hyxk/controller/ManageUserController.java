@@ -59,6 +59,18 @@ public class ManageUserController {
     }
 
     /**
+     * 查询用户数量
+     *
+     * @return
+     */
+    @SaCheckLogin
+    @SaCheckRole("admin")
+    @PostMapping("/getUserNumber")
+    public R getUserNumber() {
+        return R.ok(userService.queryUserNumber());
+    }
+
+    /**
      * 封禁用户
      *
      * @param userId

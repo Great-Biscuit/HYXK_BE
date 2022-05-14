@@ -103,4 +103,12 @@ public interface UserService {
      * @return
      */
     List<Map<String, Object>> searchByNickname(Integer holderId, String key);
+
+    /**
+     * 查询用户数量[管理后台]
+     *
+     * @return
+     */
+    Map<String, Object> queryUserNumber();
+
 }

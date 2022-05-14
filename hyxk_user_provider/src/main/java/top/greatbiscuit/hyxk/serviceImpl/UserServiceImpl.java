@@ -296,6 +296,25 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    /**
+     * 查询用户数量[管理后台]
+     *
+     * @return
+     */
+    @Override
+    public Map<String, Object> queryUserNumber() {
+        User user = new User();
+        Map<String, Object> userNumber = new HashMap<>();
+        userNumber.put("allUserCount", userDao.count(user));
+        user.setGender(0);
+        userNumber.put("neutralCount", userDao.count(user));
+        user.setGender(1);
+        userNumber.put("manCount", userDao.count(user));
+        user.setGender(2);
+        userNumber.put("womanCount", userDao.count(user));
+        return userNumber;
+    }
+
     //1.优先从缓存里查
     private User getCache(int userId) {
         return userCache.get(userId);
