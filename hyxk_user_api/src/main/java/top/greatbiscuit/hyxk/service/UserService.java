@@ -22,7 +22,7 @@ public interface UserService {
      * @param newPassword
      * @return
      */
-    Map updatePassword(Integer userId, String oldPassword, String newPassword);
+    String updatePassword(Integer userId, String oldPassword, String newPassword);
 
     /**
      * 修改用户信息

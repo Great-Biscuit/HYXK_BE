@@ -113,8 +113,8 @@ public class UserController {
     @SaCheckLogin
     @PostMapping("/updatePassword")
     public R updatePassword(String oldPassword, String newPassword) {
-        Map map = userService.updatePassword(StpUtil.getLoginIdAsInt(), oldPassword, newPassword);
-        if (!map.isEmpty()) return R.fail(map);
+        String msg = userService.updatePassword(StpUtil.getLoginIdAsInt(), oldPassword, newPassword);
+        if (msg != null) return R.fail(msg);
         return R.ok("密码修改成功!");
     }
 
@@ -174,6 +174,8 @@ public class UserController {
     @PostMapping("/invalidUser")
     public R invalidUser() {
         userService.invalidUser(StpUtil.getLoginIdAsInt());
+        // 下线
+        StpUtil.logout();
         return R.ok("成功注销账号");
     }
 

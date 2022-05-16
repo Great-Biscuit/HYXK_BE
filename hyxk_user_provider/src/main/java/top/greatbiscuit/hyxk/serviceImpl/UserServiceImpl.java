@@ -91,24 +91,26 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Map updatePassword(Integer userId, String oldPassword, String newPassword) {
-        Map<String, Object> map = new HashMap<>();
+    public String updatePassword(Integer userId, String oldPassword, String newPassword) {
         User user = userDao.queryById(userId);
+
+        if (user == null) {
+            return "用户不存在!";
+        }
 
         //将提供的密码进行相同方式的加密
         oldPassword = PasswordUtil.md5(oldPassword + user.getSalt());
 
         //验证密码
         if (!oldPassword.equals(user.getPassword())) {
-            map.put("passwordMsg", "密码错误!");
-            return map;
+            return "密码错误!";
         }
 
         //旧密码正确, 则修改密码
         user.setPassword(PasswordUtil.md5(newPassword + user.getSalt()));
         userDao.update(user);
 
-        return map;
+        return null;
     }
 
     /**

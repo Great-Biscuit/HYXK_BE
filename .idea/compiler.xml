@@ -11,8 +11,8 @@
         <module name="hyxk_post_provider" />
         <module name="hyxk_user_consumer" />
         <module name="hyxk_common_core" />
-        <module name="hyxk_common_redis" />
         <module name="hyxk_admin_consumer" />
+        <module name="hyxk_common_redis" />
         <module name="hyxk_post_api" />
         <module name="hyxk_admin_api" />
         <module name="hyxk_admin_provider" />
@@ -40,7 +40,8 @@
       <module name="hyxk_admin_api" options="-parameters" />
       <module name="hyxk_admin_consumer" options="-parameters" />
       <module name="hyxk_admin_provider" options="-parameters" />
-      <module name="hyxk_common" options="-parameters" />
+      <module name="hyxk_be" options="-parameters" />
+      <module name="hyxk_common" options="" />
       <module name="hyxk_common_core" options="-parameters" />
       <module name="hyxk_common_redis" options="-parameters" />
       <module name="hyxk_post_api" options="-parameters" />
